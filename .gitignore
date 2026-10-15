@@ -1,0 +1,20 @@
+# The Windows runtime is built by tools/build_runtime.py for the release zip.
+app/runtime/
+app/lib/
+app/installed.json
+app/.unblocked
+.cache/
+dist/
+__pycache__/
+*.pyc
+*.part
+# Per-user state (the first start copies these from app/vocana/defaults)
+/words.json
+/moods.json
+/scripts/
+settings.json
+logs/
+.vocana-instance.json
+# Renders are yours; only the sample ships.
+renders/*
+!renders/Sample/
