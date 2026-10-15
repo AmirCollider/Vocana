@@ -1,0 +1,30 @@
+# Every mood, one line each. Change the character on the next line to hear what the moods do with someone else.
+@cast ME = ずんだもん
+gap = 0.5
+
+ME [normal]: This is my normal voice. Nice and clear.
+ME [excited]: This is so exciting! Let's go!
+ME [happy]: I had the best day today!
+ME [cheeky]: I might have eaten your snack. Maybe.
+ME [flustered]: W-Wait, that is not what I meant!
+ME [shout]: Everybody, listen to me!
+ME [deadpan]: Wow. Amazing. I am so surprised.
+ME [shy]: Um... thank you for watching.
+ME [cute]: Hehe, you noticed me~
+ME [pleading]: Pleeease, just five more minutes?
+ME [innocent]: Who, me? I did nothing wrong.
+ME [teasing]: Oh? You need my help again?
+ME [pouting]: Fine. I did not want any cake anyway.
+ME [smug]: Of course I won. I always win.
+ME [angry]: Who deleted my project file?!
+ME [dark]: I know where your save files are.
+ME [serious]: Listen carefully. This part matters.
+ME [calm]: Take a deep breath. Everything is fine.
+ME [narrator]: Once upon a time, in a tiny village, there lived a curious creature.
+ME [surprised]: What?! It actually worked?!
+ME [scared]: Did you hear that? Something moved...
+ME [sleepy]: It is so late... I am so tired...
+ME [sad]: I lost my favorite game save...
+ME [defeated]: I tried my best... and I still lost...
+ME [whisper]: Shh. This is our secret.
+ME [asmr]: Close your eyes, and listen closely.

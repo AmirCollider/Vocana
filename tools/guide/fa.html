@@ -1,0 +1,249 @@
+<div class="hero">
+  <img src="data:image/webp;base64,__LOGO_B64__" alt="Vocana">
+  <div>
+    <h1>Vocana</h1>
+    <p class="tag">انگلیسی ساده بنویسید، با هر صدای VOICEVOX بشنوید.</p>
+    <p>اسکریپت خود را به انگلیسی معمولی بنویسید. Vocana هر کلمه را همان‌طور که یک صدای ژاپنی می‌تواند بگوید به کاتاکانا تبدیل می‌کند، ملودی را برای حال‌وهوایی که خواسته‌اید شکل می‌دهد و صدا، زیرنویس و زمان‌بندی کلمه‌به‌کلمه را برای ویدیوی شما تحویل می‌دهد — با همه‌ی شخصیت‌های VOICEVOX، نه فقط یکی.</p>
+    <p class="meta">نسخه‌ی <span class="ltr">__VERSION__</span> · <span class="ltr">__DATE__</span> · ساخته‌ی AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <div class="chips"><span class="chip">رایگان</span><span class="chip">ویندوز · مک · لینوکس</span><span class="chip">بدون اینترنت</span><span class="chip">فارسی · English · 日本語</span></div>
+  </div>
+</div>
+
+<section id="fa-start" data-anchor="start">
+  <h2><span class="n">۱</span>شروع در دو دقیقه</h2>
+  <div class="steps">
+    <div class="step"><span class="num">۱</span><b>VOICEVOX را نصب کنید</b>موتور صدای رایگان، از <a href="https://voicevox.hiroshiba.jp/">voicevox.hiroshiba.jp</a>. داخل Vocana نیست. اگر VOICEVOX جای معمولش نصب باشد، Vocana خودش بازش می‌کند (در پس‌زمینه، بدون پنجره).</div>
+    <div class="step"><span class="num">۲</span><b><code>Vocana.bat</code> را باز کنید</b>استودیو در پنجره‌ی خودش باز می‌شود. لازم نیست چیزی نصب کنید: پایتون و هرچه Vocana لازم دارد داخل پوشه‌ی <code>app</code> است.</div>
+    <div class="step"><span class="num">۳</span><b>بنویسید، گوش کنید، بسازید</b>دکمه‌ی ▶ کنار هر خط را بزنید تا بشنوید، بعد <b>ساختن صدا</b>. فایل‌ها در <code>renders/&lt;نام اسکریپت&gt;/</code> ساخته می‌شوند.</div>
+  </div>
+  <div class="note"><b>اولین اجرا در ویندوز.</b> اول کل فایل zip را باز کنید (راست‌کلیک ← <bdi><i>Extract All…</i></bdi>) — Vocana از داخل zip اجرا نمی‌شود. اگر ویندوز پرسید <bdi>«Do you want to run this file?»</bdi> یا نوشت <bdi>«Windows protected your PC»</bdi>، <bdi><i>Run</i></bdi> یا <bdi><i>More info ← Run anyway</i></bdi> را بزنید. Vocana در اولین اجرا علامت «دانلودشده از اینترنت» را از پوشه‌ی خودش برمی‌دارد، پس فقط یک بار می‌پرسد.</div>
+  <p><b>می‌خواهید در منوی استارت باشد؟</b> به جایش <code>Setup.bat</code> را باز کنید. Vocana را برای کاربر ویندوز شما نصب می‌کند (بدون دسترسی مدیر)، میان‌بر منوی استارت و دسکتاپ می‌سازد و فایل‌هایتان را در <code>Documents\Vocana</code> نگه می‌دارد. خود پوشه هم کار می‌کند — نصب اختیاری است. بخش <a href="#fa-install">نصب، به‌روزرسانی، حذف</a> را ببینید.</p>
+  <p><b>مک یا لینوکس:</b> پایتون ۳٫۱۰ یا جدیدتر را نصب کنید و <code>start.sh</code> را اجرا کنید (یا در مک روی <code>Vocana.command</code> دوبار کلیک کنید). اولین اجرا numpy و e2k را داخل پوشه‌ی خود Vocana نصب می‌کند.</p>
+</section>
+
+<section id="fa-hear" data-anchor="hear">
+  <h2><span class="n">۲</span>بشنوید</h2>
+  <p>این همان <code>scripts/Sample.txt</code> است که Vocana با صدای زوندامون ساخته. هر کلمه دقیقاً همان لحظه‌ای که گفته می‌شود روشن می‌شود — این کار <code>timing.json</code> است که Vocana کنار هر خروجی می‌نویسد.</p>
+  <div class="w-player"></div>
+</section>
+
+<section id="fa-studio" data-anchor="studio">
+  <h2><span class="n">۳</span>استودیو</h2>
+  <p>استودیو روی کامپیوتر خودتان در <code class="ltr">http://127.0.0.1:50210</code> اجرا می‌شود و به شکل پنجره‌ی برنامه باز می‌شود (Edge یا Chrome بدون زبانه؛ اگر هیچ‌کدام نبود، مرورگر معمول شما). هیچ چیزی که می‌نویسید از کامپیوترتان بیرون نمی‌رود.</p>
+  <table>
+    <tr><th>صفحه</th><th>به چه کار می‌آید</th></tr>
+    <tr><td><b>اسکریپت</b></td><td>ویرایشگر، با رنگ برای گوینده‌ها، حال‌وهواها، مکث‌ها و تأکیدها. سمت دیگر، هر خط به شکل یک کارت: چه کسی می‌گوید، با چه سبکی، کاتاکانای دقیقش، و ▶ برای شنیدن همان خط. زیرش: مشکل‌هایی که باید رفع شوند (با شماره‌ی خط) و کلمه‌هایی که مدل مجبور شد حدس بزند.</td></tr>
+    <tr><td><b>شخصیت‌ها</b></td><td>چه کسی کدام خط‌ها را می‌خواند. برای هر برچسب گوینده یک شخصیت، سبک پایه، زیروبمی، سرعت و بلندی انتخاب کنید — Vocana انتخاب‌هایتان را به شکل خط‌های <code>@cast</code> در خود اسکریپت می‌نویسد، پس همه‌چیز در متن می‌ماند. پایین صفحه: همه‌ی شخصیت‌های VOICEVOX شما با تصویر، نمونه‌صدا، دکمه‌ی «شنیدن به انگلیسی»، خط اعتبار و قوانین استفاده‌شان.</td></tr>
+    <tr><td><b>خروجی‌ها</b></td><td>هرچه ساخته‌اید: پخش‌کننده با شکل موج و زیرنویسی که کلمه‌به‌کلمه پیش می‌رود، هر خط جداگانه، همه‌ی فایل‌ها برای دانلود (یا همه با هم در zip)، خط اعتبار برای کپی، و یک پرامپت آماده برای ابزارهای ساخت ویدیو با هوش مصنوعی.</td></tr>
+    <tr><td><b>واژه‌نامه</b></td><td><code>words.json</code>: هر کلمه چطور گفته شود، به کاتاکانا. جست‌وجو، افزودن، ویرایش، شنیدن. یک جعبه‌ی آزمایش نشان می‌دهد تلفظ هر کلمه از کجا آمده.</td></tr>
+    <tr><td><b>حال‌وهواها</b></td><td><code>moods.json</code>: لحن و عددهای هر حال‌وهوا، با اسلایدر و ▶ برای شنیدن تغییر روی هر شخصیت.</td></tr>
+    <tr><td><b>تنظیمات</b></td><td>زبان، پوسته، محل VOICEVOX و این‌که خودکار باز شود یا نه، بررسی نسخه‌ی جدید، فایل‌هایتان، نصب/حذف، بررسی کامل کامپیوتر، و بستن برنامه.</td></tr>
+  </table>
+  <h3>صفحه‌کلید</h3>
+  <table>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>ذخیره‌ی اسکریپت</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>شنیدن خطی که مکان‌نما رویش است</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd></td><td>ساختن صدای کل اسکریپت</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>توقف پخش</td></tr>
+  </table>
+  <p>یک فایل <code>.txt</code> را روی ویرایشگر (یا روی <code>Vocana.bat</code>) رها کنید تا باز شود. کار ذخیره‌نشده با بسته شدن پنجره از بین نمی‌رود و به شکل پیش‌نویس می‌ماند. وقتی پنجره‌ی استودیو را ببندید، Vocana چند دقیقه بعد خودش بسته می‌شود؛ <i>تنظیمات ← بستن Vocana</i> همان لحظه می‌بندد.</p>
+</section>
+
+<section id="fa-script" data-anchor="script">
+  <h2><span class="n">۴</span>نوشتن اسکریپت</h2>
+  <p>اسکریپت یک فایل متنی ساده است — استودیو، Notepad یا یک هوش مصنوعی می‌تواند آن را بنویسد. هر خطِ گفتار در یک خط:</p>
+<pre>gap = 0.4
+@cast ME = ずんだもん
+@cast METAN = 四国めたん
+ME [excited]: Hello! I'm AmirCollider!
+METAN [smug]: Hmph. I make cool games too.
+ME [cute]: I look harmless... [dark] but I know where your files are. [cute] Hehe ♡
+(pause 1.0)
+ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
+  <table>
+    <tr><th>بنویسید</th><th>چه می‌شود</th></tr>
+    <tr><td><code>ME [excited]:</code></td><td>برچسب گوینده و حال‌وهوای خط. برچسب هر کلمه‌ای می‌تواند باشد (ME، ZUNDA، METAN، ずんだもん)؛ خطی که برچسب ندارد مال ME است.</td></tr>
+    <tr><td><code>[dark]</code> وسط خط</td><td>حال‌وهوا از همان‌جا به بعد عوض می‌شود.</td></tr>
+    <tr><td><code>*really*</code></td><td>تأکید: آن کلمه زیرتر و کشیده‌تر.</td></tr>
+    <tr><td><code>Pleeease</code>، <code>sooo</code></td><td>یک حرف سه بار یعنی «بکش»: واکه‌ی بلند کلمه نگه داشته می‌شود.</td></tr>
+    <tr><td><code>W-Wait</code></td><td>لکنت.</td></tr>
+    <tr><td><code>!</code> <code>?</code> <code>~</code> <code>♡</code></td><td>اوج پرهیجان · سؤالی · پایان بازیگوش و کشیده · پایان مهربان.</td></tr>
+    <tr><td><code>...</code> <code>—</code></td><td>آرام ول می‌شود (و بعد مکث) · حرف قطع می‌شود.</td></tr>
+    <tr><td><code>Hehe</code> <code>Hmph</code> <code>Uhm</code> <code>Shh</code></td><td>به شکل انیمه‌ای گفته می‌شوند: エヘヘ، フン، アーン، シーッ.</td></tr>
+    <tr><td><code>(pause 1.0)</code> در یک خط جدا</td><td>سکوت بین دو خط، به ثانیه (به‌علاوه‌ی <code>gap</code>).</td></tr>
+    <tr><td><code>One! (pause 0.5) Two!</code></td><td>دقیقاً همین‌قدر سکوت بین دو جمله‌ی یک خط.</td></tr>
+    <tr><td><code>(laughs)</code></td><td>هر چیز دیگری داخل پرانتز یادداشت خودتان است: گفته نمی‌شود.</td></tr>
+    <tr><td><code>gap = 0.4</code></td><td>سکوت بین خط‌ها برای کل اسکریپت (پیش‌فرض ۰٫۶).</td></tr>
+    <tr><td><code>sentence_gap = 0.5</code></td><td>سکوت بین جمله‌های همه‌ی خط‌ها (وگرنه از روی علامت آخر جمله: ۰٫۲۵ ثانیه، بعد از <code>?</code> ۰٫۳۲، بعد از <code>...</code> ۰٫۵).</td></tr>
+    <tr><td><code># note</code></td><td>توضیح.</td></tr>
+  </table>
+  <p>عددها، <code>Mr.</code> و <code>Dr.</code>، <code>2.5</code>، <code>50%</code>، <code>$5</code>، <code>1st</code> و <code>amircollider.com</code> به شکل کلمه خوانده می‌شوند. جمله‌ای که کانجی دارد ژاپنی است و به خواننده‌ی خود VOICEVOX می‌رود، پس می‌توانید خط ژاپنی هم بنویسید. متنی که VOICEVOX اصلاً نمی‌تواند بگوید (فارسی، عربی، کره‌ای…) کنار گذاشته می‌شود و استودیو می‌گوید کجا.</p>
+  <h3>امتحان کنید</h3>
+  <p>یک خط این پایین بنویسید: هر بخشش رنگ می‌گیرد و توضیح داده می‌شود، همان‌طور که Vocana می‌خواندش.</p>
+  <div class="w-play"></div>
+  <h3>بگذارید هوش مصنوعی بنویسد</h3>
+  <p>در صفحه‌ی اسکریپت، <b>پرامپت هوش مصنوعی</b> پرامپتی را کپی می‌کند که این قالب، حال‌وهواها و شخصیت‌های شما را به ChatGPT یا Claude یا هر هوش مصنوعی دیگری یاد می‌دهد. چیزی را که می‌خواهید اضافه کنید، جواب را در ویرایشگر بچسبانید، و استودیو خط‌به‌خط بررسی‌اش می‌کند.</p>
+</section>
+
+<section id="fa-cast" data-anchor="cast">
+  <h2><span class="n">۵</span>شخصیت‌ها، سبک‌ها و اعتبار</h2>
+  <p>هر شخصیتی که VOICEVOX شما دارد می‌تواند خط بخواند — ۴۳ شخصیت در VOICEVOX ۰٫۲۵٫۲، و بیشتر اگر کتابخانه‌ی صدا اضافه کنید. با <code>@cast</code> بگویید چه کسی یک برچسب را بخواند:</p>
+<pre>@cast ME = ずんだもん
+@cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
+@cast RYU = aoyama ryusei</pre>
+  <p>شخصیت می‌تواند نام ژاپنی‌اش باشد، نام لاتین (<code>zundamon</code>، <code>metan</code>، <code>tsumugi</code>…) یا شماره‌ی یک سبک. بعد از <code>/</code> سبک پایه می‌آید؛ بعد <code>pitch</code> (نیم‌پرده)، <code>speed</code>، <code>volume</code> و <code>intonation</code>. برچسبی که خودش نام یک شخصیت است (<code>METAN:</code>، <code>ZUNDAMON:</code>) لازم نیست <code>@cast</code> داشته باشد. برچسب‌هایی که شخصیت ندارند با صدای پیش‌فرض خوانده می‌شوند — صفحه‌ی شخصیت‌ها آن را تعیین می‌کند.</p>
+  <h3>حال‌وهوا چطور سبک را انتخاب می‌کند</h3>
+  <p>هر شخصیت سبک‌هایش را یک‌جور نام‌گذاری کرده: صدای شیرین زوندامون あまあま است و صدای شیرین یورِی‌چان 甘々؛ تاکه‌هیرو سبک 喜び دارد و کوتارو わーい. برای همین هر حال‌وهوا یک <b>لحن</b> می‌خواهد و هر شخصیت سبک خودش از آن لحن را به کار می‌برد: <code>[happy]</code> برای 玄野武宏 همان 喜び است و برای 白上虎太郎 わーい، و زوندامون (که سبک شاد ندارد) همان ノーマル می‌ماند. اگر شخصیتی هیچ سبکی از آن لحن نداشته باشد، سبک جایگزینِ حال‌وهوا و بعد سبک پایه‌ی خود شخصیت به کار می‌رود.</p>
+  <p>لحن‌ها: <code>happy</code> <code>sweet</code> <code>tsun</code> <code>angry</code> <code>sexy</code> <code>whisper</code> <code>hush</code> <code>tired</code> <code>teary</code> <code>defeat</code> <code>scared</code> <code>shy</code> <code>surprised</code> <code>calm</code> <code>strong</code> <code>serious</code> <code>narrator</code> <code>announce</code>.</p>
+  <h3>اعتبار (کِرِدیت) — حتماً بخوانید</h3>
+  <div class="note"><b>هر ویدیویی که از صدای VOICEVOX استفاده می‌کند باید اعتبارش را بیاورد</b>، به همان شکلی که قوانین خود شخصیت می‌خواهد: <code>VOICEVOX:ずんだもん</code>، <code>VOICEVOX:四国めたん</code> و مانند این‌ها. Vocana خط‌های دقیق همه‌ی شخصیت‌هایی را که به کار برده‌اید در <code>credits.txt</code> کنار هر خروجی می‌نویسد و در صفحه‌ی خروجی‌ها برای کپی نشان می‌دهد.</div>
+  <p>بعضی شخصیت‌ها شرط‌های بیشتری دارند — مثلاً استفاده توسط یک شرکت یا استفاده‌ی تجاری ممکن است اول اجازه لازم داشته باشد. صفحه‌ی شخصیت‌ها این شخصیت‌ها را مشخص می‌کند و قوانینشان را کلمه‌به‌کلمه، همان‌طور که VOICEVOX شما می‌دهد، با پیوند به متن کامل نشان می‌دهد. پیش از انتشار آن‌ها را بخوانید. Vocana هیچ شرطی از طرف خودش روی صدای شما نمی‌گذارد.</p>
+</section>
+
+<section id="fa-moods" data-anchor="moods">
+  <h2><span class="n">۶</span>حال‌وهواها</h2>
+  <p>۲۶ حال‌وهوا همراه Vocana می‌آید. هر حال‌وهوا یک لحن است (کدام سبک) و چند عدد (ملودی)؛ در صفحه‌ی حال‌وهواها یا در <code>moods.json</code> عوضشان کنید و حال‌وهوای خودتان را بسازید.</p>
+  <div class="w-moods"></div>
+  <table>
+    <tr><th>عدد</th><th>معنی</th></tr>
+    <tr><td><code>pitch</code></td><td>زیرتر یا بم‌تر، به نیم‌پرده.</td></tr>
+    <tr><td><code>speed</code></td><td>۱ یعنی عادی. بالاتر از حدود ۱٫۱۲ کلمه‌ها قاطی می‌شوند — هیجان از ملودی می‌آید، نه از سرعت.</td></tr>
+    <tr><td><code>intonation</code></td><td>ملودی چقدر بالا و پایین برود (همان 抑揚 خود VOICEVOX).</td></tr>
+    <tr><td><code>volume</code></td><td>بلندی صدا. سبک‌های نجوا آرام‌اند و بیشتر لازم دارند.</td></tr>
+    <tr><td><code>bounce</code></td><td>هر بخش جمله چقدر بالا یا پایین بپرد.</td></tr>
+    <tr><td><code>end_rise</code>، <code>exclaim_rise</code></td><td>آخر جمله (و آخر جمله‌ی تعجبی) چقدر بالا برود.</td></tr>
+    <tr><td><code>end_stretch</code></td><td>هجای آخر چقدر کشیده شود.</td></tr>
+    <tr><td><code>pauses</code></td><td>طول مکث‌ها سرِ ویرگول.</td></tr>
+  </table>
+</section>
+
+<section id="fa-words" data-anchor="words">
+  <h2><span class="n">۷</span>واژه‌نامه</h2>
+  <p>VOICEVOX یک موتور ژاپنی است: به انگلیسی که می‌رسد حدس می‌زند («me» می‌شود حرف‌های «M E»). Vocana پیش از آن‌که VOICEVOX چیزی ببیند هر کلمه را به کاتاکانا می‌نویسد — اول از <code>words.json</code> (بیش از ۱۴۰۰ کلمه‌ی پرکاربرد، به‌علاوه‌ی کلمه‌های خودتان)، بعد برای بقیه از e2k که یک مدل تبدیل انگلیسی به کاتاکاناست. آخر جمله هیچ واکه‌ای پچ‌پچی نمی‌شود، و کلمه‌ها همان‌طور که ژاپنی‌ها کلمه‌های قرضی را می‌گویند گروه‌بندی و تکیه‌گذاری می‌شوند، پس واضح می‌مانند.</p>
+  <p>اگر کلمه‌ای اشتباه درآمد — یک اسم، نام یک بازی، یک برند — در صفحه‌ی واژه‌نامه یا در خود فایل کاتاکانای درستش را بدهید:</p>
+<pre>"amircollider": "アミールコライダー",
+"vocana": "ボカナ"</pre>
+  <p>همان‌طور بنویسید که باید شنیده شود: <code>ー</code> واکه را بلند می‌کند و <code>ッ</code> یک مکث کوتاه است. صفحه‌ی اسکریپت کلمه‌هایی را که مدل در اسکریپت شما حدس زده با دکمه‌ی ▶ و <b>اصلاح</b> فهرست می‌کند.</p>
+</section>
+
+<section id="fa-files" data-anchor="files">
+  <h2><span class="n">۸</span>هر خروجی چه می‌دهد</h2>
+  <table>
+    <tr><th>فایل</th><th>چیست</th></tr>
+    <tr><td><code>full.wav</code></td><td>کل اسکریپت در یک فایل.</td></tr>
+    <tr><td><code>01_ME.wav</code>، <code>02_METAN.wav</code>…</td><td>هر خط جداگانه، شماره‌دار، با نام گوینده.</td></tr>
+    <tr><td><code>captions.srt</code> / <code>.vtt</code></td><td>زیرنویس، یکی برای هر خط.</td></tr>
+    <tr><td><code>sentences.srt</code> / <code>.vtt</code></td><td>زیرنویس، یکی برای هر جمله — همان که ویدیو باید دنبالش کند.</td></tr>
+    <tr><td><code>timing.json</code></td><td>شروع و پایان هر خط، هر جمله و هر کلمه در <code>full.wav</code> به ثانیه، با شخصیت و سبک هر خط.</td></tr>
+    <tr><td><code>timing.txt</code></td><td>زمان خط‌ها، خوانا.</td></tr>
+    <tr><td><code>credits.txt</code></td><td>خط‌های اعتباری که ویدیوی شما لازم دارد.</td></tr>
+    <tr><td><code>script.txt</code></td><td>دقیقاً همان اسکریپتی که این خروجی را ساخت.</td></tr>
+  </table>
+  <p>هر ویرایشگر ویدیو (Premiere، DaVinci Resolve، CapCut، Shotcut…) فایل wav و srt را وارد می‌کند. برای زیرنویس کلمه‌به‌کلمه، ویرایشگر یا ابزار هوش مصنوعی باید <code>timing.json</code> را بخواند.</p>
+  <h3>ساختن ویدیو با هوش مصنوعی</h3>
+  <p>در صفحه‌ی خروجی‌ها، <b>کپی پرامپت ساخت ویدیو</b> پرامپتی برای Claude Design یا هر ابزار ویدیوی هوش مصنوعی کپی می‌کند. <code>full.wav</code> و <code>timing.json</code> را با هم بدهید: پرامپت می‌گوید زمان هر زیرنویس و هر کلمه را از <code>timing.json</code> بردارد و حدس نزند — اگر فقط <code>captions.srt</code> را بدهید، ابزار فقط شروع و پایان هر خط را می‌داند و بقیه را حدس می‌زند، و ویدیو از صدا جلو یا عقب می‌افتد.</p>
+</section>
+
+<section id="fa-cli" data-anchor="cli">
+  <h2><span class="n">۹</span>بدون استودیو</h2>
+  <p><b>کشیدن و رها کردن:</b> یک یا چند فایل <code>.txt</code> را روی <code>render_script.bat</code> رها کنید. <b>یک جمله:</b> <code>say.bat</code> را باز کنید، تایپ کنید، بشنوید (<code>renders/say.wav</code>). اگر VOICEVOX بسته باشد، خودش باز می‌شود.</p>
+  <p>از خط فرمان — در ویندوز با پایتون خود Vocana، در جاهای دیگر با پایتون خودتان:</p>
+<pre>app\runtime\python.exe app\launch.py script scripts\Sample.txt
+python vocana.py script scripts/Sample.txt
+python vocana.py say "Hello! I'm Vocana!" --mood excited --character metan
+python vocana.py kana "Hello! I'm Vocana!"
+python vocana.py check scripts/Sample.txt
+python vocana.py voices
+python vocana.py doctor
+python vocana.py studio</pre>
+  <p><code>kana</code> کاتاکانایی را که به VOICEVOX می‌رسد نشان می‌دهد (بدون موتور). <code>check</code> اسکریپت را می‌خواند و همه‌ی مشکل‌ها را بدون ساختن صدا می‌گوید. <code>doctor</code> همه‌ی چیزهایی را که Vocana لازم دارد بررسی می‌کند.</p>
+</section>
+
+<section id="fa-install" data-anchor="install">
+  <h2><span class="n">۱۰</span>نصب، به‌روزرسانی، حذف</h2>
+  <table>
+    <tr><th></th><th>پرتابل (خود پوشه)</th><th>نصب‌شده (Setup.bat)</th></tr>
+    <tr><td>برنامه</td><td>همان‌جا که از zip بیرون آوردید</td><td><code>%LOCALAPPDATA%\Programs\Vocana</code></td></tr>
+    <tr><td>فایل‌های شما</td><td>داخل پوشه: <code>scripts</code>، <code>renders</code>، <code>words.json</code>، <code>moods.json</code></td><td><code>Documents\Vocana</code></td></tr>
+    <tr><td>اجرا</td><td><code>Vocana.bat</code></td><td>منوی استارت یا دسکتاپ: <i>Vocana</i></td></tr>
+    <tr><td>حذف</td><td>پوشه را پاک کنید</td><td>تنظیمات ویندوز ← Apps ← Vocana ← Uninstall (فایل‌هایتان در Documents می‌مانند)</td></tr>
+  </table>
+  <p>نصب، اسکریپت‌ها، واژه‌نامه، حال‌وهواها و خروجی‌هایتان را از پوشه به <code>Documents\Vocana</code> کپی می‌کند — فقط آن‌هایی که هنوز آن‌جا نیستند؛ هیچ چیزی رونویسی نمی‌شود. پوشه‌ی پرتابلی که در جایی غیرقابل‌نوشتن باشد (داخل Program Files یا روی درایو فقط‌خواندنی) هم فایل‌هایتان را در <code>Documents\Vocana</code> نگه می‌دارد.</p>
+  <h3>به‌روزرسانی</h3>
+  <p>استودیو روزی یک بار بررسی می‌کند نسخه‌ی جدید آمده یا نه و یک نوار نشان می‌دهد (در تنظیمات خاموش‌شدنی است). <b>نصب‌شده:</b> نسخه‌ی جدید را از zip بیرون بیاورید و <code>Setup.bat</code> آن را باز کنید؛ برنامه جایگزین می‌شود و فایل‌هایتان می‌مانند. <b>پرتابل:</b> نسخه‌ی جدید را بیرون بیاورید و <code>scripts</code>، <code>renders</code>، <code>words.json</code> و <code>moods.json</code> خودتان را داخلش کپی کنید.</p>
+  <p><b>انتقال به کامپیوتر دیگر:</b> پوشه‌ی پرتابل (یا <code>Documents\Vocana</code>) را کپی کنید — همه‌چیز همین است.</p>
+</section>
+
+<section id="fa-trouble" data-anchor="trouble">
+  <h2><span class="n">۱۱</span>اگر مشکلی پیش آمد</h2>
+  <div class="w-trouble">
+    <details><summary>«VOICEVOX بسته است» / «VOICEVOX جواب نمی‌دهد»</summary><p>برنامه‌ی VOICEVOX را باز کنید (یا در استودیو <b>باز کردن VOICEVOX</b> را بزنید). اگر باز است و Vocana باز هم به آن نمی‌رسد، <i>تنظیمات ← VOICEVOX ← نشانی موتور</i> را ببینید (معمولاً <code>http://127.0.0.1:50021</code>) و <b>آزمایش</b> را بزنید. Vocana مستقیم با VOICEVOX حرف می‌زند و هیچ‌وقت از پروکسی یا VPN رد نمی‌شود، پس آن‌ها علت نیستند.</p></details>
+    <details><summary>VOICEVOX خودش باز نمی‌شود</summary><p>Vocana دنبال VOICEVOX در پوشه‌ی نصب معمولش می‌گردد. اگر جای دیگری است، در <i>تنظیمات ← محل VOICEVOX</i> نشانی <code>VOICEVOX.exe</code>، موتورش <code>vv-engine\run.exe</code> یا خود پوشه را بدهید. اگر می‌خواهید Vocana به جای فقط موتور، کل برنامه‌ی VOICEVOX را باز کند، «برنامه‌ی VOICEVOX» را انتخاب کنید.</p></details>
+    <details><summary>ویندوز می‌گوید <bdi>«Windows protected your PC»</bdi> یا می‌پرسد فایل اجرا شود یا نه</summary><p><bdi><i>More info ← Run anyway</i></bdi> (یا <bdi><i>Run</i></bdi>) را بزنید. این پیام برای این است که فایل‌ها از اینترنت آمده‌اند؛ Vocana در اولین اجرا این علامت را از پوشه‌ی خودش برمی‌دارد. می‌توانید پیش از باز کردن zip هم روی آن راست‌کلیک کنید ← <bdi><i>Properties</i></bdi> ← تیک <bdi><i>Unblock</i></bdi>.</p></details>
+    <details><summary>«Vocana هنوز داخل فایل zip است»</summary><p>روی zip راست‌کلیک کنید ← <bdi><i>Extract All…</i></bdi> و بعد <code>Vocana.bat</code> را از پوشه‌ی بیرون‌آمده باز کنید.</p></details>
+    <details><summary>پنجره‌ی استودیو باز نمی‌شود</summary><p>شاید Vocana از قبل باز باشد: دنبال پنجره‌اش بگردید یا <code class="ltr">http://127.0.0.1:50210</code> را در مرورگر باز کنید. اگر برنامه‌ی دیگری آن پورت را گرفته باشد، Vocana پورت آزاد بعدی را برمی‌دارد و خودش نشانی درست را باز می‌کند. جزئیات آن‌چه پیش آمده در <code>logs/vocana.log</code> (و <code>logs/crash.log</code>) در پوشه‌ی فایل‌های Vocana است.</p></details>
+    <details><summary>آنتی‌ویروس جلوی Vocana را می‌گیرد</summary><p>Vocana یک برنامه‌ی کوچک پایتونی است: <code>app\runtime\python.exe</code> همان پایتون رسمی python.org است با امضای Python Software Foundation. پوشه‌ی Vocana را در آنتی‌ویروس مجاز کنید یا از نسخه‌ی نصب‌شده استفاده کنید.</p></details>
+    <details><summary>یک کلمه اشتباه خوانده می‌شود</summary><p>کاتاکانای آن خط را در صفحه‌ی اسکریپت ببینید (یا <code>vocana kana "your sentence"</code> را اجرا کنید)، بعد در واژه‌نامه کاتاکانای درست کلمه را بدهید. اسم‌ها و برندها تقریباً همیشه یک بار این را لازم دارند.</p></details>
+    <details><summary>هنگام ساختن صدا: «… در برنامه‌ی دیگری باز است»</summary><p>یک ویرایشگر ویدیو یا پخش‌کننده <code>full.wav</code> (یا فایل یک خط) را از ساخت قبلی باز نگه داشته و ویندوز اجازه نمی‌دهد رویش نوشته شود. آن‌جا ببندیدش، یا با نام دیگری بسازید.</p></details>
+    <details><summary>یک خط صدایی ندارد</summary><p>صفحه‌ی اسکریپت کنار همان خط دلیلش را می‌گوید: معمولاً متن به خطی است که VOICEVOX نمی‌خواند (فارسی، عربی، کره‌ای…). آن را به انگلیسی، ژاپنی یا کاتاکانا بنویسید.</p></details>
+    <details><summary>در یادداشت‌های ساخت: «VOICEVOX … را نپذیرفت»</summary><p>VOICEVOX کاتاکانای یک کلمه را قبول نکرد. Vocana همان موقع آن را به شکل ساده‌تری خواند تا ساخت تمام شود؛ اگر عجیب شنیده شد، در واژه‌نامه کاتاکانای ساده‌تری برایش بنویسید.</p></details>
+    <details><summary>«words.json یا moods.json معتبر نیست»</summary><p>یک ویرگول یا گیومه در فایل جا افتاده. پیام شماره‌ی خط و ستون را می‌گوید. تا درست شود، Vocana نسخه‌ی اصلی را به کار می‌برد، پس چیزی از کار نمی‌افتد. صفحه‌های واژه‌نامه و حال‌وهوای استودیو همیشه فایل معتبر می‌نویسند.</p></details>
+    <details><summary>نسخه‌ی GitHub می‌گوید پایتونش را لازم دارد</summary><p>کد منبع پوشه‌ی <code>app\runtime</code> را ندارد. <code>Vocana.bat</code> پیشنهاد می‌دهد دانلودش کند (حدود ۳۴ مگابایت از python.org و pypi.org، هر فایل با اثر انگشت SHA-256 بررسی می‌شود). یا پایتون ۳٫۱۰ به بالا نصب کنید، یا نسخه‌ی کامل را از amircollider.com/vocana بگیرید.</p></details>
+    <details><summary>بقیه‌ی موارد</summary><p><i>تنظیمات ← بررسی این کامپیوتر</i> (یا <code>vocana doctor</code>) پایتون، numpy، e2k، فایل‌هایتان، فضای خالی و VOICEVOX را بررسی می‌کند و برای هر کدام می‌گوید چه باید کرد.</p></details>
+  </div>
+</section>
+
+<section id="fa-faq" data-anchor="faq">
+  <h2><span class="n">۱۲</span>پرسش‌ها</h2>
+  <details><summary>Vocana رایگان است؟</summary><p>بله، برای کار شخصی و تجاری. مجوز را پایین‌تر ببینید.</p></details>
+  <details><summary>می‌توانم از صدا استفاده‌ی تجاری کنم؟</summary><p>Vocana هیچ شرطی اضافه نمی‌کند. صداها متعلق به شخصیت‌های VOICEVOX هستند: قوانین هر کدام را (که در صفحه‌ی شخصیت‌ها آمده) رعایت کنید و همیشه خط اعتبار را بیاورید.</p></details>
+  <details><summary>اینترنت لازم دارد؟</summary><p>نه. Vocana و VOICEVOX روی کامپیوتر خودتان اجرا می‌شوند. تنها درخواستی که به اینترنت می‌رود بررسی اختیاری نسخه‌ی جدید، روزی یک بار است.</p></details>
+  <details><summary>با AivisSpeech، COEIROINK یا موتورهای دیگر کار می‌کند؟</summary><p>Vocana برای VOICEVOX (۰٫۲۵٫۲) ساخته و آزمایش شده. موتورهایی که API همان VOICEVOX را دارند شاید با دادن نشانی‌شان در تنظیمات کار کنند، ولی آزمایش نشده‌اند.</p></details>
+  <details><summary>می‌تواند فارسی بخواند؟</summary><p>نه — VOICEVOX ژاپنی حرف می‌زند و Vocana انگلیسی (و ژاپنی) را در آن به کار می‌اندازد. خود استودیو فارسی، انگلیسی و ژاپنی است.</p></details>
+  <details><summary>VoxTalk چه شد؟</summary><p>Vocana همان VoxTalk است که بزرگ شده. اسکریپت‌ها، <code>words.json</code> و <code>moods.json</code>ی که برای VoxTalk نوشته شده بودند بدون تغییر کار می‌کنند و دقیقاً همان صدا را می‌دهند.</p></details>
+</section>
+
+<section id="fa-privacy" data-anchor="privacy">
+  <h2><span class="n">۱۳</span>حریم خصوصی</h2>
+  <p>اسکریپت‌ها، صداها و فایل‌های شما هیچ‌وقت از کامپیوترتان بیرون نمی‌روند. استودیو فقط روی <code>127.0.0.1</code> و فقط به صفحه‌ی خودش جواب می‌دهد. روزی یک بار (اگر در تنظیمات روشن باشد) Vocana از <code>amircollider.com/vocana/version.json</code> می‌پرسد نسخه‌ی جدیدی آمده یا نه؛ این درخواست هیچ چیزی درباره‌ی شما یا کارتان با خودش نمی‌برد.</p>
+</section>
+
+<section id="fa-license" data-anchor="license">
+  <h2><span class="n">۱۴</span>مجوز</h2>
+  <p>Vocana © ۲۰۲۶ AmirCollider. همه‌ی حقوق محفوظ است، با این اجازه‌ها:</p>
+  <ul>
+    <li>می‌توانید از Vocana رایگان استفاده کنید، برای پروژه‌های شخصی و تجاری.</li>
+    <li>صدا، زیرنویس و فایل‌های زمان‌بندی‌ای که با Vocana می‌سازید مال خودتان است. صداها تابع قوانین VOICEVOX و قوانین هر شخصیت‌اند.</li>
+    <li>می‌توانید فایل دانلودشده را بدون تغییر به دیگران بدهید. فروش Vocana یا پخش نسخه‌ی تغییریافته بدون اجازه‌ی کتبی مجاز نیست.</li>
+    <li>می‌توانید فایل‌های Vocana را برای استفاده‌ی خودتان تغییر دهید.</li>
+    <li>Vocana «همان‌طور که هست» و بدون هیچ ضمانتی ارائه می‌شود. AmirCollider مسئول خسارتی که از استفاده‌اش پیش بیاید نیست.</li>
+  </ul>
+  <p>متن کامل در <code>LICENSE.txt</code> است (متن انگلیسی ملاک است). Vocana ابزاری مستقل برای VOICEVOX است و ساخته یا وابسته‌ی پروژه‌ی VOICEVOX یا صاحبان حقوق شخصیت‌ها نیست.</p>
+</section>
+
+<section id="fa-notices" data-anchor="notices">
+  <h2><span class="n">۱۵</span>نرم‌افزارهای دیگران</h2>
+  <table>
+    <tr><td>Python 3.13 (پایتون داخلی ویندوز)</td><td>مجوز PSF — <code>app/runtime/LICENSE.txt</code></td></tr>
+    <tr><td>numpy 2.4</td><td>BSD سه‌بندی، همراه OpenBLAS (BSD) — <code>app/runtime/Lib/site-packages/numpy-*.dist-info/licenses</code></td></tr>
+    <tr><td>e2k 0.6 از Patchethium</td><td>مالکیت عمومی (Unlicense)</td></tr>
+    <tr><td>فونت وزیرمتن از صابر راستی‌کردار</td><td>SIL Open Font License 1.1 — <code>app/fonts/Vazirmatn-OFL.txt</code></td></tr>
+    <tr><td>VOICEVOX</td><td>همراه Vocana نیست. مجوز خودش و قوانین هر کتابخانه‌ی صدا برقرار است.</td></tr>
+  </table>
+  <p>جزئیات: <code>THIRD-PARTY-NOTICES.txt</code>.</p>
+</section>
+
+<section id="fa-changelog" data-anchor="changelog">
+  <h2><span class="n">۱۶</span>تازه‌ها</h2>
+  <h3><span class="ltr">1.0.0</span> — <span class="ltr">__DATE__</span></h3>
+  <ul>
+    <li>VoxTalk تبدیل شد به Vocana: یک استودیو در مرورگر، به فارسی، انگلیسی و ژاپنی.</li>
+    <li>همه‌ی شخصیت‌های VOICEVOX در یک اسکریپت: <code>@cast</code>، صفحه‌ی شخصیت‌ها، و حال‌وهواهایی که سبک خود هر شخصیت را انتخاب می‌کنند.</li>
+    <li>خط‌های اعتبار خودکار نوشته می‌شوند (<code>credits.txt</code>)، از روی قوانین خود هر شخصیت؛ شخصیت‌هایی که شرط اضافه دارند مشخص‌اند.</li>
+    <li>شنیدن هر خط پیش از ساخت؛ پخش‌کننده با زیرنویس کلمه‌به‌کلمه؛ زیرنویس WebVTT؛ ذخیره‌ی اسکریپت کنار هر خروجی.</li>
+    <li>ویندوز: پایتون داخل برنامه است — نصبی لازم نیست؛ Setup اختیاری با منوی استارت و حذف از تنظیمات ویندوز؛ VOICEVOX خودکار باز می‌شود.</li>
+    <li>مقاوم‌تر: پروکسی و VPN دیگر اتصال به VOICEVOX را خراب نمی‌کنند؛ کلمه‌ای که VOICEVOX قبول نکند دیگر ساخت را متوقف نمی‌کند؛ فایل‌های Notepad (BOM، ANSI، UTF-16) باز می‌شوند؛ فایلی که در ویرایشگر ویدیو باز است به جای خطا، با نام گفته می‌شود.</li>
+    <li>خواندن <code>Mr.</code>، <code>2.5</code>، <code>50%</code>، <code>$5</code>، <code>1st</code>، نشانی وب و حروف تمام‌عرض؛ جمله‌های ژاپنی به خواننده‌ی خود VOICEVOX می‌روند.</li>
+    <li>اسکریپت‌هایی که برای VoxTalk نوشته شده بودند هنوز کار می‌کنند و دقیقاً همان صدا را می‌دهند.</li>
+  </ul>
+</section>

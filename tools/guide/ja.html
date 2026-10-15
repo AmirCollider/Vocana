@@ -1,0 +1,249 @@
+<div class="hero">
+  <img src="data:image/webp;base64,__LOGO_B64__" alt="Vocana">
+  <div>
+    <h1>Vocana <small style="font-size:.5em;color:var(--mute)">ボカナ</small></h1>
+    <p class="tag">英語を書くだけで、どの VOICEVOX ボイスでも。</p>
+    <p>ふつうの英語で台本を書くと、Vocana がすべての単語を日本語の声が言えるカタカナに直し、指定したムードに合わせてメロディーを整え、音声・字幕・単語ごとのタイミングを動画用に書き出します。キャラクターは 1 人だけでなく、VOICEVOX の全員から選べます。</p>
+    <p class="meta">バージョン __VERSION__ · __DATE__ · AmirCollider 制作 · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <div class="chips"><span class="chip">無料</span><span class="chip">Windows · macOS · Linux</span><span class="chip">オフラインで動作</span><span class="chip">فارسی · English · 日本語</span></div>
+  </div>
+</div>
+
+<section id="ja-start" data-anchor="start">
+  <h2><span class="n">1</span>2 分ではじめる</h2>
+  <div class="steps">
+    <div class="step"><span class="num">1</span><b>VOICEVOX をインストール</b>無料の音声合成エンジンです。<a href="https://voicevox.hiroshiba.jp/">voicevox.hiroshiba.jp</a> から。Vocana には含まれていません。いつもの場所にインストールされていれば、Vocana が自動で起動します (ウィンドウなしでバックグラウンドに)。</div>
+    <div class="step"><span class="num">2</span><b><code>Vocana.bat</code> を開く</b>スタジオが専用ウィンドウで開きます。事前のインストールは不要。Python など必要なものはすべて <code>app</code> フォルダーに入っています。</div>
+    <div class="step"><span class="num">3</span><b>書いて、聞いて、書き出す</b>各行の ▶ で試聴し、<b>書き出し</b> を押します。ファイルは <code>renders/&lt;スクリプト名&gt;/</code> にできます。</div>
+  </div>
+  <div class="note"><b>Windows での初回起動。</b> まず .zip 全体を展開してください (右クリック → <i>すべて展開…</i>)。zip の中からは起動できません。「このファイルを実行しますか？」や「Windows によって PC が保護されました」と表示されたら、<i>実行</i> または <i>詳細情報 → 実行</i> を選びます。Vocana は初回起動時に自分のフォルダーから「インターネットから取得」の印を外すので、聞かれるのは 1 回だけです。</div>
+  <p><b>スタートメニューに入れたい場合</b> は、かわりに <code>Setup.bat</code> を開きます。Windows のユーザーごとに (管理者権限なしで) インストールし、スタートメニューとデスクトップにショートカットを作り、ファイルは <code>Documents\Vocana</code> に保存します。フォルダーのままでも使えるので、インストールは任意です。<a href="#ja-install">インストール・更新・削除</a> を参照。</p>
+  <p><b>macOS・Linux:</b> Python 3.10 以降をインストールし、<code>start.sh</code> を実行します (Mac では <code>Vocana.command</code> をダブルクリック)。初回起動時に numpy と e2k を Vocana のフォルダー内にインストールします。</p>
+</section>
+
+<section id="ja-hear" data-anchor="hear">
+  <h2><span class="n">2</span>聞いてみる</h2>
+  <p>これは <code>scripts/Sample.txt</code> を Vocana がずんだもんで書き出したものです。各単語が話されたちょうどその瞬間に光るのは、Vocana が毎回いっしょに書き出す <code>timing.json</code> のおかげです。</p>
+  <div class="w-player"></div>
+</section>
+
+<section id="ja-studio" data-anchor="studio">
+  <h2><span class="n">3</span>スタジオ</h2>
+  <p>スタジオはあなたの PC の <code>http://127.0.0.1:50210</code> で動き、アプリのウィンドウとして開きます (タブのない Edge か Chrome。どちらもなければ普段のブラウザー)。書いた内容が PC の外に出ることはありません。</p>
+  <table>
+    <tr><th>ページ</th><th>用途</th></tr>
+    <tr><td><b>スクリプト</b></td><td>話者・ムード・間・強調を色分けするエディター。隣には各行がカードで並び、誰が・どのスタイルで話すか、正確なカタカナ、その行だけを聞く ▶ が表示されます。その下には直すべき問題 (行番号つき) と、モデルが推測した単語の一覧。</td></tr>
+    <tr><td><b>キャスト</b></td><td>どのセリフを誰が読むか。話者タグごとにキャラクター・基本スタイル・音高・話速・音量を選ぶと、Vocana がスクリプトに <code>@cast</code> 行として書き込むので、すべてテキストに残ります。下には VOICEVOX の全キャラクターを立ち絵・サンプル・「英語で聞く」ボタン・クレジット・利用規約とともに表示。</td></tr>
+    <tr><td><b>書き出し</b></td><td>書き出したものすべて。単語ごとに字幕が進む波形プレイヤー、1 行ずつの音声、全ファイルのダウンロード (.zip でまとめても)、コピー用のクレジット、AI 動画ツール用のプロンプト。</td></tr>
+    <tr><td><b>辞書</b></td><td><code>words.json</code>: 単語の読みをカタカナで。検索・追加・編集・試聴。テスト欄で各単語の読みの出所がわかります。</td></tr>
+    <tr><td><b>ムード</b></td><td><code>moods.json</code>: 各ムードのトーンと数値。スライダーと ▶ で、どのキャラクターでも変化を確認できます。</td></tr>
+    <tr><td><b>設定</b></td><td>言語、テーマ、VOICEVOX の場所と自動起動、更新の確認、ファイルの場所、インストール/アンインストール、PC のチェック、終了。</td></tr>
+  </table>
+  <h3>キーボード</h3>
+  <table>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>スクリプトを保存</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>カーソルのある行を再生</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd></td><td>スクリプト全体を書き出し</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>再生を止める</td></tr>
+  </table>
+  <p><code>.txt</code> をエディター (または <code>Vocana.bat</code>) にドロップすると開きます。未保存の内容はウィンドウを閉じても下書きとして残ります。スタジオのウィンドウを閉じると数分後に Vocana は自動で終了します。<i>設定 → Vocana を終了</i> ならすぐに終了します。</p>
+</section>
+
+<section id="ja-script" data-anchor="script">
+  <h2><span class="n">4</span>スクリプトの書き方</h2>
+  <p>スクリプトはただのテキストファイルです。スタジオでも、メモ帳でも、AI でも書けます。1 行に 1 つのセリフ:</p>
+<pre>gap = 0.4
+@cast ME = ずんだもん
+@cast METAN = 四国めたん
+ME [excited]: Hello! I'm AmirCollider!
+METAN [smug]: Hmph. I make cool games too.
+ME [cute]: I look harmless... [dark] but I know where your files are. [cute] Hehe ♡
+(pause 1.0)
+ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
+  <table>
+    <tr><th>書き方</th><th>効果</th></tr>
+    <tr><td><code>ME [excited]:</code></td><td>話者タグとその行のムード。タグは自由な単語 (ME、ZUNDA、METAN、ずんだもん)。タグのない行は ME。</td></tr>
+    <tr><td>行の途中の <code>[dark]</code></td><td>そこからムードが変わります。</td></tr>
+    <tr><td><code>*really*</code></td><td>強調: その単語を高く、長く。</td></tr>
+    <tr><td><code>Pleeease</code>、<code>sooo</code></td><td>同じ文字 3 回は「伸ばす」: 単語の長母音を保ちます。</td></tr>
+    <tr><td><code>W-Wait</code></td><td>どもり。</td></tr>
+    <tr><td><code>!</code> <code>?</code> <code>~</code> <code>♡</code></td><td>元気な上がり · 疑問 · 遊び心のある伸ばし · 甘い語尾。</td></tr>
+    <tr><td><code>...</code> <code>—</code></td><td>言いよどむ (そのあと間) · 途切れる。</td></tr>
+    <tr><td><code>Hehe</code> <code>Hmph</code> <code>Uhm</code> <code>Shh</code></td><td>アニメ風に: エヘヘ、フン、アーン、シーッ。</td></tr>
+    <tr><td>単独の行の <code>(pause 1.0)</code></td><td>行と行の間の無音 (秒)。<code>gap</code> に加算。</td></tr>
+    <tr><td><code>One! (pause 0.5) Two!</code></td><td>1 行の中の 2 文の間に、ちょうどこの長さの無音。</td></tr>
+    <tr><td><code>(laughs)</code></td><td>それ以外の丸かっこは自分用のメモ: 読みません。</td></tr>
+    <tr><td><code>gap = 0.4</code></td><td>スクリプト全体の行間の無音 (既定 0.6)。</td></tr>
+    <tr><td><code>sentence_gap = 0.5</code></td><td>全行の文と文の間の無音 (指定しなければ句読点から: 0.25 秒、<code>?</code> のあと 0.32、<code>...</code> のあと 0.5)。</td></tr>
+    <tr><td><code># メモ</code></td><td>コメント。</td></tr>
+  </table>
+  <p>数字、<code>Mr.</code>・<code>Dr.</code>、<code>2.5</code>、<code>50%</code>、<code>$5</code>、<code>1st</code>、<code>amircollider.com</code> は単語として読みます。漢字を含む文は日本語として VOICEVOX 自身の読み上げに渡すので、日本語の行も混ぜられます。VOICEVOX がまったく読めない文字 (ペルシャ語、アラビア語、韓国語など) は省かれ、スタジオがその場所を示します。</p>
+  <h3>試してみる</h3>
+  <p>下に 1 行書くと、Vocana の読み方どおりに各部分が色分けされ、説明が表示されます。</p>
+  <div class="w-play"></div>
+  <h3>AI に書いてもらう</h3>
+  <p>スクリプトページの <b>AI プロンプト</b> で、この形式・あなたのムード・キャラクターを ChatGPT や Claude などに教えるプロンプトをコピーできます。作りたい内容を書き足し、返ってきた答えをエディターに貼れば、スタジオが 1 行ずつチェックします。</p>
+</section>
+
+<section id="ja-cast" data-anchor="cast">
+  <h2><span class="n">5</span>キャラクター・スタイル・クレジット</h2>
+  <p>お使いの VOICEVOX にいるキャラクターなら誰でもセリフを読めます (VOICEVOX 0.25.2 で 43 人。音声ライブラリを追加すればさらに)。タグを誰が読むかは <code>@cast</code> で指定します:</p>
+<pre>@cast ME = ずんだもん
+@cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
+@cast RYU = aoyama ryusei</pre>
+  <p>キャラクターは日本語名、ローマ字名 (<code>zundamon</code>、<code>metan</code>、<code>tsumugi</code> など)、またはスタイル番号で指定できます。<code>/</code> のあとに基本スタイル、続けて <code>pitch</code> (半音)、<code>speed</code>、<code>volume</code>、<code>intonation</code>。タグ自体がキャラクター名なら (<code>METAN:</code>、<code>ZUNDAMON:</code>) <code>@cast</code> は不要です。キャストのないタグは既定の声で読みます (キャストページで設定)。</p>
+  <h3>ムードがスタイルを選ぶしくみ</h3>
+  <p>スタイル名はキャラクターごとに違います。ずんだもんの甘い声は「あまあま」、ユーレイちゃんは「甘々」。玄野武宏は「喜び」、白上虎太郎は「わーい」。そこでムードは <b>トーン</b> を指定し、各キャラクターはそのトーンに当たる自分のスタイルを使います。<code>[happy]</code> は玄野武宏なら「喜び」、白上虎太郎なら「わーい」、喜びのスタイルがないずんだもんは「ノーマル」のまま。そのトーンのスタイルがないときは、ムードの代替スタイル、次にキャラクターの基本スタイルを使います。</p>
+  <p>トーン: <code>happy</code> <code>sweet</code> <code>tsun</code> <code>angry</code> <code>sexy</code> <code>whisper</code> <code>hush</code> <code>tired</code> <code>teary</code> <code>defeat</code> <code>scared</code> <code>shy</code> <code>surprised</code> <code>calm</code> <code>strong</code> <code>serious</code> <code>narrator</code> <code>announce</code>。</p>
+  <h3>クレジット — 必ずお読みください</h3>
+  <div class="note"><b>VOICEVOX の音声を使う動画には、必ずクレジットを記載してください。</b> 書き方は各キャラクターの規約のとおりです: <code>VOICEVOX:ずんだもん</code>、<code>VOICEVOX:四国めたん</code> など。Vocana は使ったキャラクター全員の正確なクレジットを各書き出しの <code>credits.txt</code> に書き、書き出しページにもコピー用に表示します。</div>
+  <p>キャラクターによっては追加の条件があります (企業での利用や商用利用に事前の確認が必要、など)。キャストページはそのキャラクターに印をつけ、お使いの VOICEVOX が返す規約を一字一句そのまま、全文へのリンクとともに表示します。公開前に必ず読んでください。Vocana があなたの音声に独自の条件をつけることはありません。</p>
+</section>
+
+<section id="ja-moods" data-anchor="moods">
+  <h2><span class="n">6</span>ムード</h2>
+  <p>Vocana には 26 のムードが入っています。ムードはトーン (どのスタイルか) といくつかの数値 (メロディー) からなり、ムードページか <code>moods.json</code> で変更・追加できます。</p>
+  <div class="w-moods"></div>
+  <table>
+    <tr><th>数値</th><th>意味</th></tr>
+    <tr><td><code>pitch</code></td><td>高く・低く (半音)。</td></tr>
+    <tr><td><code>speed</code></td><td>1.0 が標準。約 1.12 を超えると言葉が不明瞭に。元気さは速さではなくメロディーで出します。</td></tr>
+    <tr><td><code>intonation</code></td><td>メロディーの動きの大きさ (VOICEVOX の抑揚)。</td></tr>
+    <tr><td><code>volume</code></td><td>音量。ささやき系は小さいので上げます。</td></tr>
+    <tr><td><code>bounce</code></td><td>フレーズごとの上下の弾み。</td></tr>
+    <tr><td><code>end_rise</code>、<code>exclaim_rise</code></td><td>文末 (と感嘆文の文末) をどれだけ上げるか。</td></tr>
+    <tr><td><code>end_stretch</code></td><td>最後の音節を伸ばす長さ。</td></tr>
+    <tr><td><code>pauses</code></td><td>カンマでの間の長さ。</td></tr>
+  </table>
+</section>
+
+<section id="ja-words" data-anchor="words">
+  <h2><span class="n">7</span>辞書</h2>
+  <p>VOICEVOX は日本語のエンジンなので、英語を渡されると推測で読みます (「me」が「エム イー」になる)。Vocana は VOICEVOX に渡す前にすべての単語をカタカナにします。まず <code>words.json</code> (よく使う 1,400 語以上 + あなたの登録語)、残りは英語→カタカナ変換モデル e2k で。文末の母音が無声化されることもなく、外来語の言い方どおりにまとまりとアクセントをつけるので、はっきり聞こえます。</p>
+  <p>名前・ゲームタイトル・ブランド名などがうまく読まれないときは、辞書ページかファイルで正しいカタカナを登録します:</p>
+<pre>"amircollider": "アミールコライダー",
+"vocana": "ボカナ"</pre>
+  <p>聞こえてほしいとおりに書きます。<code>ー</code> で母音を伸ばし、<code>ッ</code> で短く詰まります。スクリプトページには、モデルが推測した単語が ▶ と <b>修正</b> つきで並びます。</p>
+</section>
+
+<section id="ja-files" data-anchor="files">
+  <h2><span class="n">8</span>書き出されるファイル</h2>
+  <table>
+    <tr><th>ファイル</th><th>内容</th></tr>
+    <tr><td><code>full.wav</code></td><td>スクリプト全体を 1 ファイルで。</td></tr>
+    <tr><td><code>01_ME.wav</code>、<code>02_METAN.wav</code>…</td><td>1 行ずつ。番号と話者名つき。</td></tr>
+    <tr><td><code>captions.srt</code> / <code>.vtt</code></td><td>字幕 (1 行ずつ)。</td></tr>
+    <tr><td><code>sentences.srt</code> / <code>.vtt</code></td><td>字幕 (1 文ずつ)。動画はこれに合わせます。</td></tr>
+    <tr><td><code>timing.json</code></td><td><code>full.wav</code> 内のすべての行・文・単語の開始と終了 (秒)。各行のキャラクターとスタイルつき。</td></tr>
+    <tr><td><code>timing.txt</code></td><td>行ごとの時間 (読みやすい形式)。</td></tr>
+    <tr><td><code>credits.txt</code></td><td>動画に必要なクレジット。</td></tr>
+    <tr><td><code>script.txt</code></td><td>この書き出しに使ったスクリプトそのもの。</td></tr>
+  </table>
+  <p>どの動画編集ソフト (Premiere、DaVinci Resolve、CapCut、Shotcut など) でも .wav と .srt を読み込めます。単語ごとの字幕には、編集ソフトや AI ツールに <code>timing.json</code> を読ませてください。</p>
+  <h3>AI で動画を作る</h3>
+  <p>書き出しページの <b>動画用プロンプトをコピー</b> で、Claude Design などの AI 動画ツール向けのプロンプトをコピーできます。<code>full.wav</code> と <code>timing.json</code> をいっしょに渡してください。プロンプトは、字幕と単語のタイミングを推測せず <code>timing.json</code> から取るよう指示します。<code>captions.srt</code> だけだと行の開始と終了しかわからず、残りを推測するので、動画が声からずれていきます。</p>
+</section>
+
+<section id="ja-cli" data-anchor="cli">
+  <h2><span class="n">9</span>スタジオを使わずに</h2>
+  <p><b>ドラッグ&amp;ドロップ:</b> スクリプトの <code>.txt</code> (複数可) を <code>render_script.bat</code> にドロップ。<b>1 行だけ:</b> <code>say.bat</code> を開いて入力すると聞けます (<code>renders/say.wav</code>)。VOICEVOX が起動していなければ自動で起動します。</p>
+  <p>ターミナルから — Windows では Vocana 付属の Python で、それ以外ではお使いの Python で:</p>
+<pre>app\runtime\python.exe app\launch.py script scripts\Sample.txt
+python vocana.py script scripts/Sample.txt
+python vocana.py say "Hello! I'm Vocana!" --mood excited --character metan
+python vocana.py kana "Hello! I'm Vocana!"
+python vocana.py check scripts/Sample.txt
+python vocana.py voices
+python vocana.py doctor
+python vocana.py studio</pre>
+  <p><code>kana</code> は VOICEVOX に渡すカタカナを表示します (エンジン不要)。<code>check</code> は書き出さずにスクリプトの問題をすべて報告します。<code>doctor</code> は Vocana に必要なものをすべてチェックします。</p>
+</section>
+
+<section id="ja-install" data-anchor="install">
+  <h2><span class="n">10</span>インストール・更新・削除</h2>
+  <table>
+    <tr><th></th><th>ポータブル (フォルダーのまま)</th><th>インストール版 (Setup.bat)</th></tr>
+    <tr><td>プログラム</td><td>展開した場所</td><td><code>%LOCALAPPDATA%\Programs\Vocana</code></td></tr>
+    <tr><td>あなたのファイル</td><td>フォルダー内: <code>scripts</code>、<code>renders</code>、<code>words.json</code>、<code>moods.json</code></td><td><code>Documents\Vocana</code></td></tr>
+    <tr><td>起動</td><td><code>Vocana.bat</code></td><td>スタートメニューまたはデスクトップの <i>Vocana</i></td></tr>
+    <tr><td>削除</td><td>フォルダーを削除</td><td>Windows の 設定 → アプリ → Vocana → アンインストール (ドキュメントのファイルは残ります)</td></tr>
+  </table>
+  <p>インストール時には、フォルダーのスクリプト・辞書・ムード・書き出しを <code>Documents\Vocana</code> にコピーします。まだそこにないものだけで、上書きは一切しません。書き込めない場所 (Program Files の中や読み取り専用ドライブ) に置いたポータブル版も、ファイルを <code>Documents\Vocana</code> に保存します。</p>
+  <h3>更新</h3>
+  <p>スタジオは 1 日 1 回新しいバージョンを確認し、バナーで知らせます (設定でオフにできます)。<b>インストール版:</b> 新しいバージョンを展開してその <code>Setup.bat</code> を開くと、プログラムだけが置き換わり、ファイルは残ります。<b>ポータブル版:</b> 新しいバージョンを展開し、<code>scripts</code>・<code>renders</code>・<code>words.json</code>・<code>moods.json</code> をそこへコピーします。</p>
+  <p><b>別の PC へ移す:</b> ポータブル版のフォルダー (または <code>Documents\Vocana</code>) をコピーするだけです。</p>
+</section>
+
+<section id="ja-trouble" data-anchor="trouble">
+  <h2><span class="n">11</span>困ったときは</h2>
+  <div class="w-trouble">
+    <details><summary>「VOICEVOX が起動していません」「応答しません」</summary><p>VOICEVOX アプリを開くか、スタジオの <b>VOICEVOX を起動</b> を押します。開いているのにつながらないときは <i>設定 → VOICEVOX → エンジンのアドレス</i> (通常 <code>http://127.0.0.1:50021</code>) を確認し <b>テスト</b> を押します。Vocana は VOICEVOX に直接つなぎ、プロキシや VPN を通さないので、それらが原因になることはありません。</p></details>
+    <details><summary>VOICEVOX が自動で起動しない</summary><p>Vocana は VOICEVOX をいつものインストール先で探します。別の場所にある場合は <i>設定 → VOICEVOX の場所</i> に <code>VOICEVOX.exe</code>、エンジンの <code>vv-engine\run.exe</code>、またはそのフォルダーを指定します。エンジンだけでなく VOICEVOX アプリ全体を開きたい場合は「VOICEVOX アプリを起動」を選びます。</p></details>
+    <details><summary>「Windows によって PC が保護されました」や実行確認が出る</summary><p><i>詳細情報 → 実行</i> (または <i>実行</i>) を選びます。インターネットから取得したファイルのため表示されます。Vocana は初回起動時に自分のフォルダーからこの印を外します。展開前に .zip を右クリック → <i>プロパティ</i> → <i>許可する</i> にチェックしてもかまいません。</p></details>
+    <details><summary>「Vocana がまだ .zip の中にあります」</summary><p>.zip を右クリック → <i>すべて展開…</i> し、展開したフォルダーの <code>Vocana.bat</code> を開きます。</p></details>
+    <details><summary>スタジオのウィンドウが開かない</summary><p>すでに起動しているかもしれません。ウィンドウを探すか、ブラウザーで <code>http://127.0.0.1:50210</code> を開きます。ほかのプログラムがそのポートを使っていれば、Vocana は次の空きポートを使い、正しいアドレスを自分で開きます。経緯はファイルフォルダーの <code>logs/vocana.log</code> (と <code>logs/crash.log</code>) にあります。</p></details>
+    <details><summary>ウイルス対策ソフトに止められる</summary><p>Vocana は小さな Python プログラムで、<code>app\runtime\python.exe</code> は Python Software Foundation の署名つき公式 Python です。Vocana のフォルダーを許可するか、インストール版をお使いください。</p></details>
+    <details><summary>単語の読みがおかしい</summary><p>スクリプトページでその行のカタカナを確認し (または <code>vocana kana "your sentence"</code> を実行)、辞書に正しいカタカナを登録します。名前やブランド名はたいてい 1 回登録が必要です。</p></details>
+    <details><summary>書き出し時に「… is open in another program」</summary><p>前回の <code>full.wav</code> (や行のファイル) を動画編集ソフトやプレイヤーが開いていて、Windows が上書きを許しません。そちらで閉じるか、別の名前で書き出してください。</p></details>
+    <details><summary>音が出ない行がある</summary><p>スクリプトページのその行の横に理由が出ます。多くは VOICEVOX が読めない文字 (ペルシャ語、アラビア語、韓国語など) です。英語・日本語・カタカナで書いてください。</p></details>
+    <details><summary>書き出しのメモに「VOICEVOX refused …」</summary><p>VOICEVOX がある単語のカタカナを受け付けませんでした。書き出しを止めないよう Vocana は単純な読み方で読み直しています。不自然なら、辞書でその単語をより簡単なカタカナにしてください。</p></details>
+    <details><summary>words.json や moods.json が「正しくありません」</summary><p>ファイルのカンマや引用符が抜けています。メッセージに行と列が出ます。直るまでは同梱版を使うので、動かなくなることはありません。スタジオの辞書・ムードページは常に正しいファイルを書きます。</p></details>
+    <details><summary>GitHub 版が「Python ランタイムが必要」と言う</summary><p>ソースコードには <code>app\runtime</code> がありません。<code>Vocana.bat</code> がダウンロードを提案します (python.org と pypi.org から約 34 MB、各ファイルを SHA-256 で確認)。または Python 3.10 以降をインストールするか、すべて同梱の版を amircollider.com/vocana から入手してください。</p></details>
+    <details><summary>そのほか</summary><p><i>設定 → この PC をチェック</i> (または <code>vocana doctor</code>) が Python・numpy・e2k・ファイル・空き容量・VOICEVOX を確認し、それぞれの対処法を示します。</p></details>
+  </div>
+</section>
+
+<section id="ja-faq" data-anchor="faq">
+  <h2><span class="n">12</span>よくある質問</h2>
+  <details><summary>Vocana は無料ですか？</summary><p>はい。個人でも商用でも無料です。下のライセンスをご覧ください。</p></details>
+  <details><summary>音声を商用利用できますか？</summary><p>Vocana は条件を追加しません。声は VOICEVOX のキャラクターのものなので、各キャラクターの規約 (キャストページに表示) に従い、必ずクレジットを記載してください。</p></details>
+  <details><summary>インターネットは必要ですか？</summary><p>いいえ。Vocana も VOICEVOX もあなたの PC で動きます。インターネットへの通信は、任意の 1 日 1 回の更新確認だけです。</p></details>
+  <details><summary>AivisSpeech や COEIROINK などでも使えますか？</summary><p>Vocana は VOICEVOX (0.25.2) 用に作り、テストしています。VOICEVOX 互換の API を持つエンジンは、設定でアドレスを指定すれば動く可能性がありますが、テストはしていません。</p></details>
+  <details><summary>ペルシャ語は読めますか？</summary><p>いいえ。VOICEVOX は日本語を話し、Vocana はそこで英語 (と日本語) を使えるようにします。スタジオ自体はペルシャ語・英語・日本語に対応しています。</p></details>
+  <details><summary>VoxTalk はどうなりましたか？</summary><p>Vocana は VoxTalk が成長した姿です。VoxTalk 用のスクリプト・<code>words.json</code>・<code>moods.json</code> はそのまま使え、まったく同じ音になります。</p></details>
+</section>
+
+<section id="ja-privacy" data-anchor="privacy">
+  <h2><span class="n">13</span>プライバシー</h2>
+  <p>スクリプト・音声・ファイルが PC の外に出ることはありません。スタジオは <code>127.0.0.1</code> でのみ、自分のページにだけ応答します。1 日 1 回 (設定でオンの場合)、Vocana は <code>amircollider.com/vocana/version.json</code> に新しいバージョンがあるか問い合わせますが、その通信にはあなたや作品の情報は一切含まれません。</p>
+</section>
+
+<section id="ja-license" data-anchor="license">
+  <h2><span class="n">14</span>ライセンス</h2>
+  <p>Vocana © 2026 AmirCollider. All rights reserved. ただし次のことを許可します:</p>
+  <ul>
+    <li>個人・商用のプロジェクトで、Vocana を無料で使えます。</li>
+    <li>Vocana で作った音声・字幕・タイミングファイルはあなたのものです。声は VOICEVOX の規約と各キャラクターの規約に従います。</li>
+    <li>改変していないダウンロードを他の人に渡せます。書面の許可なく Vocana を販売したり、改変版を配布したりはできません。</li>
+    <li>自分用に Vocana のファイルを改変できます。</li>
+    <li>Vocana は「現状のまま」提供され、いかなる保証もありません。使用による損害について AmirCollider は責任を負いません。</li>
+  </ul>
+  <p>全文は <code>LICENSE.txt</code> にあります (英語版が正文)。Vocana は VOICEVOX 用の独立したツールで、VOICEVOX プロジェクトや各キャラクターの権利者が作ったもの・関係するものではありません。</p>
+</section>
+
+<section id="ja-notices" data-anchor="notices">
+  <h2><span class="n">15</span>サードパーティーのソフトウェア</h2>
+  <table>
+    <tr><td>Python 3.13 (Windows 用ランタイム)</td><td>PSF License — <code>app/runtime/LICENSE.txt</code></td></tr>
+    <tr><td>numpy 2.4</td><td>BSD 3-Clause、同梱の OpenBLAS (BSD) — <code>app/runtime/Lib/site-packages/numpy-*.dist-info/licenses</code></td></tr>
+    <tr><td>e2k 0.6 (Patchethium)</td><td>パブリックドメイン (Unlicense)</td></tr>
+    <tr><td>Vazirmatn フォント (Saber Rastikerdar)</td><td>SIL Open Font License 1.1 — <code>app/fonts/Vazirmatn-OFL.txt</code></td></tr>
+    <tr><td>VOICEVOX</td><td>同梱していません。VOICEVOX 自身のライセンスと各音声ライブラリの規約が適用されます。</td></tr>
+  </table>
+  <p>詳細: <code>THIRD-PARTY-NOTICES.txt</code>。</p>
+</section>
+
+<section id="ja-changelog" data-anchor="changelog">
+  <h2><span class="n">16</span>新機能</h2>
+  <h3>1.0.0 — __DATE__</h3>
+  <ul>
+    <li>VoxTalk が Vocana に。ブラウザーで使うスタジオを、ペルシャ語・英語・日本語で。</li>
+    <li>VOICEVOX の全キャラクターを 1 つのスクリプトで: <code>@cast</code>、キャストページ、各キャラクター自身のスタイルを選ぶムード。</li>
+    <li>各キャラクターの規約からクレジットを自動で書き出し (<code>credits.txt</code>)。追加条件のあるキャラクターには印。</li>
+    <li>書き出し前に各行を試聴。単語ごとに字幕が進むプレイヤー。WebVTT 字幕。各書き出しにスクリプトを保存。</li>
+    <li>Windows: Python を同梱しインストール不要。スタートメニューとアンインストールに対応した任意のセットアップ。VOICEVOX の自動起動。</li>
+    <li>より頑丈に: プロキシや VPN で VOICEVOX との接続が壊れない。VOICEVOX が受け付けない単語で書き出しが止まらない。メモ帳のファイル (BOM、ANSI、UTF-16) が開ける。動画編集ソフトで開いているファイルはエラーではなく名前で知らせる。</li>
+    <li><code>Mr.</code>、<code>2.5</code>、<code>50%</code>、<code>$5</code>、<code>1st</code>、Web アドレス、全角英字を読む。日本語の文は VOICEVOX 自身の読み上げへ。</li>
+    <li>VoxTalk 用のスクリプトはそのまま使え、まったく同じ音になります。</li>
+  </ul>
+</section>

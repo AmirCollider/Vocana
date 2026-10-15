@@ -1,0 +1,6 @@
+# Only needed when Vocana runs on your own Python (macOS, Linux, or the
+# source code on Windows). The Windows release has these built in.
+# Vocana installs them into app/lib/, not into your Python:
+#   python vocana.py ensure-deps
+numpy>=1.24,<3
+e2k>=0.6.2,<0.7

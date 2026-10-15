@@ -1,0 +1,5262 @@
+[
+{
+"text": "Hello! I'm AmirCollider!",
+"plan": [
+[
+"normal",
+"ハ'ロオ",
+0.25
+],
+[
+"normal",
+"アイムアミイルコラ'イダア",
+0.0
+]
+]
+},
+{
+"text": "I make cool games for PC and mobile!",
+"plan": [
+[
+"normal",
+"アイメ'イク/ク'ウル/ゲ'エムズ/フォオピ'イシイ/アンドモバ'イル",
+0.0
+]
+]
+},
+{
+"text": "I look harmless... [dark] but I know where your files are. [cute] Hehe ♡",
+"plan": [
+[
+"normal",
+"アイル'ック/ハアム'レス",
+0.5
+],
+[
+"dark",
+"バットアイノ'ウ/ウェ'ア/ユアファ'イルスアア",
+0.25
+],
+[
+"cute",
+"エ'ヘヘ",
+0.0
+]
+]
+},
+{
+"text": "Pleeease? I'm *really* good, I promise!",
+"plan": [
+[
+"normal",
+"プリ'イズ？",
+0.32
+],
+[
+"normal",
+"アイムリア'リイ/グ'ッド、アイプロ'ミス",
+0.0
+]
+]
+},
+{
+"text": "W-Wait! Don't forget the super important rule!",
+"plan": [
+[
+"normal",
+"ウェ'、ウェ'イト",
+0.25
+],
+[
+"normal",
+"ドントフォゲ'ット/ザス'ウパア/インポオタ'ント/ル'ウル",
+0.0
+]
+]
+},
+{
+"text": "Follow me on Instagram and YouTube!",
+"plan": [
+[
+"normal",
+"フォ'ロオ/ミイオンインスタグ'ラム/アンドユウチュ'ウブ",
+0.0
+]
+]
+},
+{
+"text": "It's 3 a.m. and I'm still fixing bugs.",
+"plan": [
+[
+"normal",
+"イッツス'リイ/エ'エエム",
+0.25
+],
+[
+"normal",
+"アンドアイムス'チル/フィクシ'ング/バ'グズ",
+0.0
+]
+]
+},
+{
+"text": "You just write plain English, and Zundamon reads it *sooo* clearly!",
+"plan": [
+[
+"normal",
+"ユウジャストラ'イト/プレ'イン/イングリ'ッシュ、アンドズンダ'モン/リ'イズ/イットソ'オ/クリア'リイ",
+0.0
+]
+]
+},
+{
+"text": "No weird robotic accents, and no sleepy sighs at the end~ Hehe ♡",
+"plan": [
+[
+"normal",
+"ノオウィア'アド/ロボチ'ック/アクセ'ンツ、アンドノオスリ'イピイ/サ'イス/アットザエ'ンド",
+0.25
+],
+[
+"normal",
+"エ'ヘヘ",
+0.0
+]
+]
+},
+{
+"text": "It turns everything into magic Katakana all by itself!",
+"plan": [
+[
+"normal",
+"イットタ'アンズ/エブリシ'ング/イ'ントゥ/マジ'ック/カタ'カナ/オ'オル/バイイット'ルフ",
+0.0
+]
+]
+},
+{
+"text": "In your description, pleeease write: VOICEVOX:ずんだもん!",
+"plan": [
+[
+"normal",
+"インユアディスクリプ'ション、プリ'イズ/ラ'イト、ボイセボ'ックス、ズンダ'モン",
+0.0
+]
+]
+},
+{
+"text": "It's Zundamon's credit rule, okay? Promise me! ♡",
+"plan": [
+[
+"normal",
+"イッツツンダモ'ンズ/クレジ'ット/ル'ウル、オ'オケエ？",
+0.32
+],
+[
+"normal",
+"プロ'ミスミイ",
+0.0
+]
+]
+},
+{
+"text": "Now drag your file and let's make something amazing!",
+"plan": [
+[
+"normal",
+"ナ'ウ/ドラ'ッグ/ユアファ'イル/アンドレッツメ'イク/サムシ'ング/アメイジ'ング",
+0.0
+]
+]
+},
+{
+"text": "Hmph. I'm not mad. I'm just... disappointed.",
+"plan": [
+[
+"normal",
+"フ'ン",
+0.25
+],
+[
+"normal",
+"アイムノットマ'ッド",
+0.25
+],
+[
+"normal",
+"ア'イムジャスト",
+0.5
+],
+[
+"normal",
+"ジサポ'イン",
+0.0
+]
+]
+},
+{
+"text": "What? You deleted the entire project file?!",
+"plan": [
+[
+"normal",
+"ワ'ット？",
+0.32
+],
+[
+"normal",
+"ユウデリテ'ッド/ザエンタ'イア/プロジェ'クト/ファ'イル？",
+0.0
+]
+]
+},
+{
+"text": "Uhm, I think I clicked the wrong button.",
+"plan": [
+[
+"normal",
+"ア'アン、アイシ'ンク/アイクリ'ック/ザロ'ング/ボ'タン",
+0.0
+]
+]
+},
+{
+"text": "Shh, the baby is sleeping.",
+"plan": [
+[
+"normal",
+"シ'イッ、ザベ'ビイ/イズスリイピ'ング",
+0.0
+]
+]
+},
+{
+"text": "Yay! We won! We actually won!",
+"plan": [
+[
+"normal",
+"イェ'エイ",
+0.25
+],
+[
+"normal",
+"ウィイウォ'ン",
+0.25
+],
+[
+"normal",
+"ウィイアクチュア'リイ/ウォ'ン",
+0.0
+]
+]
+},
+{
+"text": "Oops. That wasn't supposed to happen.",
+"plan": [
+[
+"normal",
+"ウ'ップス",
+0.25
+],
+[
+"normal",
+"ザットウォ'スト/サポ'オズド/トゥハ'プン",
+0.0
+]
+]
+},
+{
+"text": "Ugh, Mondays are the worst.",
+"plan": [
+[
+"normal",
+"ア'グ、マンデ'エス/アアザワ'アスト",
+0.0
+]
+]
+},
+{
+"text": "Huh? Did you say something?",
+"plan": [
+[
+"normal",
+"ハ'？",
+0.32
+],
+[
+"normal",
+"ディドユウセ'イ/サムシ'ング？",
+0.0
+]
+]
+},
+{
+"text": "Okay, okay, I'll do it. But only once.",
+"plan": [
+[
+"normal",
+"オ'オケエ、オ'オケエ、ア'イルドゥイット",
+0.25
+],
+[
+"normal",
+"バットオ'ンリイ/ワ'ンス",
+0.0
+]
+]
+},
+{
+"text": "The quick brown fox jumps over the lazy dog.",
+"plan": [
+[
+"normal",
+"ザクイ'ック/ブラ'ウン/フォ'ックス/ジャ'ンプス/オ'オバア/ザレ'エジイ/ド'ッグ",
+0.0
+]
+]
+},
+{
+"text": "She sells seashells by the seashore.",
+"plan": [
+[
+"normal",
+"シイセ'ルス/シイシェ'ルズ/バイザシ'イショア",
+0.0
+]
+]
+},
+{
+"text": "How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
+"plan": [
+[
+"normal",
+"ハウム'ッチ/ウ'ッド/ウッドアウッドチャ'ック/チャ'ック/イフアウッドチャ'ック/クッドチャ'ック/ウ'ッド？",
+0.0
+]
+]
+},
+{
+"text": "Peter Piper picked a peck of pickled peppers.",
+"plan": [
+[
+"normal",
+"ペ'エタア/パ'イパア/ピ'ック/アペ'ック/オブピ'ックル/ペッパ'アズ",
+0.0
+]
+]
+},
+{
+"text": "I have 2 cats, 13 fish and 1000 problems.",
+"plan": [
+[
+"normal",
+"アイハブトゥ'ウ/キャ'ッツ、サアティ'イン/フィ'ッシュ/アンドワンサウザ'ンド/プロブレ'ムズ",
+0.0
+]
+]
+},
+{
+"text": "In 1999 there were 42 of us; now there are 365.",
+"plan": [
+[
+"normal",
+"インワンサウザンドナインハンドレッドニネティイナ'イン/ゼ'ア/ワアフォオティ'トゥウ/オ'ブアス、ナ'ウ/ゼ'ア/アアスリイハンドレッドシックスティイファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "The NASA and the FBI and the USA and an AI walked into a bar.",
+"plan": [
+[
+"normal",
+"ザエヌエエエス'エエ/アンドザエフビ'イアイ/アンドザユウエス'エエ/アンドアンエ'エアイ/ウォ'オク/イ'ントゥ/アバ'ア",
+0.0
+]
+]
+},
+{
+"text": "My well-known, long-awaited, never-ending story.",
+"plan": [
+[
+"normal",
+"マイウェルナ'ウン、ロングアウエイテ'ッド、ネバアエンディ'ング/スト'オリイ",
+0.0
+]
+]
+},
+{
+"text": "Thank you so much for watching, see you tomorrow!",
+"plan": [
+[
+"normal",
+"サ'ンク/ユウソオム'ッチ/フォオウォッチ'ング、シ'イ/ユウトゥモ'ロオ",
+0.0
+]
+]
+},
+{
+"text": "Do you want to play a game with me?",
+"plan": [
+[
+"normal",
+"ドゥユウウォ'ント/トゥプ'レイ/アゲ'エムウィズミイ？",
+0.0
+]
+]
+},
+{
+"text": "I can't, I won't, and I shouldn't.",
+"plan": [
+[
+"normal",
+"ア'イキャント、ア'イウォント、ア'ンドアイシャルド",
+0.0
+]
+]
+},
+{
+"text": "They're going to the store, but their car is over there.",
+"plan": [
+[
+"normal",
+"テ'イア/ゴ'オイング/トゥザス'トア、バットゼアカ'ア/イズオ'オバア/ゼ'ア",
+0.0
+]
+]
+},
+{
+"text": "Let's go! Let's go! Let's go!",
+"plan": [
+[
+"normal",
+"レッツゴ'オ",
+0.25
+],
+[
+"normal",
+"レッツゴ'オ",
+0.25
+],
+[
+"normal",
+"レッツゴ'オ",
+0.0
+]
+]
+},
+{
+"text": "This is fine. Everything is fine. — Wait, no!",
+"plan": [
+[
+"normal",
+"ディスイズファ'イン",
+0.25
+],
+[
+"normal",
+"エブリシ'ング/イズファ'イン",
+0.25
+],
+[
+"normal",
+"ウェ'イト、ノ'オ",
+0.0
+]
+]
+},
+{
+"text": "I-I-I didn't do it!",
+"plan": [
+[
+"normal",
+"アイア'イアイ/ディ'ントドゥイット",
+0.0
+]
+]
+},
+{
+"text": "S-Sorry, I didn't mean it...",
+"plan": [
+[
+"normal",
+"ソ'、ソ'オリイ、アイディントミ'インイット",
+0.0
+]
+]
+},
+{
+"text": "Strawberry milk tea is the best drink in the universe.",
+"plan": [
+[
+"normal",
+"ストロベ'リイ/ミ'ルク/ティ'イ/イズザベ'スト/ドリ'ンク/インザユニバ'アス",
+0.0
+]
+]
+},
+{
+"text": "Neon Katana is a game about cutting things with a sword.",
+"plan": [
+[
+"normal",
+"ネ'オン/カ'タナ/イズアゲ'エム/アバ'ウト/カッティ'ング/シ'ングス/ウィズアソ'オド",
+0.0
+]
+]
+},
+{
+"text": "Crazy Pong has portals and black holes.",
+"plan": [
+[
+"normal",
+"クレ'イジイ/ポ'ング/ハズポオタ'ルズ/アンドブラ'ック/ホ'オルス",
+0.0
+]
+]
+},
+{
+"text": "Unity, programming, code, bugs, and more bugs.",
+"plan": [
+[
+"normal",
+"ユ'ニティ、プログラミ'ング、コ'オド、バ'グズ、アンドモ'ア/バ'グズ",
+0.0
+]
+]
+},
+{
+"text": "The vtuber said hello to every subscriber.",
+"plan": [
+[
+"normal",
+"ザブイチュ'ウバア/セ'ッド/ハ'ロオ/トゥエブ'リイ/サブスクラ'イバア",
+0.0
+]
+]
+},
+{
+"text": "My phone died at the worst possible minute.",
+"plan": [
+[
+"normal",
+"マイフォ'ン/ダ'イド/アットザワ'アスト/ポシ'ブル/ミニ'ット",
+0.0
+]
+]
+},
+{
+"text": "Five more minutes, I promise!",
+"plan": [
+[
+"normal",
+"ファ'イブ/モ'ア/ミニ'ッツ、アイプロ'ミス",
+0.0
+]
+]
+},
+{
+"text": "Never ever touch my blanket again.",
+"plan": [
+[
+"normal",
+"ネ'バア/エ'バア/タ'ッチ/マイブランケ'ット/アゲ'イン",
+0.0
+]
+]
+},
+{
+"text": "Sometimes I think, therefore I nap.",
+"plan": [
+[
+"normal",
+"サムタ'イムズ/アイシ'ンク、サアフ'フォオ/アイナ'ップ",
+0.0
+]
+]
+},
+{
+"text": "Absolutely, positively, definitely not.",
+"plan": [
+[
+"normal",
+"アブソリュウテ'リイ、ポジティブ'リイ、デフィニテ'リイノット",
+0.0
+]
+]
+},
+{
+"text": "Literally the most embarrassing thing ever.",
+"plan": [
+[
+"normal",
+"リテラ'リイ/ザモ'スト/エンバラシ'ング/シ'ング/エ'バア",
+0.0
+]
+]
+},
+{
+"text": "Maybe yes, maybe no, maybe tomorrow.",
+"plan": [
+[
+"normal",
+"メ'イビイ/イ'エス、メ'イビイ/ノ'オ、メ'イビイ/トゥモ'ロオ",
+0.0
+]
+]
+},
+{
+"text": "I'm holding your snacks hostage until you praise me.",
+"plan": [
+[
+"normal",
+"アイムホオルディ'ング/ユアスナ'ックス/ホステ'エジ/ア'ンチル/ユウプレ'イズミイ",
+0.0
+]
+]
+},
+{
+"text": "Close your eyes and take a deep breath.",
+"plan": [
+[
+"normal",
+"クロ'オズ/ユアア'イズ/アンドテ'イク/アディ'イプ/ブ'レス",
+0.0
+]
+]
+},
+{
+"text": "Wow, you're a genius! An absolute genius!",
+"plan": [
+[
+"normal",
+"ワ'オ、ユアアジイニ'アス",
+0.25
+],
+[
+"normal",
+"アンアブソリュ'ウト/ジイニ'アス",
+0.0
+]
+]
+},
+{
+"text": "Anyway, back to business.",
+"plan": [
+[
+"normal",
+"エニ'ウェイ、バ'ック/トゥビジ'ネス",
+0.0
+]
+]
+},
+{
+"text": "Is this the real life? Is this just fantasy?",
+"plan": [
+[
+"normal",
+"イズディスザリ'アル/ラ'イフ？",
+0.32
+],
+[
+"normal",
+"イズディスジャストファンタ'ジイ？",
+0.0
+]
+]
+},
+{
+"text": "Who are you, and what are you doing in my house?",
+"plan": [
+[
+"normal",
+"フ'ウアアユウ、ア'ンドワットアアユウ/ドゥウイ'ング/インマイハ'ウス？",
+0.0
+]
+]
+},
+{
+"text": "Which one do you want, the red one or the blue one?",
+"plan": [
+[
+"normal",
+"ウィ'ッチ/ワ'ン/ドゥユウウォ'ント、ザレ'ッド/ワ'ン/オアザブ'ルウ/ワ'ン？",
+0.0
+]
+]
+},
+{
+"text": "It's not my fault the window was open!",
+"plan": [
+[
+"normal",
+"イッツノットマイフォ'ルト/ザウィ'ンドウ/ワズオ'オプン",
+0.0
+]
+]
+},
+{
+"text": "Hey you! Yes, you! Come here!",
+"plan": [
+[
+"normal",
+"ヘ'イユウ",
+0.25
+],
+[
+"normal",
+"イ'エス、ユ'ウ",
+0.25
+],
+[
+"normal",
+"カ'ム/ヒ'ア",
+0.0
+]
+]
+},
+{
+"text": "Go away... no, wait, come back!",
+"plan": [
+[
+"normal",
+"ゴ'オ/アウ'エエ",
+0.5
+],
+[
+"normal",
+"ノ'オ、ウェ'イト、カ'ム/バ'ック",
+0.0
+]
+]
+},
+{
+"text": "The supporters cheered for the players.",
+"plan": [
+[
+"normal",
+"ザサポオタ'アズ/チア'アド/フォオザプレイヤ'アズ",
+0.0
+]
+]
+},
+{
+"text": "Computers, keyboards, monitors, and headphones.",
+"plan": [
+[
+"normal",
+"コンピュウタ'アズ、キイボ'オドズ、モニタ'アズ、アンドヘッドフォ'ンズ",
+0.0
+]
+]
+},
+{
+"text": "I'm gonna wanna gotta kinda do it.",
+"plan": [
+[
+"normal",
+"アイムゴ'ナ/ワ'ナ/ガ'ッタ/カ'インダドゥイット",
+0.0
+]
+]
+},
+{
+"text": "It's super duper mega awesome.",
+"plan": [
+[
+"normal",
+"イッツス'ウパア/デュ'ウパア/メ'ガ/オ'オサム",
+0.0
+]
+]
+},
+{
+"text": "Tea? Coffee? Milk? Water?",
+"plan": [
+[
+"normal",
+"ティ'イ？",
+0.32
+],
+[
+"normal",
+"コ'オヒイ？",
+0.32
+],
+[
+"normal",
+"ミ'ルク？",
+0.32
+],
+[
+"normal",
+"ウォ'オタア？",
+0.0
+]
+]
+},
+{
+"text": "One, two, three, four, five, six, seven, eight, nine, ten.",
+"plan": [
+[
+"normal",
+"ワ'ン、トゥ'ウ、ス'リイ、ファ'ア、ファ'イブ、シ'ックス、セ'ブン、エ'イト、ナ'イン、テ'ン",
+0.0
+]
+]
+},
+{
+"text": "Good morning, good afternoon, good evening, good night.",
+"plan": [
+[
+"normal",
+"グ'ッド/モオニ'ング、グ'ッド/アフタヌ'ウン、グ'ッド/イイブニ'ング、グ'ッド/ナ'イト",
+0.0
+]
+]
+},
+{
+"text": "A apple, an orange, the banana.",
+"plan": [
+[
+"normal",
+"アア'ップル、アンオレ'ンジ、ザバ'ナナ",
+0.0
+]
+]
+},
+{
+"text": "Hmm... let me think about it.",
+"plan": [
+[
+"normal",
+"フ'ウン",
+0.5
+],
+[
+"normal",
+"レ'ット/ミイシ'ンク/アバ'ウトイット",
+0.0
+]
+]
+},
+{
+"text": "Mm, that's delicious.",
+"plan": [
+[
+"normal",
+"ウ'ン、ザッツデリ'シャス",
+0.0
+]
+]
+},
+{
+"text": "Ahh! A spider!",
+"plan": [
+[
+"normal",
+"ア'ッ",
+0.25
+],
+[
+"normal",
+"アスパ'イダア",
+0.0
+]
+]
+},
+{
+"text": "Oh no, oh no, oh no.",
+"plan": [
+[
+"normal",
+"オ'オ/ノ'オ、オ'オ/ノ'オ、オ'オノオ",
+0.0
+]
+]
+},
+{
+"text": "Yeah, yep, yes, okay, ok.",
+"plan": [
+[
+"normal",
+"イェ'ア、イェ'ップ、イ'エス、オ'オケエ、オ'オケエ",
+0.0
+]
+]
+},
+{
+"text": "Please, thanks, sorry, wait.",
+"plan": [
+[
+"normal",
+"プリ'イズ、サ'ンクス、ソ'オリイ、ウェ'イト",
+0.0
+]
+]
+},
+{
+"text": "Welcome to my channel, everybody!",
+"plan": [
+[
+"normal",
+"ウェル'カム/トゥマイチャ'ネル、エベリイボ'ディイ",
+0.0
+]
+]
+},
+{
+"text": "I learned it the hard way.",
+"plan": [
+[
+"normal",
+"アイリア'ンド/イットザハ'アド/ウェ'イ",
+0.0
+]
+]
+},
+{
+"text": "This creature is harmless. Mostly.",
+"plan": [
+[
+"normal",
+"ディスクリ'イチャア/イズハアム'レス",
+0.25
+],
+[
+"normal",
+"モス'リイ",
+0.0
+]
+]
+},
+{
+"text": "Every time I try, something crashes.",
+"plan": [
+[
+"normal",
+"エブ'リイ/タ'イム/アイト'ライ、サムシ'ング/クラ'ッシュズ",
+0.0
+]
+]
+},
+{
+"text": "Today, tomorrow, and yesterday too.",
+"plan": [
+[
+"normal",
+"トゥ'デイ、トゥモ'ロオ、アンドイエスタ'デイトゥウ",
+0.0
+]
+]
+},
+{
+"text": "We'd better hurry before it gets dark.",
+"plan": [
+[
+"normal",
+"ウィ'イド/ベ'タア/ハ'リイ/ビ'フォオ/イットゲ'ッツ/ダ'アク",
+0.0
+]
+]
+},
+{
+"text": "What's up? What's new? What's going on?",
+"plan": [
+[
+"normal",
+"ワ'ッツ/ア'ップ？",
+0.32
+],
+[
+"normal",
+"ワ'ッツ/ニュ'ウ？",
+0.32
+],
+[
+"normal",
+"ワ'ッツ/ゴ'オイングオン？",
+0.0
+]
+]
+},
+{
+"text": "I've been waiting for you for hours.",
+"plan": [
+[
+"normal",
+"アイブビインウエイティ'ング/フォオユウフォオアワ'アズ",
+0.0
+]
+]
+},
+{
+"text": "You've got to be kidding me.",
+"plan": [
+[
+"normal",
+"ユウブゴ'ット/トゥビイキディ'ングミイ",
+0.0
+]
+]
+},
+{
+"text": "They said it couldn't be done. They were wrong.",
+"plan": [
+[
+"normal",
+"ゼイセ'ッド/イ'ットクドゥントビイ/ダ'ン",
+0.25
+],
+[
+"normal",
+"ゼイワアロ'ング",
+0.0
+]
+]
+},
+{
+"text": "Breathe in. Breathe out. Relax.",
+"plan": [
+[
+"normal",
+"ブリ'イズイン",
+0.25
+],
+[
+"normal",
+"ブリ'イズ/ア'ウト",
+0.25
+],
+[
+"normal",
+"リラ'ックス",
+0.0
+]
+]
+},
+{
+"text": "Don't sulk in the corner, come play with us.",
+"plan": [
+[
+"normal",
+"ドントサ'ルク/インザコ'オナア、カ'ム/プ'レイウィズアス",
+0.0
+]
+]
+},
+{
+"text": "Sit down, stay quiet, and look closely.",
+"plan": [
+[
+"normal",
+"シ'ット/ダ'ウン、ス'テイ/クイエ'ット、アンドル'ック/クロオス'リイ",
+0.0
+]
+]
+},
+{
+"text": "I'm staring at the screen and nothing happens.",
+"plan": [
+[
+"normal",
+"アイムステアリ'ング/アットザスクリ'イン/アンドナッシ'ング/ハペ'ンス",
+0.0
+]
+]
+},
+{
+"text": "That's unfair! I played properly!",
+"plan": [
+[
+"normal",
+"ザッツア'ンフェア",
+0.25
+],
+[
+"normal",
+"アイプレ'イド/プロパ'リイ",
+0.0
+]
+]
+},
+{
+"text": "Would you rather fly or be invisible?",
+"plan": [
+[
+"normal",
+"ウッドユウラ'ザア/フ'ライ/オアビイインビジ'ブル？",
+0.0
+]
+]
+},
+{
+"text": "Everything, something, anything, nothing.",
+"plan": [
+[
+"normal",
+"エブリシ'ング、サムシ'ング、エニシ'ング、ナッシ'ング",
+0.0
+]
+]
+},
+{
+"text": "Exactly. Precisely. Correct.",
+"plan": [
+[
+"normal",
+"イグザクト'リイ",
+0.25
+],
+[
+"normal",
+"プレシ'リイ",
+0.25
+],
+[
+"normal",
+"コレ'クト",
+0.0
+]
+]
+},
+{
+"text": "Hehe, hehehe, hmph, hmm.",
+"plan": [
+[
+"normal",
+"エ'ヘヘ、エヘ'ヘヘ、フ'ン、フ'ウン",
+0.0
+]
+]
+},
+{
+"text": "[excited] This is great! [sad] But it's over now.",
+"plan": [
+[
+"excited",
+"ディスイズグリ'イト",
+0.25
+],
+[
+"sad",
+"バットイッツオ'オバア/ナ'ウ",
+0.0
+]
+]
+},
+{
+"text": "[whisper] Can you keep a secret? [shout] I CAN'T!",
+"plan": [
+[
+"whisper",
+"キャンユウキ'イプ/アシイクレ'ット？",
+0.32
+],
+[
+"shout",
+"ア'イキャント",
+0.0
+]
+]
+},
+{
+"text": "[sleepy] Good night... [cute] Sweet dreams ♡",
+"plan": [
+[
+"sleepy",
+"グ'ッド/ナ'イト",
+0.5
+],
+[
+"cute",
+"スイ'イト/ドリ'イムス",
+0.0
+]
+]
+},
+{
+"text": "I love you~ Just kidding~",
+"plan": [
+[
+"normal",
+"アイラ'ブユウ",
+0.25
+],
+[
+"normal",
+"ジャストキディ'ング",
+0.0
+]
+]
+},
+{
+"text": "Really?! Really really?!",
+"plan": [
+[
+"normal",
+"リア'リイ？",
+0.32
+],
+[
+"normal",
+"リア'リイ/リア'リイ？",
+0.0
+]
+]
+},
+{
+"text": "Kawaii desu ne.",
+"plan": [
+[
+"normal",
+"カ'ワイ/デ'スウ/ネ'エ",
+0.0
+]
+]
+},
+{
+"text": "アニメ and ゲーム are my life.",
+"plan": [
+[
+"normal",
+"ア'ニメ/アンドゲ'エム/アアマイラ'イフ",
+0.0
+]
+]
+},
+{
+"text": "すごい! That's amazing!",
+"plan": [
+[
+"normal",
+"ス'ゴイ",
+0.25
+],
+[
+"normal",
+"ザッツアメイジ'ング",
+0.0
+]
+]
+},
+{
+"text": "The year 2000 was 26 years ago.",
+"plan": [
+[
+"normal",
+"ザイ'ヤア/トゥウサウザ'ンド/ワズツエンティシ'ックス/イヤ'アズ/ア'ゴオ",
+0.0
+]
+]
+},
+{
+"text": "Level 99 boss, 100 percent health.",
+"plan": [
+[
+"normal",
+"レ'ベル/ニネティイナ'イン/ボ'ス、ワンハンドレ'ッド/パアセ'ント/ヘ'ルス",
+0.0
+]
+]
+},
+{
+"text": "*a* Breathe This Huh Tea Wait night files 749!",
+"plan": [
+[
+"normal",
+"ア'/ブリ'イズ/ディスハ'/ティ'イ/ウェ'イト/ナ'イト/ファ'イルス/セブンハンドレッドフォオティナ'イン",
+0.0
+]
+]
+},
+{
+"text": "Waaanna,",
+"plan": [
+[
+"normal",
+"ワ'ナ",
+0.0
+]
+]
+},
+{
+"text": "h-health...",
+"plan": [
+[
+"normal",
+"ヘ'、ヘ'ルス",
+0.0
+]
+]
+},
+{
+"text": "Wood Don't way Pong An maybe awaited threeee?",
+"plan": [
+[
+"normal",
+"ウ'ッド/ドントウェ'イ/ポ'ング/アンメ'イビイ/アウエイテ'ッド/ス'ル？",
+0.0
+]
+]
+},
+{
+"text": "morning 1133.",
+"plan": [
+[
+"normal",
+"モオニ'ング/ワンサウザンドワンハンドレッドサアティス'リイ",
+0.0
+]
+]
+},
+{
+"text": "Hehe better into ♡",
+"plan": [
+[
+"normal",
+"エ'ヘヘ/ベ'タア/イ'ントゥ",
+0.0
+]
+]
+},
+{
+"text": "Mm they tired Katakana think car stay whatever!",
+"plan": [
+[
+"normal",
+"ウ'ン/ゼイタイア'アド/カタ'カナ/シ'ンク/カ'ア/ス'テイ/ワットエ'バア",
+0.0
+]
+]
+},
+{
+"text": "What try over going credit more Wow blanket headphones!",
+"plan": [
+[
+"normal",
+"ワットト'ライ/オ'オバア/ゴ'オイング/クレジ'ット/モ'ア/ワ'オ/ブランケ'ット/ヘッドフォ'ンズ",
+0.0
+]
+]
+},
+{
+"text": "possibly *done* ♡",
+"plan": [
+[
+"normal",
+"ポッシブ'リイ/ダ'ン",
+0.0
+]
+]
+},
+{
+"text": "that's PC gonna Promise sighs...",
+"plan": [
+[
+"normal",
+"ザッツピ'イシイ/ゴ'ナ/プロ'ミス/サ'イス",
+0.0
+]
+]
+},
+{
+"text": "didn't well *seven* cheered dev is ♡",
+"plan": [
+[
+"normal",
+"ディントウェ'ル/セ'ブン/チア'アド/デ'ヴイズ",
+0.0
+]
+]
+},
+{
+"text": "Amazing Leeet's but.",
+"plan": [
+[
+"normal",
+"アメイジ'ングレッツバット",
+0.0
+]
+]
+},
+{
+"text": "back *dreams*~",
+"plan": [
+[
+"normal",
+"バ'ック/ドリ'イムス",
+0.0
+]
+]
+},
+{
+"text": "it's shh let been would Ugh gotta hi rule~",
+"plan": [
+[
+"normal",
+"イッツシ'イッ/レ'ット/ビインウッドア'グ/ガ'ッタ/ハ'イ/ル'ウル",
+0.0
+]
+]
+},
+{
+"text": "Milk my still e-eyes umm but peppers?",
+"plan": [
+[
+"normal",
+"ミ'ルク/マイス'チル/ア'、ア'イズ/ア'アン/バットペッパ'アズ？",
+0.0
+]
+]
+},
+{
+"text": "today blanket holding only morning die can't?!",
+"plan": [
+[
+"normal",
+"トゥ'デイ/ブランケ'ット/ホオルディ'ング/オ'ンリイ/モオニ'ング/ダ'イキャント？",
+0.0
+]
+]
+},
+{
+"text": "Go on ♡",
+"plan": [
+[
+"normal",
+"ゴ'オオン",
+0.0
+]
+]
+},
+{
+"text": "i innocent made i've dark we ♡",
+"plan": [
+[
+"normal",
+"アイイノセ'ント/メ'イド/アイブダ'アクウィイ",
+0.0
+]
+]
+},
+{
+"text": "Thanks has Thank with youtube accents 180...",
+"plan": [
+[
+"normal",
+"サ'ンクス/ハズサ'ンク/ウィズユウチュ'ウブ/アクセ'ンツ/ワンハンドレッドエ'イティ",
+0.0
+]
+]
+},
+{
+"text": "Kinda weeere night —",
+"plan": [
+[
+"normal",
+"カ'インダ/ワアナ'イト",
+0.0
+]
+]
+},
+{
+"text": "Much want Sweet Do?",
+"plan": [
+[
+"normal",
+"ム'ッチ/ウォ'ント/スイ'イトドゥ？",
+0.0
+]
+]
+},
+{
+"text": "Piper awesome worst follow business wasn't was positively *lose* 281 ♡",
+"plan": [
+[
+"normal",
+"パ'イパア/オ'オサム/ワ'アスト/フォ'ロオ/ビジ'ネス/ウォ'スト/ワズポジティブ'リイ/ル'ウズ/トゥウハンドレッドエイティ'ワン",
+0.0
+]
+]
+},
+{
+"text": "Just Pong know everybody definitely morning which!",
+"plan": [
+[
+"normal",
+"ジャストポ'ング/ノ'ウ/エベリイボ'ディイ/デフィニテ'リイ/モオニ'ング/ウィ'ッチ",
+0.0
+]
+]
+},
+{
+"text": "sighs minutes back turns fixing?",
+"plan": [
+[
+"normal",
+"サ'イス/ミニ'ッツ/バ'ック/タ'アンズ/フィクシ'ング？",
+0.0
+]
+]
+},
+{
+"text": "Do doing 542~",
+"plan": [
+[
+"normal",
+"ドゥドゥウイ'ング/ファイブハンドレッドフォオティ'トゥウ",
+0.0
+]
+]
+},
+{
+"text": "they~",
+"plan": [
+[
+"normal",
+"ゼ'イ",
+0.0
+]
+]
+},
+{
+"text": "Kinda —",
+"plan": [
+[
+"normal",
+"カ'インダ",
+0.0
+]
+]
+},
+{
+"text": "yay continue like i'm of hehehe,",
+"plan": [
+[
+"normal",
+"イェ'エイ/コンティ'ニュウ/ラ'イク/アイムオブエヘ'ヘヘ",
+0.0
+]
+]
+},
+{
+"text": "first credit strawberry hehehe cheered new robotic ♡",
+"plan": [
+[
+"normal",
+"ファ'アスト/クレジ'ット/ストロベ'リイ/エヘ'ヘヘ/チア'アド/ニュ'ウ/ロボチ'ック",
+0.0
+]
+]
+},
+{
+"text": "won't properly?",
+"plan": [
+[
+"normal",
+"ウォントプロパ'リイ？",
+0.0
+]
+]
+},
+{
+"text": "First Pong mean portals i've?!",
+"plan": [
+[
+"normal",
+"ファ'アスト/ポ'ング/ミ'イン/ポオタ'ルズアイブ？",
+0.0
+]
+]
+},
+{
+"text": "store *win* Wow year them That...",
+"plan": [
+[
+"normal",
+"ス'トア/ウィ'ン/ワ'オ/イ'ヤアゼムザット",
+0.0
+]
+]
+},
+{
+"text": "Hello blue *lazy* We Katakana —",
+"plan": [
+[
+"normal",
+"ハ'ロオ/ブ'ルウ/レ'エジイ/ウィイカタ'カナ",
+0.0
+]
+]
+},
+{
+"text": "out possibly CAN'T —",
+"plan": [
+[
+"normal",
+"ア'ウト/ポッシブ'リイキャント",
+0.0
+]
+]
+},
+{
+"text": "black cutting talk subscriber~",
+"plan": [
+[
+"normal",
+"ブラ'ック/カッティ'ング/ト'オク/サブスクラ'イバア",
+0.0
+]
+]
+},
+{
+"text": "known fox house blue bugs rule blue Huh!!",
+"plan": [
+[
+"normal",
+"ナ'ウン/フォ'ックス/ハ'ウス/ブ'ルウ/バ'グズ/ル'ウル/ブ'ルウ/ハ'",
+0.0
+]
+]
+},
+{
+"text": "FBI rather Please Okay Pong for percent turns,",
+"plan": [
+[
+"normal",
+"エフビ'イアイ/ラ'ザア/プリ'イズ/オ'オケエ/ポ'ング/フォオパアセ'ント/タ'アンズ",
+0.0
+]
+]
+},
+{
+"text": "Take One it Follow waiting closely at baby out ♡",
+"plan": [
+[
+"normal",
+"テ'イク/ワ'ン/イットフォ'ロオ/ウエイティ'ング/クロオス'リイ/アットベ'ビイ/ア'ウト",
+0.0
+]
+]
+},
+{
+"text": "Has snaaacks this!",
+"plan": [
+[
+"normal",
+"ハズスナ'ックスディス",
+0.0
+]
+]
+},
+{
+"text": "black hello away possible drink!!",
+"plan": [
+[
+"normal",
+"ブラ'ック/ハ'ロオ/アウ'エエ/ポシ'ブル/ドリ'ンク",
+0.0
+]
+]
+},
+{
+"text": "what's 1487?!",
+"plan": [
+[
+"normal",
+"ワ'ッツ/ワンサウザンドファアハンドレッドエイティセ'ブン？",
+0.0
+]
+]
+},
+{
+"text": "Close scared shh us —",
+"plan": [
+[
+"normal",
+"クロ'オズ/スケア'アド/シ'イッアス",
+0.0
+]
+]
+},
+{
+"text": "Its thing Did English i'm ago talk for?",
+"plan": [
+[
+"normal",
+"イッツシ'ング/ディドイングリ'ッシュ/アイムア'ゴオ/ト'オクフォオ？",
+0.0
+]
+]
+},
+{
+"text": "One caaar,",
+"plan": [
+[
+"normal",
+"ワ'ン/カ'ア",
+0.0
+]
+]
+},
+{
+"text": "More 1971.",
+"plan": [
+[
+"normal",
+"モ'ア/ワンサウザンドナインハンドレッドセベンティ'イワン",
+0.0
+]
+]
+},
+{
+"text": "collider excited um Oh idea,",
+"plan": [
+[
+"normal",
+"コラ'イダア/エキサ'イト/ア'アン/オ'オ/ア'イディア",
+0.0
+]
+]
+},
+{
+"text": "I'm.",
+"plan": [
+[
+"normal",
+"ア'イム",
+0.0
+]
+]
+},
+{
+"text": "vtuber Do shouldn't bug sometimes 2363!!",
+"plan": [
+[
+"normal",
+"ブイチュ'ウバア/ドゥシャルドバ'グ/サムタ'イムズ/トゥウサウザンドスリイハンドレッドシックスティイス'リイ",
+0.0
+]
+]
+},
+{
+"text": "won I'm red store why come,",
+"plan": [
+[
+"normal",
+"ウォ'ン/アイムレ'ッド/ス'トア/ホ'ワイ/カ'ム",
+0.0
+]
+]
+},
+{
+"text": "what's We praise They're ♡",
+"plan": [
+[
+"normal",
+"ワ'ッツ/ウィイプレ'イズ/テ'イア",
+0.0
+]
+]
+},
+{
+"text": "had She One sword Can never I'll *drag* —",
+"plan": [
+[
+"normal",
+"ハッドシイワ'ン/ソ'オド/キャンネ'バア/アイルドラ'ッグ",
+0.0
+]
+]
+},
+{
+"text": "Keep Hmph miiilk yes mmh doing The 1218,",
+"plan": [
+[
+"normal",
+"キ'イプ/フ'ン/ミ'ルク/イ'エス/ウ'ウン/ドゥウイ'ング/ザワンサウザンドトゥウハンドレッドエイティ'イン",
+0.0
+]
+]
+},
+{
+"text": "snacks Do pong ten The *drink* 547?!",
+"plan": [
+[
+"normal",
+"スナ'ックス/ドゥポ'ング/テ'ン/ザドリ'ンク/ファイブハンドレッドフォオティセ'ブン？",
+0.0
+]
+]
+},
+{
+"text": "Ahh VOICEVOX Oh harmless boss Hmm!!",
+"plan": [
+[
+"normal",
+"ア'ッ/ボイセボ'ックス/オ'オ/ハアム'レス/ボ'ス/フ'ウン",
+0.0
+]
+]
+},
+{
+"text": "Do sells known credit yep but?!",
+"plan": [
+[
+"normal",
+"ドゥセ'ルス/ナ'ウン/クレジ'ット/イェ'ップバット？",
+0.0
+]
+]
+},
+{
+"text": "Peck wait tired~",
+"plan": [
+[
+"normal",
+"ペ'ック/ウェ'イト/タイア'アド",
+0.0
+]
+]
+},
+{
+"text": "friends if by *better* ten.",
+"plan": [
+[
+"normal",
+"フレ'ンズ/イフバイベ'タア/テ'ン",
+0.0
+]
+]
+},
+{
+"text": "I'm definitely itself crazy tired players holes lazy pickled —",
+"plan": [
+[
+"normal",
+"アイムデフィニテ'リイ/イット'ルフ/クレ'イジイ/タイア'アド/プレイヤ'アズ/ホ'オルス/レ'エジイ/ピ'ックル",
+0.0
+]
+]
+},
+{
+"text": "gonna dark known Unity quick ok —",
+"plan": [
+[
+"normal",
+"ゴ'ナ/ダ'アク/ナ'ウン/ユ'ニティ/クイ'ック/オ'オケエ",
+0.0
+]
+]
+},
+{
+"text": "tea not delicious?",
+"plan": [
+[
+"normal",
+"ティ'イ/ノットデリ'シャス？",
+0.0
+]
+]
+},
+{
+"text": "out it's open rule!",
+"plan": [
+[
+"normal",
+"ア'ウト/イッツオ'オプン/ル'ウル",
+0.0
+]
+]
+},
+{
+"text": "Games clearly rather?!",
+"plan": [
+[
+"normal",
+"ゲ'エムズ/クリア'リイ/ラ'ザア？",
+0.0
+]
+]
+},
+{
+"text": "Neon!",
+"plan": [
+[
+"normal",
+"ネ'オン",
+0.0
+]
+]
+},
+{
+"text": "before iii or *i'll*!!",
+"plan": [
+[
+"normal",
+"ビ'フォオ/アイオアア'イル",
+0.0
+]
+]
+},
+{
+"text": "*boss* Mondays 2303.",
+"plan": [
+[
+"normal",
+"ボ'ス/マンデ'エス/トゥウサウザンドスリイハンドレッドス'リイ",
+0.0
+]
+]
+},
+{
+"text": "didn't and~",
+"plan": [
+[
+"normal",
+"ディ'ントアンド",
+0.0
+]
+]
+},
+{
+"text": "supposed exactly One know Let's did?!",
+"plan": [
+[
+"normal",
+"サポ'オズド/イグザクト'リイ/ワ'ン/ノ'ウレッツディド？",
+0.0
+]
+]
+},
+{
+"text": "gone button *cool* learn Every!!",
+"plan": [
+[
+"normal",
+"ゴ'オン/ボ'タン/ク'ウル/ラ'アン/エブ'リイ",
+0.0
+]
+]
+},
+{
+"text": "idea seashore.",
+"plan": [
+[
+"normal",
+"ア'イディア/シ'イショア",
+0.0
+]
+]
+},
+{
+"text": "Anyway real Good end wood One Okay 79 —",
+"plan": [
+[
+"normal",
+"エニ'ウェイ/リ'アル/グ'ッド/エ'ンド/ウ'ッド/ワ'ン/オ'オケエ/セベンティイナ'イン",
+0.0
+]
+]
+},
+{
+"text": "eight actually plain hi *wasn't* explode going innocent Okay.",
+"plan": [
+[
+"normal",
+"エ'イト/アクチュア'リイ/プレ'イン/ハ'イ/ウォ'スト/エクスプロ'オド/ゴ'オイング/イノセ'ント/オ'オケエ",
+0.0
+]
+]
+},
+{
+"text": "Seashells years looking dog disappointed deleted hehehe Coffee 1774.",
+"plan": [
+[
+"normal",
+"シイシェ'ルズ/イヤ'アズ/ルッキ'ング/ド'ッグ/ジサポ'イン/デリテ'ッド/エヘ'ヘヘ/コ'オヒイ/ワンサウザンドセブンハンドレッドセベンティ'イファア",
+0.0
+]
+]
+},
+{
+"text": "really.",
+"plan": [
+[
+"normal",
+"リア'リイ",
+0.0
+]
+]
+},
+{
+"text": "Unity had But do?",
+"plan": [
+[
+"normal",
+"ユ'ニティハッドバットドゥ？",
+0.0
+]
+]
+},
+{
+"text": "miiinding Welcome...",
+"plan": [
+[
+"normal",
+"マインディ'ング/ウェル'カム",
+0.0
+]
+]
+},
+{
+"text": "problems delicious m milk Neon Oh secret?!",
+"plan": [
+[
+"normal",
+"プロブレ'ムズ/デリ'シャス/エ'ム/ミ'ルク/ネ'オン/オ'オ/シイクレ'ット？",
+0.0
+]
+]
+},
+{
+"text": "Of wasn't lose house ugh Yes websites have umm!",
+"plan": [
+[
+"normal",
+"オブウォ'スト/ル'ウズ/ハ'ウス/ア'グ/イ'エス/ウェブサ'イツ/ハブア'アン",
+0.0
+]
+]
+},
+{
+"text": "Rule i'll ten wanna headphones?!",
+"plan": [
+[
+"normal",
+"ル'ウル/アイルテ'ン/ワ'ナ/ヘッドフォ'ンズ？",
+0.0
+]
+]
+},
+{
+"text": "We'd year Mostly fox Hmm disappointed This VOICEVOX project...",
+"plan": [
+[
+"normal",
+"ウィ'イド/イ'ヤア/モス'リイ/フォ'ックス/フ'ウン/ジサポ'イン/ディスボイセボ'ックス/プロジェ'クト",
+0.0
+]
+]
+},
+{
+"text": "appear my oh his welcome touch Instagram with therefore~",
+"plan": [
+[
+"normal",
+"ア'ピア/マイオ'オ/ヒズウェル'カム/タ'ッチ/インスタグ'ラム/ウィズサアフ'フォオ",
+0.0
+]
+]
+},
+{
+"text": "sleeping breath i'll unity Pleeease wanna She decide mmh~",
+"plan": [
+[
+"normal",
+"スリイピ'ング/ブ'レス/アイルユ'ニティ/プリ'イズ/ワ'ナ/シイディサ'イド/ウ'ウン",
+0.0
+]
+]
+},
+{
+"text": "Really see entire Huh whatever,",
+"plan": [
+[
+"normal",
+"リア'リイ/シ'イ/エンタ'イア/ハ'/ワットエ'バア",
+0.0
+]
+]
+},
+{
+"text": "fixing fox sulk won't years What.",
+"plan": [
+[
+"normal",
+"フィクシ'ング/フォ'ックス/サ'ルク/ウォントイヤ'アズワット",
+0.0
+]
+]
+},
+{
+"text": "it's forget programming continue crazy dark and...",
+"plan": [
+[
+"normal",
+"イッツフォゲ'ット/プログラミ'ング/コンティ'ニュウ/クレ'イジイ/ダ'アクアンド",
+0.0
+]
+]
+},
+{
+"text": "Oh if please!!",
+"plan": [
+[
+"normal",
+"オ'オ/イフプリ'イズ",
+0.0
+]
+]
+},
+{
+"text": "an learned can't *anything* universe talk made monitors~",
+"plan": [
+[
+"normal",
+"アンリア'ンド/キャントエニシ'ング/ユニバ'アス/ト'オク/メ'イド/モニタ'アズ",
+0.0
+]
+]
+},
+{
+"text": "wouldn't pong Sorry now~",
+"plan": [
+[
+"normal",
+"ウドゥントポ'ング/ソ'オリイ/ナ'ウ",
+0.0
+]
+]
+},
+{
+"text": "anime any sometimes!!",
+"plan": [
+[
+"normal",
+"ア'ニメ/エ'ニイ/サムタ'イムズ",
+0.0
+]
+]
+},
+{
+"text": "Pleeeeease know 1982~",
+"plan": [
+[
+"normal",
+"プリ'イズ/ノ'ウ/ワンサウザンドナインハンドレッドエイティ'トゥウ",
+0.0
+]
+]
+},
+{
+"text": "Gone corner *W* She!",
+"plan": [
+[
+"normal",
+"ゴ'オン/コ'オナア/ダブ'リュウシイ",
+0.0
+]
+]
+},
+{
+"text": "still Yeees to business super what anyway...",
+"plan": [
+[
+"normal",
+"ス'チル/イ'エス/トゥビジ'ネス/ス'ウパア/ワットエニ'ウェイ",
+0.0
+]
+]
+},
+{
+"text": "Allow...",
+"plan": [
+[
+"normal",
+"ア'ラウ",
+0.0
+]
+]
+},
+{
+"text": "Kidding minding ♡",
+"plan": [
+[
+"normal",
+"キディ'ング/マインディ'ング",
+0.0
+]
+]
+},
+{
+"text": "amazing Sweet Hmm forget game would I-I'll —",
+"plan": [
+[
+"normal",
+"アメイジ'ング/スイ'イト/フ'ウン/フォゲ'ット/ゲ'エム/ウ'ッドア、ア'イル",
+0.0
+]
+]
+},
+{
+"text": "problems Literally sooo invisible kinda *clicked*,",
+"plan": [
+[
+"normal",
+"プロブレ'ムズ/リテラ'リイ/ソオインビジ'ブル/カ'インダ/クリ'ック",
+0.0
+]
+]
+},
+{
+"text": "Supporters wouldn't fox about why done portals 1683 ♡",
+"plan": [
+[
+"normal",
+"サポオタ'アズ/ウドゥントフォ'ックス/アバ'ウト/ホ'ワイ/ダ'ン/ポオタ'ルズ/ワンサウザンドシックスハンドレッドエイティス'リイ",
+0.0
+]
+]
+},
+{
+"text": "gets talking 1177 —",
+"plan": [
+[
+"normal",
+"ゲ'ッツ/トオキ'ング/ワンサウザンドワンハンドレッドセベンティイセ'ブン",
+0.0
+]
+]
+},
+{
+"text": "vtuber can't crashes Mondays peeeck night?!",
+"plan": [
+[
+"normal",
+"ブイチュ'ウバア/キャントクラ'ッシュズ/マンデ'エス/ペ'ック/ナ'イト？",
+0.0
+]
+]
+},
+{
+"text": "talking English *How* vtuber.",
+"plan": [
+[
+"normal",
+"トオキ'ング/イングリ'ッシュ/ハ'ウ/ブイチュ'ウバア",
+0.0
+]
+]
+},
+{
+"text": "Just games only whisper programming super let fish collider —",
+"plan": [
+[
+"normal",
+"ジャストゲ'エムズ/オ'ンリイ/ウィス'パア/プログラミ'ング/ス'ウパア/レ'ット/フィ'ッシュ/コラ'イダア",
+0.0
+]
+]
+},
+{
+"text": "Wanna hmph *yes* of was reads?",
+"plan": [
+[
+"normal",
+"ワ'ナ/フ'ン/イ'エス/オブワズリ'イズ？",
+0.0
+]
+]
+},
+{
+"text": "Pleeease?!",
+"plan": [
+[
+"normal",
+"プリ'イズ？",
+0.0
+]
+]
+},
+{
+"text": "made today shouldn't file Now also sad quick yep ♡",
+"plan": [
+[
+"normal",
+"メ'イド/トゥ'デイ/シャルドファ'イル/ナ'ウ/オオル'ソオ/サ'ッド/クイ'ック/イェ'ップ",
+0.0
+]
+]
+},
+{
+"text": "You shout cool Don't *house* rather CAN'T zundamon too?",
+"plan": [
+[
+"normal",
+"ユウシャ'ット/ク'ウル/ドントハ'ウス/ラ'ザア/キャントズンダ'モントゥウ？",
+0.0
+]
+]
+},
+{
+"text": "peeercent ♡",
+"plan": [
+[
+"normal",
+"パアセ'ント",
+0.0
+]
+]
+},
+{
+"text": "a programming wait apple 1878 —",
+"plan": [
+[
+"normal",
+"アプログラミ'ング/ウェ'イト/ア'ップル/ワンサウザンドエイトハンドレッドセベンティイエ'イト",
+0.0
+]
+]
+},
+{
+"text": "How programming Pong!!",
+"plan": [
+[
+"normal",
+"ハウプログラミ'ング/ポ'ング",
+0.0
+]
+]
+},
+{
+"text": "sorry long Hello year ♡",
+"plan": [
+[
+"normal",
+"ソ'オリイ/ロ'ング/ハ'ロオ/イ'ヤア",
+0.0
+]
+]
+},
+{
+"text": "fixing your what's blanket gone Level 123.",
+"plan": [
+[
+"normal",
+"フィクシ'ング/ユアワ'ッツ/ブランケ'ット/ゴ'オン/レ'ベル/ワンハンドレッドツエンティス'リイ",
+0.0
+]
+]
+},
+{
+"text": "Ever anything Good FBI red umm ♡",
+"plan": [
+[
+"normal",
+"エ'バア/エニシ'ング/グ'ッド/エフビ'イアイ/レ'ッド/ア'アン",
+0.0
+]
+]
+},
+{
+"text": "Neon use his again their harmless Did duper then~",
+"plan": [
+[
+"normal",
+"ネ'オン/ユ'ウズ/ヒズアゲ'イン/ゼアハアム'レス/ディドデュ'ウパアゼン",
+0.0
+]
+]
+},
+{
+"text": "touch o-over here keyboards 1299,",
+"plan": [
+[
+"normal",
+"タ'ッチ/オ'、オ'オバア/ヒ'ア/キイボ'オドズ/ワンサウザンドトゥウハンドレッドニネティイナ'イン",
+0.0
+]
+]
+},
+{
+"text": "phone...",
+"plan": [
+[
+"normal",
+"フォ'ン",
+0.0
+]
+]
+},
+{
+"text": "Pleeease year Oh very nothing years *want* with actually!",
+"plan": [
+[
+"normal",
+"プリ'イズ/イ'ヤア/オ'オ/ベリイナッシ'ング/イヤ'アズ/ウォ'ント/ウィズアクチュア'リイ",
+0.0
+]
+]
+},
+{
+"text": "Zundamon sword~",
+"plan": [
+[
+"normal",
+"ズンダ'モン/ソ'オド",
+0.0
+]
+]
+},
+{
+"text": "blanket any anime waaay~",
+"plan": [
+[
+"normal",
+"ブランケ'ット/エ'ニイ/ア'ニメ/ウェ'イ",
+0.0
+]
+]
+},
+{
+"text": "Say Precisely whatever be new way minutes,",
+"plan": [
+[
+"normal",
+"セ'イ/プレシ'リイ/ワットエ'バア/ビイニュ'ウ/ウェ'イ/ミニ'ッツ",
+0.0
+]
+]
+},
+{
+"text": "Today who Good baby sleeping delete invisible peck apple 431~",
+"plan": [
+[
+"normal",
+"トゥ'デイ/フウグ'ッド/ベ'ビイ/スリイピ'ング/デリ'イト/インビジ'ブル/ペ'ック/ア'ップル/ファアハンドレッドサアティ'ワン",
+0.0
+]
+]
+},
+{
+"text": "accents anyway wanna!",
+"plan": [
+[
+"normal",
+"アクセ'ンツ/エニ'ウェイ/ワ'ナ",
+0.0
+]
+]
+},
+{
+"text": "Ugh~",
+"plan": [
+[
+"normal",
+"ア'グ",
+0.0
+]
+]
+},
+{
+"text": "brown i'd keyboards!",
+"plan": [
+[
+"normal",
+"ブラ'ウン/アイドキイボ'オドズ",
+0.0
+]
+]
+},
+{
+"text": "Give their~",
+"plan": [
+[
+"normal",
+"ギ'ブゼア",
+0.0
+]
+]
+},
+{
+"text": "Code I-In Maybe!",
+"plan": [
+[
+"normal",
+"コ'オド/イ'、インメ'イビイ",
+0.0
+]
+]
+},
+{
+"text": "How supposed —",
+"plan": [
+[
+"normal",
+"ハウサポ'オズド",
+0.0
+]
+]
+},
+{
+"text": "*amircollider*!",
+"plan": [
+[
+"normal",
+"アミイルコラ'イダア",
+0.0
+]
+]
+},
+{
+"text": "Something fly wow say that's t-things,",
+"plan": [
+[
+"normal",
+"サムシ'ング/フ'ライ/ワ'オ/セ'イ/ザ'ッツシ、シ'ングス",
+0.0
+]
+]
+},
+{
+"text": "hello that's Relax write into ♡",
+"plan": [
+[
+"normal",
+"ハ'ロオ/ザッツリラ'ックス/ラ'イト/イ'ントゥ",
+0.0
+]
+]
+},
+{
+"text": "*Follow* open Oops It's English them win watching is ♡",
+"plan": [
+[
+"normal",
+"フォ'ロオ/オ'オプン/ウ'ップス/イッツイングリ'ッシュ/ゼムウィ'ン/ウォッチ'ングイズ",
+0.0
+]
+]
+},
+{
+"text": "*It* Never told.",
+"plan": [
+[
+"normal",
+"イ'ット/ネ'バア/ト'オルド",
+0.0
+]
+]
+},
+{
+"text": "than.",
+"plan": [
+[
+"normal",
+"ザ'ン",
+0.0
+]
+]
+},
+{
+"text": "Them really make delicious car *deep* lose That?",
+"plan": [
+[
+"normal",
+"ゼムリア'リイ/メ'イク/デリ'シャス/カ'ア/ディ'イプ/ル'ウズザット？",
+0.0
+]
+]
+},
+{
+"text": "hostage rule creature friends seashore?",
+"plan": [
+[
+"normal",
+"ホステ'エジ/ル'ウル/クリ'イチャア/フレ'ンズ/シ'イショア？",
+0.0
+]
+]
+},
+{
+"text": "her deep wanna desu hour Piper.",
+"plan": [
+[
+"normal",
+"ハアディ'イプ/ワ'ナ/デ'スウ/ア'ワア/パ'イパア",
+0.0
+]
+]
+},
+{
+"text": "fox *six*,",
+"plan": [
+[
+"normal",
+"フォ'ックス/シ'ックス",
+0.0
+]
+]
+},
+{
+"text": "i'm That?",
+"plan": [
+[
+"normal",
+"ア'イムザット？",
+0.0
+]
+]
+},
+{
+"text": "four or thank learn —",
+"plan": [
+[
+"normal",
+"ファ'ア/オアサ'ンク/ラ'アン",
+0.0
+]
+]
+},
+{
+"text": "Who again staring banana Do who stay welcome bug...",
+"plan": [
+[
+"normal",
+"フウアゲ'イン/ステアリ'ング/バ'ナナ/ドゥフウス'テイ/ウェル'カム/バ'グ",
+0.0
+]
+]
+},
+{
+"text": "our Whaaat's wouldn't portals peck Maybe!",
+"plan": [
+[
+"normal",
+"アワアワ'ッツ/ウドゥントポオタ'ルズ/ペ'ック/メ'イビイ",
+0.0
+]
+]
+},
+{
+"text": "No Welcome,",
+"plan": [
+[
+"normal",
+"ノオウェル'カム",
+0.0
+]
+]
+},
+{
+"text": "Years screen causing an What's one fault m!!",
+"plan": [
+[
+"normal",
+"イヤ'アズ/スクリ'イン/コオジ'ング/アンワ'ッツ/ワ'ン/フォ'ルト/エ'ム",
+0.0
+]
+]
+},
+{
+"text": "*fish*~",
+"plan": [
+[
+"normal",
+"フィ'ッシュ",
+0.0
+]
+]
+},
+{
+"text": "fantasy headphones learn An Thank!",
+"plan": [
+[
+"normal",
+"ファンタ'ジイ/ヘッドフォ'ンズ/ラ'アン/アンサ'ンク",
+0.0
+]
+]
+},
+{
+"text": "very business write take amazing ♡",
+"plan": [
+[
+"normal",
+"ベリイビジ'ネス/ラ'イト/テ'イク/アメイジ'ング",
+0.0
+]
+]
+},
+{
+"text": "deep iiimportant did —",
+"plan": [
+[
+"normal",
+"ディ'イプ/インポオタ'ントディド",
+0.0
+]
+]
+},
+{
+"text": "tired *lazy* collider thank for rather watching,",
+"plan": [
+[
+"normal",
+"タイア'アド/レ'エジイ/コラ'イダア/サ'ンク/フォオラ'ザア/ウォッチ'ング",
+0.0
+]
+]
+},
+{
+"text": "plain *woodchuck* They ♡",
+"plan": [
+[
+"normal",
+"プレ'イン/ウッドチャ'ックゼイ",
+0.0
+]
+]
+},
+{
+"text": "Store 585,",
+"plan": [
+[
+"normal",
+"ス'トア/ファイブハンドレッドエイティファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "every worst own am know What?",
+"plan": [
+[
+"normal",
+"エブ'リイ/ワ'アスト/オ'ウン/アムノ'ウワット？",
+0.0
+]
+]
+},
+{
+"text": "Katakana ♡",
+"plan": [
+[
+"normal",
+"カタ'カナ",
+0.0
+]
+]
+},
+{
+"text": "wood *youtube* 2173 —",
+"plan": [
+[
+"normal",
+"ウ'ッド/ユウチュ'ウブ/トゥウサウザンドワンハンドレッドセベンティイス'リイ",
+0.0
+]
+]
+},
+{
+"text": "on Exactly great real Katakana hehehe?!",
+"plan": [
+[
+"normal",
+"オンイグザクト'リイ/グリ'イト/リ'アル/カタ'カナ/エヘ'ヘヘ？",
+0.0
+]
+]
+},
+{
+"text": "Crazy Wait YouTube,",
+"plan": [
+[
+"normal",
+"クレ'イジイ/ウェ'イト/ユウチュ'ウブ",
+0.0
+]
+]
+},
+{
+"text": "do *Every*?",
+"plan": [
+[
+"normal",
+"ドゥエブ'リイ？",
+0.0
+]
+]
+},
+{
+"text": "Ugh *and*?!",
+"plan": [
+[
+"normal",
+"ア'グ/ア'ンド？",
+0.0
+]
+]
+},
+{
+"text": "A-away does good?",
+"plan": [
+[
+"normal",
+"ア'、アウ'エエ/ダズグ'ッド？",
+0.0
+]
+]
+},
+{
+"text": "Happens O-One has in gonna diiisappointed CAN'T.",
+"plan": [
+[
+"normal",
+"ハペ'ンス/ワ'、ワ'ン/ハズインゴ'ナ/ジサポ'インキャント",
+0.0
+]
+]
+},
+{
+"text": "magic...",
+"plan": [
+[
+"normal",
+"マジ'ック",
+0.0
+]
+]
+},
+{
+"text": "doing D-Do What's real delete make!!",
+"plan": [
+[
+"normal",
+"ドゥウイ'ング/ドゥ'、ドゥワ'ッツ/リ'アル/デリ'イト/メ'イク",
+0.0
+]
+]
+},
+{
+"text": "Fixing!!",
+"plan": [
+[
+"normal",
+"フィクシ'ング",
+0.0
+]
+]
+},
+{
+"text": "sighs collider it's morning!!",
+"plan": [
+[
+"normal",
+"サ'イス/コラ'イダア/イッツモオニ'ング",
+0.0
+]
+]
+},
+{
+"text": "love well h-huh really Please possible~",
+"plan": [
+[
+"normal",
+"ラ'ブ/ウェ'ル/ハ'、ハ'/リア'リイ/プリ'イズ/ポシ'ブル",
+0.0
+]
+]
+},
+{
+"text": "Pong Uhm take *fine*!",
+"plan": [
+[
+"normal",
+"ポ'ング/ア'アン/テ'イク/ファ'イン",
+0.0
+]
+]
+},
+{
+"text": "Promise watching fixing Kawaii code been unfair We'd,",
+"plan": [
+[
+"normal",
+"プロ'ミス/ウォッチ'ング/フィクシ'ング/カ'ワイ/コ'オド/ビインア'ンフェア/ウィ'イド",
+0.0
+]
+]
+},
+{
+"text": "tired story win ooout amircollider!",
+"plan": [
+[
+"normal",
+"タイア'アド/スト'オリイ/ウィ'ン/ア'ウト/アミイルコラ'イダア",
+0.0
+]
+]
+},
+{
+"text": "itself see t-there~",
+"plan": [
+[
+"normal",
+"イット'ルフ/シ'イ/ゼ'、ゼ'ア",
+0.0
+]
+]
+},
+{
+"text": "take Now fish most trouble M-Mm —",
+"plan": [
+[
+"normal",
+"テ'イク/ナ'ウ/フィ'ッシュ/モ'スト/トラ'ブル/ウ'、ウ'ン",
+0.0
+]
+]
+},
+{
+"text": "end Never positively.",
+"plan": [
+[
+"normal",
+"エ'ンド/ネ'バア/ポジティブ'リイ",
+0.0
+]
+]
+},
+{
+"text": "Katana be?",
+"plan": [
+[
+"normal",
+"カ'タナビイ？",
+0.0
+]
+]
+},
+{
+"text": "until ok...",
+"plan": [
+[
+"normal",
+"ア'ンチル/オ'オケエ",
+0.0
+]
+]
+},
+{
+"text": "Keyboards...",
+"plan": [
+[
+"normal",
+"キイボ'オドズ",
+0.0
+]
+]
+},
+{
+"text": "of phone orange allow —",
+"plan": [
+[
+"normal",
+"オブフォ'ン/オレ'ンジ/ア'ラウ",
+0.0
+]
+]
+},
+{
+"text": "than Good no fine we subscriber?!",
+"plan": [
+[
+"normal",
+"ザング'ッド/ノオファ'イン/ウィイサブスクラ'イバア？",
+0.0
+]
+]
+},
+{
+"text": "Say couldn't amircollider.",
+"plan": [
+[
+"normal",
+"セ'イ/クドゥントアミイルコラ'イダア",
+0.0
+]
+]
+},
+{
+"text": "itself Level yeeeah.",
+"plan": [
+[
+"normal",
+"イット'ルフ/レ'ベル/イェ'ア",
+0.0
+]
+]
+},
+{
+"text": "shouldn't been Close store use tomorrow Uhm Please possibly~",
+"plan": [
+[
+"normal",
+"シャルドビインクロ'オズ/ス'トア/ユ'ウズ/トゥモ'ロオ/ア'アン/プリ'イズ/ポッシブ'リイ",
+0.0
+]
+]
+},
+{
+"text": "use Five tomorrow I'm Strawberry notice,",
+"plan": [
+[
+"normal",
+"ユ'ウズ/ファ'イブ/トゥモ'ロオ/アイムストロベ'リイ/ノ'オティス",
+0.0
+]
+]
+},
+{
+"text": "Year something m not promised websites were 402!",
+"plan": [
+[
+"normal",
+"イ'ヤア/サムシ'ング/エ'ム/ノットプロミ'スト/ウェブサ'イツ/ワアファアハンドレッド'トゥウ",
+0.0
+]
+]
+},
+{
+"text": "House —",
+"plan": [
+[
+"normal",
+"ハ'ウス",
+0.0
+]
+]
+},
+{
+"text": "brown ooor fox Sit unfair...",
+"plan": [
+[
+"normal",
+"ブラ'ウン/オアフォ'ックス/シ'ット/ア'ンフェア",
+0.0
+]
+]
+},
+{
+"text": "House They holes yay what mm four 459 —",
+"plan": [
+[
+"normal",
+"ハ'ウス/ゼイホ'オルス/イェ'エイ/ワットウ'ン/ファ'ア/ファアハンドレッドフィフティイナ'イン",
+0.0
+]
+]
+},
+{
+"text": "Amazing You've the,",
+"plan": [
+[
+"normal",
+"アメイジ'ング/ユ'ウブザ",
+0.0
+]
+]
+},
+{
+"text": "no hmm learn milk headphones,",
+"plan": [
+[
+"normal",
+"ノオフ'ウン/ラ'アン/ミ'ルク/ヘッドフォ'ンズ",
+0.0
+]
+]
+},
+{
+"text": "Innocent think were peck appear three decide?!",
+"plan": [
+[
+"normal",
+"イノセ'ント/シ'ンク/ワアペ'ック/ア'ピア/ス'リイ/ディサ'イド？",
+0.0
+]
+]
+},
+{
+"text": "holding wow only that unfair 125!!",
+"plan": [
+[
+"normal",
+"ホオルディ'ング/ワ'オ/オ'ンリイ/ザットア'ンフェア/ワンハンドレッドツエンティファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "So *hey* Today hmm every...",
+"plan": [
+[
+"normal",
+"ソオヘ'イ/トゥ'デイ/フ'ウン/エブ'リイ",
+0.0
+]
+]
+},
+{
+"text": "You've much *red* supposed Level six 107 ♡",
+"plan": [
+[
+"normal",
+"ユウブム'ッチ/レ'ッド/サポ'オズド/レ'ベル/シ'ックス/ワンハンドレッドセ'ブン",
+0.0
+]
+]
+},
+{
+"text": "VOICEVOX but w-what's Did Maybe subscriber gonna mmh Relax 2062?",
+"plan": [
+[
+"normal",
+"ボイセボ'ックス/バ'ットワ、ワ'ッツ/ディドメ'イビイ/サブスクラ'イバア/ゴ'ナ/ウ'ウン/リラ'ックス/トゥウサウザンドシックスティ'イトゥウ？",
+0.0
+]
+]
+},
+{
+"text": "This Kawaii u-us thing *talk* —",
+"plan": [
+[
+"normal",
+"ディスカ'ワイ/ア'、アスシ'ング/ト'オク",
+0.0
+]
+]
+},
+{
+"text": "orange it's sleeping friends Really friends Really,",
+"plan": [
+[
+"normal",
+"オレ'ンジ/イッツスリイピ'ング/フレ'ンズ/リア'リイ/フレ'ンズ/リア'リイ",
+0.0
+]
+]
+},
+{
+"text": "fantasy with gets *Ugh*.",
+"plan": [
+[
+"normal",
+"ファンタ'ジイ/ウィズゲ'ッツ/ア'グ",
+0.0
+]
+]
+},
+{
+"text": "your phone It's are notice Oops ♡",
+"plan": [
+[
+"normal",
+"ユアフォ'ン/イッツアアノ'オティス/ウ'ップス",
+0.0
+]
+]
+},
+{
+"text": "Mobile going only *until* nap yay Good innocent!",
+"plan": [
+[
+"normal",
+"モバ'イル/ゴ'オイング/オ'ンリイ/ア'ンチル/ナ'ップ/イェ'エイ/グ'ッド/イノセ'ント",
+0.0
+]
+]
+},
+{
+"text": "games Mostly invisible crazy none dark?!",
+"plan": [
+[
+"normal",
+"ゲ'エムズ/モス'リイ/インビジ'ブル/クレ'イジイ/ナ'ン/ダ'アク？",
+0.0
+]
+]
+},
+{
+"text": "eyes universe portals two Go 395!!",
+"plan": [
+[
+"normal",
+"ア'イズ/ユニバ'アス/ポオタ'ルズ/トゥ'ウ/ゴ'オ/スリイハンドレッドニネティイファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "make where some Close think couldn't,",
+"plan": [
+[
+"normal",
+"メ'イク/ウェ'ア/サ'ム/クロ'オズ/シ'ンク/ク'ドゥント",
+0.0
+]
+]
+},
+{
+"text": "Been minutes his for it sorry Every,",
+"plan": [
+[
+"normal",
+"ビインミニ'ッツ/ヒズフォオイットソ'オリイ/エブ'リイ",
+0.0
+]
+]
+},
+{
+"text": "Katakana didn't none that's.",
+"plan": [
+[
+"normal",
+"カタ'カナ/ディントナ'ンザッツ",
+0.0
+]
+]
+},
+{
+"text": "been peck mobile four!!",
+"plan": [
+[
+"normal",
+"ビインペ'ック/モバ'イル/ファ'ア",
+0.0
+]
+]
+},
+{
+"text": "Amazing leeearn That...",
+"plan": [
+[
+"normal",
+"アメイジ'ング/ラ'アンザット",
+0.0
+]
+]
+},
+{
+"text": "Kinda!!",
+"plan": [
+[
+"normal",
+"カ'インダ",
+0.0
+]
+]
+},
+{
+"text": "Level?!",
+"plan": [
+[
+"normal",
+"レ'ベル？",
+0.0
+]
+]
+},
+{
+"text": "absolute every yay Mm touch black night,",
+"plan": [
+[
+"normal",
+"アブソリュ'ウト/エブ'リイ/イェ'エイ/ウ'ン/タ'ッチ/ブラ'ック/ナ'イト",
+0.0
+]
+]
+},
+{
+"text": "Ok delicious out praise jumps today —",
+"plan": [
+[
+"normal",
+"オ'オケエ/デリ'シャス/ア'ウト/プレ'イズ/ジャ'ンプス/トゥ'デイ",
+0.0
+]
+]
+},
+{
+"text": "*duper* u-uhm —",
+"plan": [
+[
+"normal",
+"デュ'ウパア/ア'、ア'アン",
+0.0
+]
+]
+},
+{
+"text": "up into hours You How Would Mm anything worst...",
+"plan": [
+[
+"normal",
+"ア'ップ/イ'ントゥ/アワ'アズ/ユウハウウッドウ'ン/エニシ'ング/ワ'アスト",
+0.0
+]
+]
+},
+{
+"text": "Some think magic 770?!",
+"plan": [
+[
+"normal",
+"サ'ム/シ'ンク/マジ'ック/セブンハンドレッドセベ'ンティイ？",
+0.0
+]
+]
+},
+{
+"text": "who most Breathe down by learned Maybe shh fox,",
+"plan": [
+[
+"normal",
+"フウモ'スト/ブリ'イズ/ダ'ウン/バイリア'ンド/メ'イビイ/シ'イッ/フォ'ックス",
+0.0
+]
+]
+},
+{
+"text": "Win play quiet wow awesome thanks quick 359!",
+"plan": [
+[
+"normal",
+"ウィ'ン/プ'レイ/クイエ'ット/ワ'オ/オ'オサム/サ'ンクス/クイ'ック/スリイハンドレッドフィフティイナ'イン",
+0.0
+]
+]
+},
+{
+"text": "possibly *anime* just also every —",
+"plan": [
+[
+"normal",
+"ポッシブ'リイ/ア'ニメ/ジャストオオル'ソオ/エブ'リイ",
+0.0
+]
+]
+},
+{
+"text": "sighs three can't 1396~",
+"plan": [
+[
+"normal",
+"サ'イス/ス'リイ/キャントワンサウザンドスリイハンドレッドニネティイシ'ックス",
+0.0
+]
+]
+},
+{
+"text": "cats *unity* Relax talk w-what's.",
+"plan": [
+[
+"normal",
+"キャ'ッツ/ユ'ニティ/リラ'ックス/ト'オク/ワ'、ワ'ッツ",
+0.0
+]
+]
+},
+{
+"text": "wow Sooorry w-was!!",
+"plan": [
+[
+"normal",
+"ワ'オ/ソ'オリイ/ワ'、ワ'ズ",
+0.0
+]
+]
+},
+{
+"text": "properly brown pooortals if properly!!",
+"plan": [
+[
+"normal",
+"プロパ'リイ/ブラ'ウン/ポオタ'ルズ/イフプロパ'リイ",
+0.0
+]
+]
+},
+{
+"text": "fly forget allow gonna with deleted!!",
+"plan": [
+[
+"normal",
+"フ'ライ/フォゲ'ット/ア'ラウ/ゴ'ナ/ウィズデリテ'ッド",
+0.0
+]
+]
+},
+{
+"text": "Maybe 2416 ♡",
+"plan": [
+[
+"normal",
+"メ'イビイ/トゥウサウザンドファアハンドレッドシックスティ'イン",
+0.0
+]
+]
+},
+{
+"text": "Hello learn files of An than Sweet —",
+"plan": [
+[
+"normal",
+"ハ'ロオ/ラ'アン/ファ'イルス/オブアンザンスイ'イト",
+0.0
+]
+]
+},
+{
+"text": "use Every promised learn ok 1455!!",
+"plan": [
+[
+"normal",
+"ユ'ウズ/エブ'リイ/プロミ'スト/ラ'アン/オ'オケエ/ワンサウザンドファアハンドレッドフィフティイファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "Iii'd cats open screen 2181!!",
+"plan": [
+[
+"normal",
+"イ'イディイ/キャ'ッツ/オ'オプン/スクリ'イン/トゥウサウザンドワンハンドレッドエイティ'ワン",
+0.0
+]
+]
+},
+{
+"text": "Correct *description* black fixing worst 2454.",
+"plan": [
+[
+"normal",
+"コレ'クト/ディスクリプ'ション/ブラ'ック/フィクシ'ング/ワ'アスト/トゥウサウザンドファアハンドレッドフィフティ'イファア",
+0.0
+]
+]
+},
+{
+"text": "weeebsites could learn none ♡",
+"plan": [
+[
+"normal",
+"ウェブサ'イツ/クッドラ'アン/ナ'ン",
+0.0
+]
+]
+},
+{
+"text": "Zundamon's i'll any unity,",
+"plan": [
+[
+"normal",
+"ツンダモ'ンズ/アイルエ'ニイ/ユ'ニティ",
+0.0
+]
+]
+},
+{
+"text": "Games Absolutely going unfair worst keep h-happen 782,",
+"plan": [
+[
+"normal",
+"ゲ'エムズ/アブソリュウテ'リイ/ゴ'オイング/ア'ンフェア/ワ'アスト/キ'イプ/ハ'、ハ'プン/セブンハンドレッドエイティ'トゥウ",
+0.0
+]
+]
+},
+{
+"text": "deleted most just Yay all this NASA~",
+"plan": [
+[
+"normal",
+"デリテ'ッド/モ'スト/ジャストイェ'エイ/オ'オル/ディスエヌエエエス'エエ",
+0.0
+]
+]
+},
+{
+"text": "M-my?",
+"plan": [
+[
+"normal",
+"マ'、マ'イ？",
+0.0
+]
+]
+},
+{
+"text": "K-known one quiet What walked lazy ♡",
+"plan": [
+[
+"normal",
+"ナ'、ナ'ウン/ワ'ン/クイエ'ット/ワットウォ'オク/レ'エジイ",
+0.0
+]
+]
+},
+{
+"text": "Sometimes aaabout?!",
+"plan": [
+[
+"normal",
+"サムタ'イムズ/アバ'ウト？",
+0.0
+]
+]
+},
+{
+"text": "secret B-But *think*?",
+"plan": [
+[
+"normal",
+"シイクレ'ット/バ'、バットシ'ンク？",
+0.0
+]
+]
+},
+{
+"text": "dev shout going!!",
+"plan": [
+[
+"normal",
+"デ'ヴ/シャ'ット/ゴ'オイング",
+0.0
+]
+]
+},
+{
+"text": "follow ten monitors apple 1330,",
+"plan": [
+[
+"normal",
+"フォ'ロオ/テ'ン/モニタ'アズ/ア'ップル/ワンサウザンドスリイハンドレッドサ'アティ",
+0.0
+]
+]
+},
+{
+"text": "channel Hmm would corner five ♡",
+"plan": [
+[
+"normal",
+"チャ'ネル/フ'ウン/ウッドコ'オナア/ファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "lose one just played look appear never thing supposed.",
+"plan": [
+[
+"normal",
+"ル'ウズ/ワ'ン/ジャストプレ'イド/ル'ック/ア'ピア/ネ'バア/シ'ング/サポ'オズド",
+0.0
+]
+]
+},
+{
+"text": "again Is universe their pc years i've?!",
+"plan": [
+[
+"normal",
+"アゲ'イン/イズユニバ'アス/ゼアピ'イシイ/イヤ'アズアイブ？",
+0.0
+]
+]
+},
+{
+"text": "Exactly Every kinda Pleeease anime FBI This What's katana...",
+"plan": [
+[
+"normal",
+"イグザクト'リイ/エブ'リイ/カ'インダ/プリ'イズ/ア'ニメ/エフビ'イアイ/ディスワ'ッツ/カ'タナ",
+0.0
+]
+]
+},
+{
+"text": "play.",
+"plan": [
+[
+"normal",
+"プ'レイ",
+0.0
+]
+]
+},
+{
+"text": "Which my zundamon happen r-rather!",
+"plan": [
+[
+"normal",
+"ウィ'ッチ/マイズンダ'モン/ハ'プン/ラ'、ラ'ザア",
+0.0
+]
+]
+},
+{
+"text": "follow made *very* win NASA and~",
+"plan": [
+[
+"normal",
+"フォ'ロオ/メ'イド/ベ'リイ/ウィ'ン/エヌエエエス'エエアンド",
+0.0
+]
+]
+},
+{
+"text": "That appear Today deep Promise m mean about?!",
+"plan": [
+[
+"normal",
+"ザットア'ピア/トゥ'デイ/ディ'イプ/プロ'ミス/エ'ム/ミ'イン/アバ'ウト？",
+0.0
+]
+]
+},
+{
+"text": "know baby monitors Hmph business.",
+"plan": [
+[
+"normal",
+"ノ'ウ/ベ'ビイ/モニタ'アズ/フ'ン/ビジ'ネス",
+0.0
+]
+]
+},
+{
+"text": "Their What's monitors wasn't Don't...",
+"plan": [
+[
+"normal",
+"ゼアワ'ッツ/モニタ'アズ/ウォ'ストドント",
+0.0
+]
+]
+},
+{
+"text": "*mean* Heeello 1650!",
+"plan": [
+[
+"normal",
+"ミ'イン/ハ'ロオ/ワンサウザンドシックスハンドレッドフィフ'ティイ",
+0.0
+]
+]
+},
+{
+"text": "*let's* caaan't once project,",
+"plan": [
+[
+"normal",
+"レ'ッツ/キャントワ'ンス/プロジェ'クト",
+0.0
+]
+]
+},
+{
+"text": "Piper than *them* fox our red at have.",
+"plan": [
+[
+"normal",
+"パ'イパア/ザンゼ'ム/フォ'ックス/アワアレ'ッドアットハブ",
+0.0
+]
+]
+},
+{
+"text": "could sometimes i-i'll!",
+"plan": [
+[
+"normal",
+"クッドサムタ'イムズ/ア'、ア'イル",
+0.0
+]
+]
+},
+{
+"text": "corner!!",
+"plan": [
+[
+"normal",
+"コ'オナア",
+0.0
+]
+]
+},
+{
+"text": "Description *What's* evening 586?",
+"plan": [
+[
+"normal",
+"ディスクリプ'ション/ワ'ッツ/イイブニ'ング/ファイブハンドレッドエイティシ'ックス？",
+0.0
+]
+]
+},
+{
+"text": "Years is *i'm*?",
+"plan": [
+[
+"normal",
+"イヤ'アズ/イズア'イム？",
+0.0
+]
+]
+},
+{
+"text": "We accents 2306!!",
+"plan": [
+[
+"normal",
+"ウィイアクセ'ンツ/トゥウサウザンドスリイハンドレッドシ'ックス",
+0.0
+]
+]
+},
+{
+"text": "D-Did Follow Hmm and VOICEVOX sad They wanna 2207...",
+"plan": [
+[
+"normal",
+"ディ'、ディドフォ'ロオ/フ'ウン/アンドボイセボ'ックス/サ'ッド/ゼイワ'ナ/トゥウサウザンドトゥウハンドレッドセ'ブン",
+0.0
+]
+]
+},
+{
+"text": "Never Maybe *my* —",
+"plan": [
+[
+"normal",
+"ネ'バア/メ'イビイ/マ'イ",
+0.0
+]
+]
+},
+{
+"text": "a talk Sit you on?",
+"plan": [
+[
+"normal",
+"アト'オク/シ'ットユウオン？",
+0.0
+]
+]
+},
+{
+"text": "Been my could 186 —",
+"plan": [
+[
+"normal",
+"ビインマイクッドワンハンドレッドエイティシ'ックス",
+0.0
+]
+]
+},
+{
+"text": "awaited!",
+"plan": [
+[
+"normal",
+"アウエイテ'ッド",
+0.0
+]
+]
+},
+{
+"text": "*am* every ooorange...",
+"plan": [
+[
+"normal",
+"ア'ム/エブ'リイ/オレ'ンジ",
+0.0
+]
+]
+},
+{
+"text": "NASA harmless hmm A say,",
+"plan": [
+[
+"normal",
+"エヌエエエス'エエ/ハアム'レス/フ'ウン/アセ'イ",
+0.0
+]
+]
+},
+{
+"text": "Hmph it's in robotic long Exactly known apple Sorry,",
+"plan": [
+[
+"normal",
+"フ'ン/イッツインロボチ'ック/ロ'ング/イグザクト'リイ/ナ'ウン/ア'ップル/ソ'オリイ",
+0.0
+]
+]
+},
+{
+"text": "games wow oh didn't What!",
+"plan": [
+[
+"normal",
+"ゲ'エムズ/ワ'オ/オ'オディントワット",
+0.0
+]
+]
+},
+{
+"text": "told looking before closely?",
+"plan": [
+[
+"normal",
+"ト'オルド/ルッキ'ング/ビ'フォオ/クロオス'リイ？",
+0.0
+]
+]
+},
+{
+"text": "gaaames —",
+"plan": [
+[
+"normal",
+"ゲ'エムズ",
+0.0
+]
+]
+},
+{
+"text": "magic corner *new* 1098...",
+"plan": [
+[
+"normal",
+"マジ'ック/コ'オナア/ニュ'ウ/ワンサウザンドニネティイエ'イト",
+0.0
+]
+]
+},
+{
+"text": "stay today minute properly here surely definitely Coffee percent —",
+"plan": [
+[
+"normal",
+"ス'テイ/トゥ'デイ/ミニ'ット/プロパ'リイ/ヒ'ア/シュア'リイ/デフィニテ'リイ/コ'オヒイ/パアセ'ント",
+0.0
+]
+]
+},
+{
+"text": "everything *Sweet* you're Tea problems it Anyway entire...",
+"plan": [
+[
+"normal",
+"エブリシ'ング/スイ'イト/ユアティ'イ/プロブレ'ムズ/イットエニ'ウェイ/エンタ'イア",
+0.0
+]
+]
+},
+{
+"text": "I corner~",
+"plan": [
+[
+"normal",
+"アイコ'オナア",
+0.0
+]
+]
+},
+{
+"text": "gotta diiidn't minding can't game win every anime?",
+"plan": [
+[
+"normal",
+"ガ'ッタ/ディントマインディ'ング/キャントゲ'エム/ウィ'ン/エブ'リイ/ア'ニメ？",
+0.0
+]
+]
+},
+{
+"text": "whisper Wow ok literally that Hello Welcome Uhm,",
+"plan": [
+[
+"normal",
+"ウィス'パア/ワ'オ/オ'オケエ/リテラ'リイ/ザットハ'ロオ/ウェル'カム/ア'アン",
+0.0
+]
+]
+},
+{
+"text": "what *them* Yeah ♡",
+"plan": [
+[
+"normal",
+"ワットゼ'ム/イェ'ア",
+0.0
+]
+]
+},
+{
+"text": "gonna amazing This Really fault 392...",
+"plan": [
+[
+"normal",
+"ゴ'ナ/アメイジ'ング/ディスリア'リイ/フォ'ルト/スリイハンドレッドニネティ'イトゥウ",
+0.0
+]
+]
+},
+{
+"text": "credit Hmm It's everything an What great Computers...",
+"plan": [
+[
+"normal",
+"クレジ'ット/フ'ウン/イッツエブリシ'ング/アンワットグリ'イト/コンピュウタ'アズ",
+0.0
+]
+]
+},
+{
+"text": "Sweet health disappointed *Thank* afternoon.",
+"plan": [
+[
+"normal",
+"スイ'イト/ヘ'ルス/ジサポ'イン/サ'ンク/アフタヌ'ウン",
+0.0
+]
+]
+},
+{
+"text": "appear well ten taaake chuck Sit holes amircollider 1103!",
+"plan": [
+[
+"normal",
+"ア'ピア/ウェ'ル/テ'ン/テ'イク/チャ'ック/シ'ット/ホ'オルス/アミイルコラ'イダア/ワンサウザンドワンハンドレッドス'リイ",
+0.0
+]
+]
+},
+{
+"text": "so Katakana any peck Neon should ♡",
+"plan": [
+[
+"normal",
+"ソオカタ'カナ/エ'ニイ/ペ'ック/ネ'オンシュッド",
+0.0
+]
+]
+},
+{
+"text": "seashells always scared Wait entire Piper open S-Sorry Katana...",
+"plan": [
+[
+"normal",
+"シイシェ'ルズ/オオルウェ'イズ/スケア'アド/ウェ'イト/エンタ'イア/パ'イパア/オ'オプン/ソ'、ソ'オリイ/カ'タナ",
+0.0
+]
+]
+},
+{
+"text": "pc hour Shh this play idea definitely subscriber Really ♡",
+"plan": [
+[
+"normal",
+"ピ'イシイ/ア'ワア/シ'イッ/ディスプ'レイ/ア'イディア/デフィニテ'リイ/サブスクラ'イバア/リア'リイ",
+0.0
+]
+]
+},
+{
+"text": "ending breathe *Just* W-Who...",
+"plan": [
+[
+"normal",
+"エンディ'ング/ブリ'イズ/ジャ'スト/フ'、フ'ウ",
+0.0
+]
+]
+},
+{
+"text": "secret Whaaat up Piper project everything its 678.",
+"plan": [
+[
+"normal",
+"シイクレ'ット/ワットア'ップ/パ'イパア/プロジェ'クト/エブリシ'ング/イッツシックスハンドレッドセベンティイエ'イト",
+0.0
+]
+]
+},
+{
+"text": "I'm subscriber programming good causing AmirCollider hey Zundamon.",
+"plan": [
+[
+"normal",
+"アイムサブスクラ'イバア/プログラミ'ング/グ'ッド/コオジ'ング/アミイルコラ'イダア/ヘ'イ/ズンダ'モン",
+0.0
+]
+]
+},
+{
+"text": "we Can~",
+"plan": [
+[
+"normal",
+"ウィ'イキャン",
+0.0
+]
+]
+},
+{
+"text": "mega fine Yeah —",
+"plan": [
+[
+"normal",
+"メ'ガ/ファ'イン/イェ'ア",
+0.0
+]
+]
+},
+{
+"text": "Breathe sometimes Huh your!",
+"plan": [
+[
+"normal",
+"ブリ'イズ/サムタ'イムズ/ハ'ユア",
+0.0
+]
+]
+},
+{
+"text": "Follow didn't holding happen keep breath.",
+"plan": [
+[
+"normal",
+"フォ'ロオ/ディントホオルディ'ング/ハ'プン/キ'イプ/ブ'レス",
+0.0
+]
+]
+},
+{
+"text": "best life properly Can three couldn't...",
+"plan": [
+[
+"normal",
+"ベ'スト/ラ'イフ/プロパ'リイ/キャンス'リイクドゥント",
+0.0
+]
+]
+},
+{
+"text": "Level love secret if just walked yes definitely baby —",
+"plan": [
+[
+"normal",
+"レ'ベル/ラ'ブ/シイクレ'ット/イフジャストウォ'オク/イ'エス/デフィニテ'リイ/ベ'ビイ",
+0.0
+]
+]
+},
+{
+"text": "This 1919~",
+"plan": [
+[
+"normal",
+"ディスワンサウザンドナインハンドレッドニネティ'イン",
+0.0
+]
+]
+},
+{
+"text": "together fantasy d-down afternoon nine!",
+"plan": [
+[
+"normal",
+"トゥギャ'ザア/ファンタ'ジイ/ダ'、ダ'ウン/アフタヌ'ウン/ナ'イン",
+0.0
+]
+]
+},
+{
+"text": "Okay H-Hmph three Really minutes?!",
+"plan": [
+[
+"normal",
+"オ'オケエ/フ'、フ'ン/ス'リイ/リア'リイ/ミニ'ッツ？",
+0.0
+]
+]
+},
+{
+"text": "try websites kinda It In...",
+"plan": [
+[
+"normal",
+"ト'ライ/ウェブサ'イツ/カ'インダイットイン",
+0.0
+]
+]
+},
+{
+"text": "Coffee could?",
+"plan": [
+[
+"normal",
+"コ'オヒイクッド？",
+0.0
+]
+]
+},
+{
+"text": "At c-channel Peter rather.",
+"plan": [
+[
+"normal",
+"ア'ットチャ、チャ'ネル/ペ'エタア/ラ'ザア",
+0.0
+]
+]
+},
+{
+"text": "three *That* Everything positively real hello house hmm~",
+"plan": [
+[
+"normal",
+"ス'リイ/ザ'ット/エブリシ'ング/ポジティブ'リイ/リ'アル/ハ'ロオ/ハ'ウス/フ'ウン",
+0.0
+]
+]
+},
+{
+"text": "It eyes wasn't games yep you're invisible hear...",
+"plan": [
+[
+"normal",
+"イットア'イズ/ウォ'スト/ゲ'エムズ/イェ'ップ/ユアインビジ'ブル/ヒ'ア",
+0.0
+]
+]
+},
+{
+"text": "Embarrassing lazy talking look ending 1059!",
+"plan": [
+[
+"normal",
+"エンバラシ'ング/レ'エジイ/トオキ'ング/ル'ック/エンディ'ング/ワンサウザンドフィフティイナ'イン",
+0.0
+]
+]
+},
+{
+"text": "Spider~",
+"plan": [
+[
+"normal",
+"スパ'イダア",
+0.0
+]
+]
+},
+{
+"text": "possibly *plain* red only hours Sometimes long long!",
+"plan": [
+[
+"normal",
+"ポッシブ'リイ/プレ'イン/レ'ッド/オ'ンリイ/アワ'アズ/サムタ'イムズ/ロ'ング/ロ'ング",
+0.0
+]
+]
+},
+{
+"text": "Win seashore VOICEVOX ♡",
+"plan": [
+[
+"normal",
+"ウィ'ン/シ'イショア/ボイセボ'ックス",
+0.0
+]
+]
+},
+{
+"text": "Minutes Wait innocent *hurry* ne...",
+"plan": [
+[
+"normal",
+"ミニ'ッツ/ウェ'イト/イノセ'ント/ハ'リイ/ネ'エ",
+0.0
+]
+]
+},
+{
+"text": "Time Strawberry Would,",
+"plan": [
+[
+"normal",
+"タ'イム/ストロベ'リイ/ウ'ッド",
+0.0
+]
+]
+},
+{
+"text": "delicious where Wait absolute therefore,",
+"plan": [
+[
+"normal",
+"デリ'シャス/ウェ'ア/ウェ'イト/アブソリュ'ウト/サアフ'フォオ",
+0.0
+]
+]
+},
+{
+"text": "button percent *scared* 2425~",
+"plan": [
+[
+"normal",
+"ボ'タン/パアセ'ント/スケア'アド/トゥウサウザンドファアハンドレッドツエンティファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "follow scared me and Who everything want?",
+"plan": [
+[
+"normal",
+"フォ'ロオ/スケア'アド/ミイアンドフウエブリシ'ング/ウォ'ント？",
+0.0
+]
+]
+},
+{
+"text": "everything up afternoon?!",
+"plan": [
+[
+"normal",
+"エブリシ'ング/ア'ップ/アフタヌ'ウン？",
+0.0
+]
+]
+},
+{
+"text": "Today Which boss!!",
+"plan": [
+[
+"normal",
+"トゥ'デイ/ウィ'ッチ/ボ'ス",
+0.0
+]
+]
+},
+{
+"text": "Sighs breathe Zundamon's trouble?!",
+"plan": [
+[
+"normal",
+"サ'イス/ブリ'イズ/ツンダモ'ンズ/トラ'ブル？",
+0.0
+]
+]
+},
+{
+"text": "worst i'd *hostage* Piper all?",
+"plan": [
+[
+"normal",
+"ワ'アスト/アイドホステ'エジ/パ'イパア/オ'オル？",
+0.0
+]
+]
+},
+{
+"text": "Let's Is!!",
+"plan": [
+[
+"normal",
+"レ'ッツイズ",
+0.0
+]
+]
+},
+{
+"text": "very Which NASA Thank health better Oops 430,",
+"plan": [
+[
+"normal",
+"ベリイウィ'ッチ/エヌエエエス'エエ/サ'ンク/ヘ'ルス/ベ'タア/ウ'ップス/ファアハンドレッドサ'アティ",
+0.0
+]
+]
+},
+{
+"text": "oh let allow entire percent of 1821.",
+"plan": [
+[
+"normal",
+"オ'オ/レ'ット/ア'ラウ/エンタ'イア/パアセ'ント/オブワンサウザンドエイトハンドレッドツエンティ'ワン",
+0.0
+]
+]
+},
+{
+"text": "Everything Welcome banana *its* worst!!",
+"plan": [
+[
+"normal",
+"エブリシ'ング/ウェル'カム/バ'ナナ/イ'ッツ/ワ'アスト",
+0.0
+]
+]
+},
+{
+"text": "i'm open You Welcome sighs does hour?!",
+"plan": [
+[
+"normal",
+"アイムオ'オプン/ユウウェル'カム/サ'イス/ダズア'ワア？",
+0.0
+]
+]
+},
+{
+"text": "That keep credit hmph cheered this Huh 196...",
+"plan": [
+[
+"normal",
+"ザットキ'イプ/クレジ'ット/フ'ン/チア'アド/ディスハ'/ワンハンドレッドニネティイシ'ックス",
+0.0
+]
+]
+},
+{
+"text": "Night any rule How files deleted 1423?",
+"plan": [
+[
+"normal",
+"ナ'イト/エ'ニイ/ル'ウル/ハウファ'イルス/デリテ'ッド/ワンサウザンドファアハンドレッドツエンティス'リイ？",
+0.0
+]
+]
+},
+{
+"text": "Really This Pleeease known here unfair Go we'd robotic?!",
+"plan": [
+[
+"normal",
+"リア'リイ/ディスプリ'イズ/ナ'ウン/ヒ'ア/ア'ンフェア/ゴ'オ/ウィ'イド/ロボチ'ック？",
+0.0
+]
+]
+},
+{
+"text": "delete problems so seashells for Wow something!!",
+"plan": [
+[
+"normal",
+"デリ'イト/プロブレ'ムズ/ソオシイシェ'ルズ/フォオワ'オ/サムシ'ング",
+0.0
+]
+]
+},
+{
+"text": "turns which T-Tea 2272~",
+"plan": [
+[
+"normal",
+"タ'アンズ/ウィ'ッチ/ティ'、ティ'イ/トゥウサウザンドトゥウハンドレッドセベンティ'イトゥウ",
+0.0
+]
+]
+},
+{
+"text": "this won Pong we'd before my way 316?!",
+"plan": [
+[
+"normal",
+"ディスウォ'ン/ポ'ング/ウィ'イド/ビ'フォオ/マイウェ'イ/スリイハンドレッドシックスティ'イン？",
+0.0
+]
+]
+},
+{
+"text": "Were o-one hehehe I've dreams out delete decide.",
+"plan": [
+[
+"normal",
+"ワ'アワ、ワ'ン/エヘ'ヘヘ/アイブドリ'イムス/ア'ウト/デリ'イト/ディサ'イド",
+0.0
+]
+]
+},
+{
+"text": "Zundamon's *deleted*,",
+"plan": [
+[
+"normal",
+"ツンダモ'ンズ/デリテ'ッド",
+0.0
+]
+]
+},
+{
+"text": "I until drink Neon magic um —",
+"plan": [
+[
+"normal",
+"アイア'ンチル/ドリ'ンク/ネ'オン/マジ'ック/ア'アン",
+0.0
+]
+]
+},
+{
+"text": "AmirCollider said ever~",
+"plan": [
+[
+"normal",
+"アミイルコラ'イダア/セ'ッド/エ'バア",
+0.0
+]
+]
+},
+{
+"text": "there secret love tomorrow definitely his car they An —",
+"plan": [
+[
+"normal",
+"ゼ'ア/シイクレ'ット/ラ'ブ/トゥモ'ロオ/デフィニテ'リイ/ヒズカ'アゼイアン",
+0.0
+]
+]
+},
+{
+"text": "could?!",
+"plan": [
+[
+"normal",
+"ク'ッド？",
+0.0
+]
+]
+},
+{
+"text": "itself reads *actually* would...",
+"plan": [
+[
+"normal",
+"イット'ルフ/リ'イズ/アクチュア'リイウッド",
+0.0
+]
+]
+},
+{
+"text": "come want only Level business gonna —",
+"plan": [
+[
+"normal",
+"カ'ム/ウォ'ント/オ'ンリイ/レ'ベル/ビジ'ネス/ゴ'ナ",
+0.0
+]
+]
+},
+{
+"text": "Programming i'll —",
+"plan": [
+[
+"normal",
+"プログラミ'ングアイル",
+0.0
+]
+]
+},
+{
+"text": "Precisely own.",
+"plan": [
+[
+"normal",
+"プレシ'リイ/オ'ウン",
+0.0
+]
+]
+},
+{
+"text": "Hey A-Ahh oh Peter breathe We'd Hello!!",
+"plan": [
+[
+"normal",
+"ヘ'イ/ア'、ア'ッ/オ'オ/ペ'エタア/ブリ'イズ/ウィ'イド/ハ'ロオ",
+0.0
+]
+]
+},
+{
+"text": "credit...",
+"plan": [
+[
+"normal",
+"クレジ'ット",
+0.0
+]
+]
+},
+{
+"text": "yep The car or pleeease.",
+"plan": [
+[
+"normal",
+"イェ'ップ/ザカ'ア/オアプリ'イズ",
+0.0
+]
+]
+},
+{
+"text": "Strawberry Is code hmph do died long shh 2278!!",
+"plan": [
+[
+"normal",
+"ストロベ'リイ/イズコ'オド/フ'ン/ドゥダ'イド/ロ'ング/シ'イッ/トゥウサウザンドトゥウハンドレッドセベンティイエ'イト",
+0.0
+]
+]
+},
+{
+"text": "give could which told make played supposed quiet!",
+"plan": [
+[
+"normal",
+"ギ'ブ/クッドウィ'ッチ/ト'オルド/メ'イク/プレ'イド/サポ'オズド/クイエ'ット",
+0.0
+]
+]
+},
+{
+"text": "Correct *spider*?!",
+"plan": [
+[
+"normal",
+"コレ'クト/スパ'イダア？",
+0.0
+]
+]
+},
+{
+"text": "Please harmless nap hi subscriber until —",
+"plan": [
+[
+"normal",
+"プリ'イズ/ハアム'レス/ナ'ップ/ハ'イ/サブスクラ'イバア/ア'ンチル",
+0.0
+]
+]
+},
+{
+"text": "E-eight!!",
+"plan": [
+[
+"normal",
+"エ'、エ'イト",
+0.0
+]
+]
+},
+{
+"text": "its Strawberry played Sometimes —",
+"plan": [
+[
+"normal",
+"イッツストロベ'リイ/プレ'イド/サムタ'イムズ",
+0.0
+]
+]
+},
+{
+"text": "Hi unfair ever screen yeah okay story sighs before!!",
+"plan": [
+[
+"normal",
+"ハ'イ/ア'ンフェア/エ'バア/スクリ'イン/イェ'ア/オ'オケエ/スト'オリイ/サ'イス/ビ'フォオ",
+0.0
+]
+]
+},
+{
+"text": "*Katakana* go blanket?",
+"plan": [
+[
+"normal",
+"カタ'カナ/ゴ'オ/ブランケ'ット？",
+0.0
+]
+]
+},
+{
+"text": "can Peter anyway pc deleted I'll!!",
+"plan": [
+[
+"normal",
+"キャンペ'エタア/エニ'ウェイ/ピ'イシイ/デリテ'ッドアイル",
+0.0
+]
+]
+},
+{
+"text": "long?!",
+"plan": [
+[
+"normal",
+"ロ'ング？",
+0.0
+]
+]
+},
+{
+"text": "has better forget there I'll crazy —",
+"plan": [
+[
+"normal",
+"ハズベ'タア/フォゲ'ット/ゼ'ア/アイルクレ'イジイ",
+0.0
+]
+]
+},
+{
+"text": "YouTube played that's deleted his pickled for going *out*...",
+"plan": [
+[
+"normal",
+"ユウチュ'ウブ/プレ'イド/ザッツデリテ'ッド/ヒズピ'ックル/フォオゴ'オイング/ア'ウト",
+0.0
+]
+]
+},
+{
+"text": "ugh with magic boss ending mad Exactly!",
+"plan": [
+[
+"normal",
+"ア'グ/ウィズマジ'ック/ボ'ス/エンディ'ング/マ'ッド/イグザクト'リイ",
+0.0
+]
+]
+},
+{
+"text": "dreams?!",
+"plan": [
+[
+"normal",
+"ドリ'イムス？",
+0.0
+]
+]
+},
+{
+"text": "who Shh something ♡",
+"plan": [
+[
+"normal",
+"フウシ'イッ/サムシ'ング",
+0.0
+]
+]
+},
+{
+"text": "Thanks W for proooperly,",
+"plan": [
+[
+"normal",
+"サ'ンクス/ダブ'リュウ/フォオプロパ'リイ",
+0.0
+]
+]
+},
+{
+"text": "awesome Wooould.",
+"plan": [
+[
+"normal",
+"オ'オサムウッド",
+0.0
+]
+]
+},
+{
+"text": "*gonna* into.",
+"plan": [
+[
+"normal",
+"ゴ'ナ/イ'ントゥ",
+0.0
+]
+]
+},
+{
+"text": "*My* fixing~",
+"plan": [
+[
+"normal",
+"マ'イ/フィクシ'ング",
+0.0
+]
+]
+},
+{
+"text": "Hurry You 1567?",
+"plan": [
+[
+"normal",
+"ハ'リイ/ユウワンサウザンドファイブハンドレッドシックスティイセ'ブン？",
+0.0
+]
+]
+},
+{
+"text": "Properly at.",
+"plan": [
+[
+"normal",
+"プロパ'リイアット",
+0.0
+]
+]
+},
+{
+"text": "nap aaalso nap ♡",
+"plan": [
+[
+"normal",
+"ナ'ップ/オオル'ソオ/ナ'ップ",
+0.0
+]
+]
+},
+{
+"text": "every Yes give My see ooonce night 1542,",
+"plan": [
+[
+"normal",
+"エブ'リイ/イ'エス/ギ'ブ/マイシ'イ/ワ'ンス/ナ'イト/ワンサウザンドファイブハンドレッドフォオティ'トゥウ",
+0.0
+]
+]
+},
+{
+"text": "at sad.",
+"plan": [
+[
+"normal",
+"アットサ'ッド",
+0.0
+]
+]
+},
+{
+"text": "*things* snacks Hmm fly!",
+"plan": [
+[
+"normal",
+"シ'ングス/スナ'ックス/フ'ウン/フ'ライ",
+0.0
+]
+]
+},
+{
+"text": "hmm l-life i'll praise no Instagram literally websites amazing ♡",
+"plan": [
+[
+"normal",
+"フ'ウン/ラ'、ラ'イフ/アイルプレ'イズ/ノオインスタグ'ラム/リテラ'リイ/ウェブサ'イツ/アメイジ'ング",
+0.0
+]
+]
+},
+{
+"text": "kinda did websites morning *headphones* Mondays...",
+"plan": [
+[
+"normal",
+"カ'インダ/ディドウェブサ'イツ/モオニ'ング/ヘッドフォ'ンズ/マンデ'エス",
+0.0
+]
+]
+},
+{
+"text": "died I-Instagram cats uhm *FBI* way today of?!",
+"plan": [
+[
+"normal",
+"ダ'イド/イ'、インスタグ'ラム/キャ'ッツ/ア'アン/エフビ'イアイ/ウェ'イ/トゥ'デイオブ？",
+0.0
+]
+]
+},
+{
+"text": "*tea* Precisely now!",
+"plan": [
+[
+"normal",
+"ティ'イ/プレシ'リイ/ナ'ウ",
+0.0
+]
+]
+},
+{
+"text": "hour lazy turns important tired things?!",
+"plan": [
+[
+"normal",
+"ア'ワア/レ'エジイ/タ'アンズ/インポオタ'ント/タイア'アド/シ'ングス？",
+0.0
+]
+]
+},
+{
+"text": "dog Shh ne in have their before fly.",
+"plan": [
+[
+"normal",
+"ド'ッグ/シ'イッ/ネ'エ/インハブゼアビ'フォオ/フ'ライ",
+0.0
+]
+]
+},
+{
+"text": "Close tomorrow milk harmless invisible way ♡",
+"plan": [
+[
+"normal",
+"クロ'オズ/トゥモ'ロオ/ミ'ルク/ハアム'レス/インビジ'ブル/ウェ'イ",
+0.0
+]
+]
+},
+{
+"text": "ugh hurry hello aaago promise —",
+"plan": [
+[
+"normal",
+"ア'グ/ハ'リイ/ハ'ロオ/ア'ゴオ/プロ'ミス",
+0.0
+]
+]
+},
+{
+"text": "Now cats hey In actually harmless delicious!",
+"plan": [
+[
+"normal",
+"ナ'ウ/キャ'ッツ/ヘ'イ/インアクチュア'リイ/ハアム'レス/デリ'シャス",
+0.0
+]
+]
+},
+{
+"text": "C-Can...",
+"plan": [
+[
+"normal",
+"キャ'、キャ'ン",
+0.0
+]
+]
+},
+{
+"text": "really 2174,",
+"plan": [
+[
+"normal",
+"リア'リイ/トゥウサウザンドワンハンドレッドセベンティ'イファア",
+0.0
+]
+]
+},
+{
+"text": "secret *drink* lazy Which properly unity eyes mobile...",
+"plan": [
+[
+"normal",
+"シイクレ'ット/ドリ'ンク/レ'エジイ/ウィ'ッチ/プロパ'リイ/ユ'ニティ/ア'イズ/モバ'イル",
+0.0
+]
+]
+},
+{
+"text": "a night crashes rule long reeeads promise!!",
+"plan": [
+[
+"normal",
+"アナ'イト/クラ'ッシュズ/ル'ウル/ロ'ング/リ'イズ/プロ'ミス",
+0.0
+]
+]
+},
+{
+"text": "Yay sad fine 957!!",
+"plan": [
+[
+"normal",
+"イェ'エイ/サ'ッド/ファ'イン/ナインハンドレッドフィフティイセ'ブン",
+0.0
+]
+]
+},
+{
+"text": "Cutting ♡",
+"plan": [
+[
+"normal",
+"カッティ'ング",
+0.0
+]
+]
+},
+{
+"text": "tooogether secret How before tea weird pickled You —",
+"plan": [
+[
+"normal",
+"トゥギャ'ザア/シイクレ'ット/ハウビ'フォオ/ティ'イ/ウィア'アド/ピ'ックルユウ",
+0.0
+]
+]
+},
+{
+"text": "House~",
+"plan": [
+[
+"normal",
+"ハ'ウス",
+0.0
+]
+]
+},
+{
+"text": "Can Coffee that to,",
+"plan": [
+[
+"normal",
+"キャンコ'オヒイ/ザ'ットトゥ",
+0.0
+]
+]
+},
+{
+"text": "Only Tea sleepy credit 117 —",
+"plan": [
+[
+"normal",
+"オ'ンリイ/ティ'イ/スリ'イピイ/クレジ'ット/ワンハンドレッドセブンティ'イン",
+0.0
+]
+]
+},
+{
+"text": "phone causing collider magic back They ♡",
+"plan": [
+[
+"normal",
+"フォ'ン/コオジ'ング/コラ'イダア/マジ'ック/バ'ックゼイ",
+0.0
+]
+]
+},
+{
+"text": "great Do?",
+"plan": [
+[
+"normal",
+"グリ'イトドゥ？",
+0.0
+]
+]
+},
+{
+"text": "no use No exactly friends Five —",
+"plan": [
+[
+"normal",
+"ノオユ'ウズ/ノオイグザクト'リイ/フレ'ンズ/ファ'イブ",
+0.0
+]
+]
+},
+{
+"text": "dog much been~",
+"plan": [
+[
+"normal",
+"ド'ッグ/ム'ッチビイン",
+0.0
+]
+]
+},
+{
+"text": "you Who idea not zundamon blue 1800.",
+"plan": [
+[
+"normal",
+"ユウフウア'イディア/ノットズンダ'モン/ブ'ルウ/ワンサウザンドエイトハンドレ'ッド",
+0.0
+]
+]
+},
+{
+"text": "i'm cats said drink portals?!",
+"plan": [
+[
+"normal",
+"アイムキャ'ッツ/セ'ッド/ドリ'ンク/ポオタ'ルズ？",
+0.0
+]
+]
+},
+{
+"text": "sorry pong be fine minding file Let's our Wait!",
+"plan": [
+[
+"normal",
+"ソ'オリイ/ポ'ング/ビイファ'イン/マインディ'ング/ファ'イル/レッツアワアウェ'イト",
+0.0
+]
+]
+},
+{
+"text": "window Just *hour* try Go hello~",
+"plan": [
+[
+"normal",
+"ウィ'ンドウ/ジャストア'ワア/ト'ライ/ゴ'オ/ハ'ロオ",
+0.0
+]
+]
+},
+{
+"text": "aaahh mega 2071?",
+"plan": [
+[
+"normal",
+"ア'ッ/メ'ガ/トゥウサウザンドセベンティ'イワン？",
+0.0
+]
+]
+},
+{
+"text": "story One you've Oh game robotic hey to...",
+"plan": [
+[
+"normal",
+"スト'オリイ/ワ'ン/ユウブオ'オ/ゲ'エム/ロボチ'ック/ヘ'イトゥ",
+0.0
+]
+]
+},
+{
+"text": "*credit* —",
+"plan": [
+[
+"normal",
+"クレジ'ット",
+0.0
+]
+]
+},
+{
+"text": "cats chuck drink real Would Oops i'd don't —",
+"plan": [
+[
+"normal",
+"キャ'ッツ/チャ'ック/ドリ'ンク/リ'アル/ウッドウ'ップス/ア'イドドント",
+0.0
+]
+]
+},
+{
+"text": "Bugs shout —",
+"plan": [
+[
+"normal",
+"バ'グズ/シャ'ット",
+0.0
+]
+]
+},
+{
+"text": "Which to again hours friends i've store!!",
+"plan": [
+[
+"normal",
+"ウィ'ッチ/トゥアゲ'イン/アワ'アズ/フレ'ンズ/アイブス'トア",
+0.0
+]
+]
+},
+{
+"text": "*Relax* percent and today rule hard~",
+"plan": [
+[
+"normal",
+"リラ'ックス/パアセ'ント/アンドトゥ'デイ/ル'ウル/ハ'アド",
+0.0
+]
+]
+},
+{
+"text": "Cutting made boss closely!!",
+"plan": [
+[
+"normal",
+"カッティ'ング/メ'イド/ボ'ス/クロオス'リイ",
+0.0
+]
+]
+},
+{
+"text": "*me* Peter —",
+"plan": [
+[
+"normal",
+"ミ'イ/ペ'エタア",
+0.0
+]
+]
+},
+{
+"text": "six Today That's weird new An...",
+"plan": [
+[
+"normal",
+"シ'ックス/トゥ'デイ/ザッツウィア'アド/ニュ'ウアン",
+0.0
+]
+]
+},
+{
+"text": "Cats lazy Okay *the*!!",
+"plan": [
+[
+"normal",
+"キャ'ッツ/レ'エジイ/オ'オケエ/ザ'",
+0.0
+]
+]
+},
+{
+"text": "Things ahh 1075?",
+"plan": [
+[
+"normal",
+"シ'ングス/ア'ッ/ワンサウザンドセベンティイファ'イブ？",
+0.0
+]
+]
+},
+{
+"text": "credit are Mm ah minding Today three supposed watching!!",
+"plan": [
+[
+"normal",
+"クレジ'ット/アアウ'ン/ア'ア/マインディ'ング/トゥ'デイ/ス'リイ/サポ'オズド/ウォッチ'ング",
+0.0
+]
+]
+},
+{
+"text": "blanket here,",
+"plan": [
+[
+"normal",
+"ブランケ'ット/ヒ'ア",
+0.0
+]
+]
+},
+{
+"text": "Oops let's *spider* W or should also —",
+"plan": [
+[
+"normal",
+"ウ'ップス/レッツスパ'イダア/ダブ'リュウ/オアシュッドオオル'ソオ",
+0.0
+]
+]
+},
+{
+"text": "That?",
+"plan": [
+[
+"normal",
+"ザ'ット？",
+0.0
+]
+]
+},
+{
+"text": "Why file into hehe...",
+"plan": [
+[
+"normal",
+"ホ'ワイ/ファ'イル/イ'ントゥ/エ'ヘヘ",
+0.0
+]
+]
+},
+{
+"text": "*whisper* b-but!!",
+"plan": [
+[
+"normal",
+"ウィス'パア/バ'、バ'ット",
+0.0
+]
+]
+},
+{
+"text": "ten 333!!",
+"plan": [
+[
+"normal",
+"テ'ン/スリイハンドレッドサアティス'リイ",
+0.0
+]
+]
+},
+{
+"text": "good.",
+"plan": [
+[
+"normal",
+"グ'ッド",
+0.0
+]
+]
+},
+{
+"text": "four way Wait It's can't house couldn't hehehe,",
+"plan": [
+[
+"normal",
+"ファ'ア/ウェ'イ/ウェ'イト/イッツキャントハ'ウス/クドゥントエヘ'ヘヘ",
+0.0
+]
+]
+},
+{
+"text": "long kidding —",
+"plan": [
+[
+"normal",
+"ロ'ング/キディ'ング",
+0.0
+]
+]
+}
+]

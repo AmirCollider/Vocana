@@ -1,0 +1,34 @@
+Third-party software in Vocana
+==============================
+
+Vocana is written by AmirCollider (see LICENSE.txt). It includes or uses
+the following software by others, under their own licenses.
+
+Python 3.13 (Windows release only: app/runtime)
+  Copyright (c) 2001 Python Software Foundation. All rights reserved.
+  Python Software Foundation License Version 2.
+  Full text: app/runtime/LICENSE.txt
+  https://www.python.org/
+
+numpy 2.4 (app/runtime/Lib/site-packages/numpy, or installed by pip)
+  Copyright (c) 2005-2025, NumPy Developers.
+  BSD 3-Clause License. The Windows build bundles OpenBLAS (BSD 3-Clause)
+  and the Microsoft C++ runtime (msvcp140) as redistributed by NumPy.
+  Full texts: app/runtime/Lib/site-packages/numpy-*.dist-info/licenses/
+  https://numpy.org/
+
+e2k 0.6 (English to katakana model), by Patchethium
+  Released into the public domain (The Unlicense).
+  https://pypi.org/project/e2k/
+
+Vazirmatn font, by Saber Rastikerdar
+  Copyright 2015 The Vazirmatn Project Authors.
+  SIL Open Font License 1.1. Full text: app/fonts/Vazirmatn-OFL.txt
+  https://github.com/rastikerdar/vazirmatn
+
+VOICEVOX (not included)
+  Vocana talks to a VOICEVOX engine that you install yourself. VOICEVOX's
+  own license, and the terms of each voice library, apply to it and to the
+  voices it makes. Every character's terms are shown on the Cast page of
+  the studio, as your VOICEVOX provides them.
+  https://voicevox.hiroshiba.jp/

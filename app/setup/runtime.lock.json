@@ -1,0 +1,28 @@
+{
+ "_about": "The Python that ships inside the Windows release (app/runtime). tools/build_runtime.py builds it from these files, and app/setup/get-runtime.ps1 downloads the same files on a PC that got Vocana without it. Every file is checked against its SHA-256 before it is used.",
+ "python": "3.13.16",
+ "pth": ["python313.zip", ".", "Lib\\site-packages", ".."],
+ "files": [
+  {
+   "name": "python-3.13.16-embed-amd64.zip",
+   "url": "https://www.python.org/ftp/python/3.13.16/python-3.13.16-embed-amd64.zip",
+   "sha256": "97dae5274cc54867065e8d5a3226e48c35017ed332a0fdb0e27d5b5821961297",
+   "size": 11439094,
+   "kind": "python"
+  },
+  {
+   "name": "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+   "url": "https://files.pythonhosted.org/packages/b5/cd/9cc4dc876fb065d5c220aae4d5e14826b2715331bb7618ce1fb07a679d99/numpy-2.4.6-cp313-cp313-win_amd64.whl",
+   "sha256": "c4fc99836233ea196540b17ab0983aff60ed07941751930f5f4d05bc3b3b7359",
+   "size": 12318598,
+   "kind": "wheel"
+  },
+  {
+   "name": "e2k-0.6.2-py3-none-any.whl",
+   "url": "https://files.pythonhosted.org/packages/2d/bd/3313cc796e07e30934e532494d0741f0fd487c44643bfd56b9cc84bb1bfb/e2k-0.6.2-py3-none-any.whl",
+   "sha256": "3ea7066558deaa8f531c9a9a3f9400871124e899ea58dff484cf6d5c2fc3b56d",
+   "size": 10047900,
+   "kind": "wheel"
+  }
+ ]
+}

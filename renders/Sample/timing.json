@@ -1,0 +1,541 @@
+{
+ "length": 45.133,
+ "lines": [
+  {
+   "file": "01_ME.wav",
+   "who": "ME",
+   "text": "Yahho~! Look at this! It's Vocana!",
+   "start": 0.0,
+   "end": 3.343,
+   "character": "ずんだもん",
+   "line": 3,
+   "sentences": [
+    {
+     "text": "Yahho~!",
+     "start": 0.0,
+     "end": 0.728,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "Yahho",
+       "start": 0.003,
+       "end": 0.717
+      }
+     ]
+    },
+    {
+     "text": "Look at this!",
+     "start": 0.978,
+     "end": 2.123,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "Look",
+       "start": 0.978,
+       "end": 1.358
+      },
+      {
+       "word": "at",
+       "start": 1.358,
+       "end": 1.688
+      },
+      {
+       "word": "this",
+       "start": 1.688,
+       "end": 2.083
+      }
+     ]
+    },
+    {
+     "text": "It's Vocana!",
+     "start": 2.373,
+     "end": 3.343,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "It's",
+       "start": 2.373,
+       "end": 2.757
+      },
+      {
+       "word": "Vocana",
+       "start": 2.757,
+       "end": 3.323
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "02_ME.wav",
+   "who": "ME",
+   "text": "You just write plain English, and Zundamon reads it sooo clearly!",
+   "start": 3.743,
+   "end": 9.35,
+   "character": "ずんだもん",
+   "line": 4,
+   "sentences": [
+    {
+     "text": "You just write plain English, and Zundamon reads it sooo clearly!",
+     "start": 3.743,
+     "end": 9.35,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "You",
+       "start": 3.743,
+       "end": 4.005
+      },
+      {
+       "word": "just",
+       "start": 4.005,
+       "end": 4.432
+      },
+      {
+       "word": "write",
+       "start": 4.432,
+       "end": 4.784
+      },
+      {
+       "word": "plain",
+       "start": 4.784,
+       "end": 5.296
+      },
+      {
+       "word": "English",
+       "start": 5.296,
+       "end": 6.085
+      },
+      {
+       "word": "and",
+       "start": 6.394,
+       "end": 6.81
+      },
+      {
+       "word": "Zundamon",
+       "start": 6.81,
+       "end": 7.45
+      },
+      {
+       "word": "reads",
+       "start": 7.45,
+       "end": 7.813
+      },
+      {
+       "word": "it",
+       "start": 7.813,
+       "end": 8.133
+      },
+      {
+       "word": "sooo",
+       "start": 8.133,
+       "end": 8.624
+      },
+      {
+       "word": "clearly",
+       "start": 8.624,
+       "end": 9.349
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "03_ME.wav",
+   "who": "ME",
+   "text": "No weird robotic accents, and no sleepy sighs at the end~ Hehe ♡",
+   "start": 9.75,
+   "end": 16.942,
+   "character": "ずんだもん",
+   "line": 5,
+   "sentences": [
+    {
+     "text": "No weird robotic accents, and no sleepy sighs at the end~",
+     "start": 9.75,
+     "end": 15.859,
+     "style": "あまあま",
+     "words": [
+      {
+       "word": "No",
+       "start": 9.75,
+       "end": 10.041
+      },
+      {
+       "word": "weird",
+       "start": 10.041,
+       "end": 10.628
+      },
+      {
+       "word": "robotic",
+       "start": 10.628,
+       "end": 11.417
+      },
+      {
+       "word": "accents",
+       "start": 11.417,
+       "end": 12.26
+      },
+      {
+       "word": "and",
+       "start": 12.548,
+       "end": 13.06
+      },
+      {
+       "word": "no",
+       "start": 13.06,
+       "end": 13.337
+      },
+      {
+       "word": "sleepy",
+       "start": 13.337,
+       "end": 14.073
+      },
+      {
+       "word": "sighs",
+       "start": 14.073,
+       "end": 14.553
+      },
+      {
+       "word": "at",
+       "start": 14.553,
+       "end": 14.969
+      },
+      {
+       "word": "the",
+       "start": 14.969,
+       "end": 15.215
+      },
+      {
+       "word": "end",
+       "start": 15.215,
+       "end": 15.844
+      }
+     ]
+    },
+    {
+     "text": "Hehe ♡",
+     "start": 16.109,
+     "end": 16.942,
+     "style": "あまあま",
+     "words": [
+      {
+       "word": "Hehe",
+       "start": 16.109,
+       "end": 16.91
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "04_ME.wav",
+   "who": "ME",
+   "text": "It turns everything into magic Katakana all by itself!",
+   "start": 17.342,
+   "end": 21.968,
+   "character": "ずんだもん",
+   "line": 6,
+   "sentences": [
+    {
+     "text": "It turns everything into magic Katakana all by itself!",
+     "start": 17.342,
+     "end": 21.968,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "It",
+       "start": 17.343,
+       "end": 17.759
+      },
+      {
+       "word": "turns",
+       "start": 17.759,
+       "end": 18.271
+      },
+      {
+       "word": "everything",
+       "start": 18.271,
+       "end": 19.124
+      },
+      {
+       "word": "into",
+       "start": 19.124,
+       "end": 19.423
+      },
+      {
+       "word": "magic",
+       "start": 19.423,
+       "end": 19.924
+      },
+      {
+       "word": "Katakana",
+       "start": 19.924,
+       "end": 20.468
+      },
+      {
+       "word": "all",
+       "start": 20.468,
+       "end": 20.777
+      },
+      {
+       "word": "by",
+       "start": 20.777,
+       "end": 21.097
+      },
+      {
+       "word": "itself",
+       "start": 21.097,
+       "end": 21.951
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "05_ME.wav",
+   "who": "ME",
+   "text": "W-Wait! Don't forget the super important rule!",
+   "start": 22.768,
+   "end": 27.025,
+   "character": "ずんだもん",
+   "line": 8,
+   "sentences": [
+    {
+     "text": "W-Wait!",
+     "start": 22.768,
+     "end": 23.942,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "W-Wait",
+       "start": 22.788,
+       "end": 23.929
+      }
+     ]
+    },
+    {
+     "text": "Don't forget the super important rule!",
+     "start": 24.192,
+     "end": 27.025,
+     "style": "ノーマル",
+     "words": [
+      {
+       "word": "Don't",
+       "start": 24.192,
+       "end": 24.585
+      },
+      {
+       "word": "forget",
+       "start": 24.585,
+       "end": 25.097
+      },
+      {
+       "word": "the",
+       "start": 25.097,
+       "end": 25.246
+      },
+      {
+       "word": "super",
+       "start": 25.246,
+       "end": 25.78
+      },
+      {
+       "word": "important",
+       "start": 25.78,
+       "end": 26.569
+      },
+      {
+       "word": "rule",
+       "start": 26.569,
+       "end": 27.006
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "06_ME.wav",
+   "who": "ME",
+   "text": "In your description, pleeease write: VOICEVOX:ずんだもん!",
+   "start": 27.425,
+   "end": 33.973,
+   "character": "ずんだもん",
+   "line": 9,
+   "sentences": [
+    {
+     "text": "In your description, pleeease write: VOICEVOX:ずんだもん!",
+     "start": 27.425,
+     "end": 33.973,
+     "style": "あまあま",
+     "words": [
+      {
+       "word": "In",
+       "start": 27.425,
+       "end": 27.549
+      },
+      {
+       "word": "your",
+       "start": 27.549,
+       "end": 27.859
+      },
+      {
+       "word": "description",
+       "start": 27.859,
+       "end": 29.064
+      },
+      {
+       "word": "pleeease",
+       "start": 29.48,
+       "end": 30.365
+      },
+      {
+       "word": "write",
+       "start": 30.365,
+       "end": 30.92
+      },
+      {
+       "word": "VOICEVOX",
+       "start": 31.208,
+       "end": 32.488
+      },
+      {
+       "word": "ずんだもん",
+       "start": 32.936,
+       "end": 33.973
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "07_ME.wav",
+   "who": "ME",
+   "text": "It's Zundamon's credit rule, okay? Promise me! ♡",
+   "start": 34.373,
+   "end": 40.071,
+   "character": "ずんだもん",
+   "line": 10,
+   "sentences": [
+    {
+     "text": "It's Zundamon's credit rule, okay?",
+     "start": 34.373,
+     "end": 38.581,
+     "style": "あまあま",
+     "words": [
+      {
+       "word": "It's",
+       "start": 34.373,
+       "end": 34.839
+      },
+      {
+       "word": "Zundamon's",
+       "start": 34.839,
+       "end": 35.746
+      },
+      {
+       "word": "credit",
+       "start": 35.746,
+       "end": 36.556
+      },
+      {
+       "word": "rule",
+       "start": 36.556,
+       "end": 37.1
+      },
+      {
+       "word": "okay",
+       "start": 37.452,
+       "end": 38.562
+      }
+     ]
+    },
+    {
+     "text": "Promise me!♡",
+     "start": 38.901,
+     "end": 40.071,
+     "style": "あまあま",
+     "words": [
+      {
+       "word": "Promise",
+       "start": 38.901,
+       "end": 39.583
+      },
+      {
+       "word": "me",
+       "start": 39.583,
+       "end": 40.063
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "file": "08_ME.wav",
+   "who": "ME",
+   "text": "Now drag your file and let's make something amazing!",
+   "start": 40.471,
+   "end": 44.833,
+   "character": "ずんだもん",
+   "line": 11,
+   "sentences": [
+    {
+     "text": "Now drag your file and let's make something amazing!",
+     "start": 40.471,
+     "end": 44.833,
+     "style": "ツンツン",
+     "words": [
+      {
+       "word": "Now",
+       "start": 40.472,
+       "end": 40.739
+      },
+      {
+       "word": "drag",
+       "start": 40.739,
+       "end": 41.315
+      },
+      {
+       "word": "your",
+       "start": 41.315,
+       "end": 41.581
+      },
+      {
+       "word": "file",
+       "start": 41.581,
+       "end": 41.976
+      },
+      {
+       "word": "and",
+       "start": 41.976,
+       "end": 42.328
+      },
+      {
+       "word": "let's",
+       "start": 42.328,
+       "end": 42.712
+      },
+      {
+       "word": "make",
+       "start": 42.712,
+       "end": 43.085
+      },
+      {
+       "word": "something",
+       "start": 43.085,
+       "end": 43.864
+      },
+      {
+       "word": "amazing",
+       "start": 43.864,
+       "end": 44.833
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "credits": [
+  "VOICEVOX:ずんだもん"
+ ],
+ "made_with": "Vocana"
+}

@@ -1,0 +1,18 @@
+# Two characters. Each @cast line says which VOICEVOX character reads a speaker tag.
+# Any character in your VOICEVOX works - pick them on the Cast page of the studio.
+@cast ZUNDA = ずんだもん
+@cast METAN = 四国めたん
+gap = 0.35
+
+ZUNDA [excited]: Metan! Metan! I can speak English now!
+METAN [smug]: Hmph. Everyone says that. Prove it.
+ZUNDA [cheeky]: Hello! My name is Zundamon, and I make *amazing* videos!
+METAN [surprised]: Wait... that was actually clear?!
+ZUNDA [happy]: Vocana writes every word in katakana before I read it~
+METAN [teasing]: Then say "strawberry milk tea" three times. Fast.
+ZUNDA [flustered]: S-Strawberry milk tea! Strawberry milk tea! Straw— hmph!
+METAN [cute]: Hehe ♡ Close enough.
+METAN [happy]: ちなみに、日本語の文もそのまま読めるわよ。
+(pause 0.5)
+METAN [calm]: The credits go in your description. Vocana writes them into credits.txt.
+ZUNDA [happy]: Every character, every time. Let's go!

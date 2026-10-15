@@ -1,0 +1,39 @@
+Vocana License
+Copyright (c) 2026 AmirCollider. All rights reserved.
+
+Vocana (the program, its studio, its guide and the files that come with it)
+is free to use under these terms.
+
+1. Use. You may download, install and use Vocana free of charge, for
+   personal and for commercial projects, on any number of computers.
+
+2. Your output. The audio, captions, timing files and scripts you make with
+   Vocana are yours. Vocana places no restriction on them. The voices are
+   made by VOICEVOX and its voice libraries: VOICEVOX's terms and each
+   character's own terms apply to them, including the credit line each
+   character requires (for example "VOICEVOX:ずんだもん").
+
+3. Sharing. You may give the unmodified Vocana download to others, free of
+   charge. You may not sell Vocana, include it in a product you sell, or
+   distribute modified copies of it, without written permission from
+   AmirCollider.
+
+4. Changes for yourself. You may change Vocana's files for your own use.
+
+5. No warranty. Vocana is provided "as is", without warranty of any kind,
+   express or implied, including fitness for a particular purpose. In no
+   event shall AmirCollider be liable for any claim, damages or other
+   liability arising from the use of Vocana.
+
+6. Other software. Components made by others keep their own licenses; see
+   THIRD-PARTY-NOTICES.txt. VOICEVOX is not part of Vocana.
+
+7. Not affiliated. Vocana is an independent tool for VOICEVOX. It is not
+   made by, endorsed by or affiliated with the VOICEVOX project or the
+   rights holders of any VOICEVOX character. "VOICEVOX" and the character
+   names belong to their owners.
+
+Translations of these terms in the Guide are for convenience; this English
+text is the one that applies.
+
+https://amircollider.com/vocana

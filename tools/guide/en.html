@@ -1,0 +1,249 @@
+<div class="hero">
+  <img src="data:image/webp;base64,__LOGO_B64__" alt="Vocana">
+  <div>
+    <h1>Vocana</h1>
+    <p class="tag">Plain English, any VOICEVOX voice.</p>
+    <p>Write a script in normal English. Vocana turns every word into katakana the way a Japanese voice can say it, shapes the melody for the mood you asked for, and gives you the voice, captions and word-by-word timing for your video — with every VOICEVOX character, not just one.</p>
+    <p class="meta">Version __VERSION__ · __DATE__ · by AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <div class="chips"><span class="chip">Free</span><span class="chip">Windows · macOS · Linux</span><span class="chip">Works offline</span><span class="chip">فارسی · English · 日本語</span></div>
+  </div>
+</div>
+
+<section id="en-start" data-anchor="start">
+  <h2><span class="n">1</span>Start in two minutes</h2>
+  <div class="steps">
+    <div class="step"><span class="num">1</span><b>Install VOICEVOX</b>The free voice engine, from <a href="https://voicevox.hiroshiba.jp/">voicevox.hiroshiba.jp</a>. Vocana does not include it. If VOICEVOX is in its usual place, Vocana starts it for you (in the background, with no window).</div>
+    <div class="step"><span class="num">2</span><b>Open <code>Vocana.bat</code></b>The studio opens in its own window. Nothing to install first: Python and everything else Vocana needs are inside the <code>app</code> folder.</div>
+    <div class="step"><span class="num">3</span><b>Write, listen, render</b>Press ▶ next to a line to hear it, then <b>Render</b>. The files land in <code>renders/&lt;script name&gt;/</code>.</div>
+  </div>
+  <div class="note"><b>First start on Windows.</b> Extract the whole .zip first (right-click → <i>Extract All…</i>) — Vocana cannot run from inside the zip. If Windows asks “Do you want to run this file?” or shows “Windows protected your PC”, choose <i>Run</i> / <i>More info → Run anyway</i>. Vocana removes the “downloaded from the internet” mark from its own folder on the first start, so it asks only once.</div>
+  <p><b>Want it in the Start menu?</b> Open <code>Setup.bat</code> instead. It installs Vocana for your Windows user (no administrator rights), adds Start menu and desktop shortcuts, and keeps your files in <code>Documents\Vocana</code>. The folder keeps working too — installing is optional. See <a href="#en-install">Install, update, remove</a>.</p>
+  <p><b>macOS or Linux:</b> install Python 3.10 or newer, then run <code>start.sh</code> (or double-click <code>Vocana.command</code> on a Mac). The first start installs numpy and e2k into Vocana’s own folder.</p>
+</section>
+
+<section id="en-hear" data-anchor="hear">
+  <h2><span class="n">2</span>Hear it</h2>
+  <p>This is <code>scripts/Sample.txt</code>, rendered by Vocana with Zundamon. Every word lights up exactly when it is said — that is <code>timing.json</code>, which Vocana writes next to every render.</p>
+  <div class="w-player"></div>
+</section>
+
+<section id="en-studio" data-anchor="studio">
+  <h2><span class="n">3</span>The studio</h2>
+  <p>The studio runs on your computer at <code>http://127.0.0.1:50210</code> and opens as an app window (Edge or Chrome without tabs; your normal browser if neither is there). Nothing you write leaves your computer.</p>
+  <table>
+    <tr><th>Page</th><th>What it is for</th></tr>
+    <tr><td><b>Script</b></td><td>The editor, with colours for speakers, moods, pauses and emphasis. On the right, every line as a card: who says it, which style, the exact katakana, ▶ to hear that line alone. Under it: problems to fix (with line numbers) and the words the model had to guess.</td></tr>
+    <tr><td><b>Cast</b></td><td>Who reads which lines. Pick a character for every speaker tag, a base style, pitch, speed and volume — Vocana writes your choices into the script as <code>@cast</code> lines, so the text keeps everything. Below: every character in your VOICEVOX with portraits, samples, a “Hear in English” button, their credit line and their terms of use.</td></tr>
+    <tr><td><b>Renders</b></td><td>Everything you rendered: a waveform player with captions that follow each word, every line on its own, every file to download (or all as a .zip), the credit line to copy, and a ready prompt to give an AI video tool.</td></tr>
+    <tr><td><b>Dictionary</b></td><td><code>words.json</code>: how a word is said, in katakana. Search, add, edit, hear. A test box shows where every word’s reading comes from.</td></tr>
+    <tr><td><b>Moods</b></td><td><code>moods.json</code>: every mood’s tone and numbers, with sliders and a ▶ to hear the change on any character.</td></tr>
+    <tr><td><b>Settings</b></td><td>Language, theme, where VOICEVOX is and whether to start it, update check, your files, install/uninstall, a full check of the computer, and Quit.</td></tr>
+  </table>
+  <h3>Keyboard</h3>
+  <table>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>Save the script</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>Hear the line the cursor is on</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd></td><td>Render the whole script</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>Stop playing</td></tr>
+  </table>
+  <p>Drop a <code>.txt</code> file on the editor (or on <code>Vocana.bat</code>) to open it. Unsaved work survives a closed window as a draft. When you close the studio window, Vocana quits by itself a few minutes later; <i>Settings → Quit Vocana</i> quits at once.</p>
+</section>
+
+<section id="en-script" data-anchor="script">
+  <h2><span class="n">4</span>Writing a script</h2>
+  <p>A script is a plain text file — the studio, Notepad or an AI can write it. One spoken line per line:</p>
+<pre>gap = 0.4
+@cast ME = ずんだもん
+@cast METAN = 四国めたん
+ME [excited]: Hello! I'm AmirCollider!
+METAN [smug]: Hmph. I make cool games too.
+ME [cute]: I look harmless... [dark] but I know where your files are. [cute] Hehe ♡
+(pause 1.0)
+ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
+  <table>
+    <tr><th>Write</th><th>What happens</th></tr>
+    <tr><td><code>ME [excited]:</code></td><td>Speaker tag and mood for the line. Tags are any word (ME, ZUNDA, METAN, ずんだもん); a line without a tag is ME.</td></tr>
+    <tr><td><code>[dark]</code> inside a line</td><td>The mood changes from that point on.</td></tr>
+    <tr><td><code>*really*</code></td><td>Emphasis: that word higher and longer.</td></tr>
+    <tr><td><code>Pleeease</code>, <code>sooo</code></td><td>A letter three times means “stretch”: the word’s long vowel is held.</td></tr>
+    <tr><td><code>W-Wait</code></td><td>Stutter.</td></tr>
+    <tr><td><code>!</code> <code>?</code> <code>~</code> <code>♡</code></td><td>Excited rise · question · playful stretched end · sweet end.</td></tr>
+    <tr><td><code>...</code> <code>—</code></td><td>Trails off (then a pause) · cut off.</td></tr>
+    <tr><td><code>Hehe</code> <code>Hmph</code> <code>Uhm</code> <code>Shh</code></td><td>Said the anime way: エヘヘ, フン, アーン, シーッ.</td></tr>
+    <tr><td><code>(pause 1.0)</code> on its own line</td><td>Silence between lines, in seconds (on top of <code>gap</code>).</td></tr>
+    <tr><td><code>One! (pause 0.5) Two!</code></td><td>Exactly this much silence between two sentences of one line.</td></tr>
+    <tr><td><code>(laughs)</code></td><td>Anything else in round brackets is a note to yourself: not spoken.</td></tr>
+    <tr><td><code>gap = 0.4</code></td><td>Silence between lines for the whole script (default 0.6).</td></tr>
+    <tr><td><code>sentence_gap = 0.5</code></td><td>Silence between the sentences of every line (otherwise from the punctuation: 0.25 s, 0.32 after <code>?</code>, 0.5 after <code>...</code>).</td></tr>
+    <tr><td><code># note</code></td><td>A comment.</td></tr>
+  </table>
+  <p>Numbers, <code>Mr.</code>/<code>Dr.</code>, <code>2.5</code>, <code>50%</code>, <code>$5</code>, <code>1st</code>, <code>amircollider.com</code> are read as words. A sentence with kanji in it is Japanese and goes to VOICEVOX’s own reader, so you can mix Japanese lines in. Text VOICEVOX cannot say at all (Persian, Arabic, Korean…) is left out, and the studio tells you where.</p>
+  <h3>Try it</h3>
+  <p>Type a line below: each part is coloured and explained the way Vocana reads it.</p>
+  <div class="w-play"></div>
+  <h3>Let an AI write it</h3>
+  <p>On the Script page, <b>AI prompt</b> copies a prompt that teaches ChatGPT, Claude or any AI this format, your moods and your characters. Add what you want, paste the answer back into the editor, and the studio checks it line by line.</p>
+</section>
+
+<section id="en-cast" data-anchor="cast">
+  <h2><span class="n">5</span>Characters, styles and credits</h2>
+  <p>Every character your VOICEVOX has can read lines — 43 in VOICEVOX 0.25.2, more when you add voice libraries. Say who reads a tag with <code>@cast</code>:</p>
+<pre>@cast ME = ずんだもん
+@cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
+@cast RYU = aoyama ryusei</pre>
+  <p>The character can be its Japanese name, a romanised name (<code>zundamon</code>, <code>metan</code>, <code>tsumugi</code>…) or a style number. After <code>/</code> comes the base style; then <code>pitch</code> (semitones), <code>speed</code>, <code>volume</code> and <code>intonation</code>. A tag that is itself a character name (<code>METAN:</code>, <code>ZUNDAMON:</code>) needs no <code>@cast</code>. Tags with no cast are read by the default voice — Settings shows which, and the Cast page sets it.</p>
+  <h3>How a mood picks a style</h3>
+  <p>Characters name their styles differently: Zundamon’s sweet voice is あまあま, Yurei-chan’s is 甘々; Takehiro has 喜び where Kotaro has わーい. So a mood asks for a <b>tone</b>, and each character uses its own style of that tone: <code>[happy]</code> is 喜び for 玄野武宏 and わーい for 白上虎太郎, and Zundamon (who has no happy style) keeps ノーマル. When a character has nothing of that tone, the mood’s fallback style is used, and then the character’s base style.</p>
+  <p>Tones: <code>happy</code> <code>sweet</code> <code>tsun</code> <code>angry</code> <code>sexy</code> <code>whisper</code> <code>hush</code> <code>tired</code> <code>teary</code> <code>defeat</code> <code>scared</code> <code>shy</code> <code>surprised</code> <code>calm</code> <code>strong</code> <code>serious</code> <code>narrator</code> <code>announce</code>.</p>
+  <h3>Credits — please read</h3>
+  <div class="note"><b>Every video that uses a VOICEVOX voice must credit it</b>, in the form the character’s own terms ask for: <code>VOICEVOX:ずんだもん</code>, <code>VOICEVOX:四国めたん</code>, and so on. Vocana writes the exact lines for every character you used into <code>credits.txt</code> in each render, and shows them on the Renders page to copy.</div>
+  <p>Some characters have further conditions — for example, use by a company, or commercial use, may need permission first. The Cast page marks those characters and shows their terms word for word, as your VOICEVOX provides them, with links to the full rules. Read them before you publish. Vocana adds no conditions of its own to your audio.</p>
+</section>
+
+<section id="en-moods" data-anchor="moods">
+  <h2><span class="n">6</span>Moods</h2>
+  <p>26 moods come with Vocana. A mood is a tone (which style) and a few numbers (the melody); change them on the Moods page or in <code>moods.json</code>, and add your own.</p>
+  <div class="w-moods"></div>
+  <table>
+    <tr><th>Number</th><th>Meaning</th></tr>
+    <tr><td><code>pitch</code></td><td>Higher or lower, in semitones.</td></tr>
+    <tr><td><code>speed</code></td><td>1.0 is normal. Above about 1.12 words blur — energy comes from melody, not speed.</td></tr>
+    <tr><td><code>intonation</code></td><td>How much the melody moves (VOICEVOX’s 抑揚).</td></tr>
+    <tr><td><code>volume</code></td><td>Loudness. Whisper styles are quiet and need more.</td></tr>
+    <tr><td><code>bounce</code></td><td>How much each phrase jumps up or down.</td></tr>
+    <tr><td><code>end_rise</code>, <code>exclaim_rise</code></td><td>How far the end of a sentence (and of an exclamation) goes up.</td></tr>
+    <tr><td><code>end_stretch</code></td><td>How long the last syllable is held.</td></tr>
+    <tr><td><code>pauses</code></td><td>Length of the pauses at commas.</td></tr>
+  </table>
+</section>
+
+<section id="en-words" data-anchor="words">
+  <h2><span class="n">7</span>The dictionary</h2>
+  <p>VOICEVOX is a Japanese engine: given English it guesses (“me” becomes the letters “M E”). Vocana writes every word in katakana before VOICEVOX sees it — first from <code>words.json</code> (more than 1,400 common words, plus yours), then from e2k, an English-to-katakana model, for everything else. Nothing is whispered at the end of a sentence, and the words are grouped and accented the way Japanese says loanwords, so they stay clear.</p>
+  <p>If a word comes out wrong — a name, a game title, a brand — give it the right katakana on the Dictionary page, or in the file:</p>
+<pre>"amircollider": "アミールコライダー",
+"vocana": "ボカナ"</pre>
+  <p>Write it the way it should sound: <code>ー</code> makes a vowel long, <code>ッ</code> is a short stop. The Script page lists the words the model guessed in your script, each with ▶ and <b>Fix</b>.</p>
+</section>
+
+<section id="en-files" data-anchor="files">
+  <h2><span class="n">8</span>What a render gives you</h2>
+  <table>
+    <tr><th>File</th><th>What it is</th></tr>
+    <tr><td><code>full.wav</code></td><td>The whole script in one file.</td></tr>
+    <tr><td><code>01_ME.wav</code>, <code>02_METAN.wav</code>…</td><td>Every line alone, numbered, named by speaker.</td></tr>
+    <tr><td><code>captions.srt</code> / <code>.vtt</code></td><td>Captions, one per line.</td></tr>
+    <tr><td><code>sentences.srt</code> / <code>.vtt</code></td><td>Captions, one per sentence — what a video should follow.</td></tr>
+    <tr><td><code>timing.json</code></td><td>The start and end of every line, sentence and word in <code>full.wav</code>, in seconds, with the character and style of each line.</td></tr>
+    <tr><td><code>timing.txt</code></td><td>Line times, easy to read.</td></tr>
+    <tr><td><code>credits.txt</code></td><td>The credit lines your video needs.</td></tr>
+    <tr><td><code>script.txt</code></td><td>The exact script that made this render.</td></tr>
+  </table>
+  <p>Any video editor (Premiere, DaVinci Resolve, CapCut, Shotcut…) imports the .wav and the .srt. For word-by-word captions, an editor or an AI tool should read <code>timing.json</code>.</p>
+  <h3>Making the video with AI</h3>
+  <p>On the Renders page, <b>Copy video prompt</b> copies a prompt for Claude Design or any AI video tool. Give it <code>full.wav</code> and <code>timing.json</code> together: the prompt tells it to take every caption’s and every word’s timing from <code>timing.json</code> instead of guessing — with only <code>captions.srt</code>, a tool knows each line’s start and end and guesses the rest, and the video drifts away from the voice.</p>
+</section>
+
+<section id="en-cli" data-anchor="cli">
+  <h2><span class="n">9</span>Without the studio</h2>
+  <p><b>Drag and drop:</b> drop one or more script <code>.txt</code> files on <code>render_script.bat</code>. <b>One line:</b> open <code>say.bat</code>, type, hear (<code>renders/say.wav</code>). VOICEVOX is started for you if it is closed.</p>
+  <p>From a terminal — on Windows with Vocana’s own Python, elsewhere with yours:</p>
+<pre>app\runtime\python.exe app\launch.py script scripts\Sample.txt
+python vocana.py script scripts/Sample.txt
+python vocana.py say "Hello! I'm Vocana!" --mood excited --character metan
+python vocana.py kana "Hello! I'm Vocana!"
+python vocana.py check scripts/Sample.txt
+python vocana.py voices
+python vocana.py doctor
+python vocana.py studio</pre>
+  <p><code>kana</code> shows the katakana VOICEVOX will get (no engine needed). <code>check</code> reads a script and reports every problem without rendering. <code>doctor</code> checks everything Vocana depends on.</p>
+</section>
+
+<section id="en-install" data-anchor="install">
+  <h2><span class="n">10</span>Install, update, remove</h2>
+  <table>
+    <tr><th></th><th>Portable (the folder)</th><th>Installed (Setup.bat)</th></tr>
+    <tr><td>Program</td><td>where you extracted it</td><td><code>%LOCALAPPDATA%\Programs\Vocana</code></td></tr>
+    <tr><td>Your files</td><td>inside the folder: <code>scripts</code>, <code>renders</code>, <code>words.json</code>, <code>moods.json</code></td><td><code>Documents\Vocana</code></td></tr>
+    <tr><td>Start</td><td><code>Vocana.bat</code></td><td>Start menu or desktop: <i>Vocana</i></td></tr>
+    <tr><td>Remove</td><td>delete the folder</td><td>Windows Settings → Apps → Vocana → Uninstall (your files in Documents stay)</td></tr>
+  </table>
+  <p>Installing copies your scripts, dictionary, moods and renders from the folder to <code>Documents\Vocana</code> — only those that are not there yet; nothing is ever overwritten. A portable folder in a place it cannot write to (inside Program Files, on a read-only drive) also keeps your files in <code>Documents\Vocana</code>.</p>
+  <h3>Updating</h3>
+  <p>The studio checks once a day whether a new version is out and shows a banner (turn it off in Settings). <b>Installed:</b> extract the new version and open its <code>Setup.bat</code>; the program is replaced, your files stay. <b>Portable:</b> extract the new version and copy your <code>scripts</code>, <code>renders</code>, <code>words.json</code> and <code>moods.json</code> into it.</p>
+  <p><b>Moving to another PC:</b> copy the portable folder (or <code>Documents\Vocana</code>) — that is everything.</p>
+</section>
+
+<section id="en-trouble" data-anchor="trouble">
+  <h2><span class="n">11</span>If something goes wrong</h2>
+  <div class="w-trouble">
+    <details><summary>“VOICEVOX is closed” / “VOICEVOX is not answering”</summary><p>Open the VOICEVOX app (or press <b>Start VOICEVOX</b> in the studio). If it is open and Vocana still cannot reach it, check <i>Settings → VOICEVOX → Engine address</i> (normally <code>http://127.0.0.1:50021</code>) and press <b>Test</b>. Vocana talks to VOICEVOX directly, never through a proxy or VPN, so those are not the cause.</p></details>
+    <details><summary>VOICEVOX does not start by itself</summary><p>Vocana looks for VOICEVOX in its usual install folder. If yours is elsewhere, set <i>Settings → VOICEVOX location</i> to <code>VOICEVOX.exe</code>, to its engine <code>vv-engine\run.exe</code>, or to the folder. To have Vocana open the whole VOICEVOX app instead of only its engine, choose “The VOICEVOX app”.</p></details>
+    <details><summary>Windows says “Windows protected your PC” or asks whether to run the file</summary><p>Choose <i>More info → Run anyway</i> (or <i>Run</i>). It appears because the files came from the internet; Vocana removes that mark from its own folder on the first start. You can also right-click the downloaded .zip → <i>Properties</i> → tick <i>Unblock</i> before extracting.</p></details>
+    <details><summary>“Vocana is still inside the .zip file”</summary><p>Right-click the .zip → <i>Extract All…</i>, then open <code>Vocana.bat</code> in the extracted folder.</p></details>
+    <details><summary>The studio window does not open</summary><p>Vocana may already be running: look for its window, or open <code>http://127.0.0.1:50210</code> in a browser. If another program uses that port, Vocana takes the next free one and opens the right address itself. Details of what happened are in <code>logs/vocana.log</code> (and <code>logs/crash.log</code>) in your Vocana files folder.</p></details>
+    <details><summary>An antivirus stops Vocana</summary><p>Vocana is a small Python program: <code>app\runtime\python.exe</code> is the official Python from python.org, signed by the Python Software Foundation. Allow the Vocana folder in your antivirus, or use the installed version.</p></details>
+    <details><summary>A word sounds wrong</summary><p>Look at the line’s katakana on the Script page (or run <code>vocana kana "your sentence"</code>), then give the word the right katakana in the Dictionary. Names and brands almost always need this once.</p></details>
+    <details><summary>“… is open in another program” when rendering</summary><p>A video editor or player has <code>full.wav</code> (or a line file) open from the last render, and Windows does not let anything overwrite it. Close it there, or render under another name.</p></details>
+    <details><summary>A line makes no sound</summary><p>The Script page says why next to the line: often the text is in a writing system VOICEVOX cannot read (Persian, Arabic, Korean…). Write it in English, Japanese or katakana.</p></details>
+    <details><summary>“VOICEVOX refused …” in the render notes</summary><p>VOICEVOX did not accept the katakana of a word. Vocana already read it a simpler way so the render finished; if it sounds odd, give that word a simpler katakana in the Dictionary.</p></details>
+    <details><summary>words.json or moods.json “is not valid”</summary><p>A comma or quote is missing in the file. The message says the line and column. Until it is fixed Vocana uses the shipped version, so nothing stops working. The studio’s Dictionary and Moods pages always write valid files.</p></details>
+    <details><summary>The copy from GitHub says it needs its Python runtime</summary><p>The source code has no <code>app\runtime</code>. <code>Vocana.bat</code> offers to download it (about 34 MB from python.org and pypi.org, every file checked against its SHA-256). Or install Python 3.10+, or get the release from amircollider.com/vocana, which has everything.</p></details>
+    <details><summary>Everything else</summary><p><i>Settings → Check this computer</i> (or <code>vocana doctor</code>) checks Python, numpy, e2k, your files, free space and VOICEVOX, and says what to do about each.</p></details>
+  </div>
+</section>
+
+<section id="en-faq" data-anchor="faq">
+  <h2><span class="n">12</span>Questions</h2>
+  <details><summary>Is Vocana free?</summary><p>Yes, for personal and commercial work. See the license below.</p></details>
+  <details><summary>Can I use the audio commercially?</summary><p>Vocana adds no conditions. The voices are VOICEVOX characters: follow each one’s terms (shown on the Cast page) and always include the credit line.</p></details>
+  <details><summary>Does it need the internet?</summary><p>No. Vocana and VOICEVOX run on your computer. The only request to the internet is the optional once-a-day update check.</p></details>
+  <details><summary>Does it work with AivisSpeech, COEIROINK or other engines?</summary><p>Vocana is made and tested for VOICEVOX (0.25.2). Engines that copy VOICEVOX’s API may work if you set their address in Settings, but they are not tested.</p></details>
+  <details><summary>Can it read Persian?</summary><p>No — VOICEVOX speaks Japanese, and Vocana makes English (and Japanese) work in it. The studio itself is in Persian, English and Japanese.</p></details>
+  <details><summary>Where did VoxTalk go?</summary><p>Vocana is VoxTalk, grown up. Scripts, <code>words.json</code> and <code>moods.json</code> written for VoxTalk work unchanged and sound the same.</p></details>
+</section>
+
+<section id="en-privacy" data-anchor="privacy">
+  <h2><span class="n">13</span>Privacy</h2>
+  <p>Your scripts, voices and files never leave your computer. The studio only answers on <code>127.0.0.1</code>, and only to its own page. Once a day (if switched on in Settings) Vocana asks <code>amircollider.com/vocana/version.json</code> whether there is a newer version; that request carries nothing about you or your work.</p>
+</section>
+
+<section id="en-license" data-anchor="license">
+  <h2><span class="n">14</span>License</h2>
+  <p>Vocana © 2026 AmirCollider. All rights reserved, with these permissions:</p>
+  <ul>
+    <li>You may use Vocana free of charge, for personal and commercial projects.</li>
+    <li>Audio, captions and timing files you make with Vocana are yours. The voices are subject to VOICEVOX’s terms and each character’s own terms.</li>
+    <li>You may give the unmodified download to others. You may not sell Vocana or distribute modified copies without written permission.</li>
+    <li>You may change Vocana’s files for your own use.</li>
+    <li>Vocana is provided “as is”, without warranty of any kind. AmirCollider is not liable for any damage from its use.</li>
+  </ul>
+  <p>The full text is in <code>LICENSE.txt</code>. Vocana is an independent tool for VOICEVOX and is not made by, or affiliated with, the VOICEVOX project or any character’s rights holders.</p>
+</section>
+
+<section id="en-notices" data-anchor="notices">
+  <h2><span class="n">15</span>Third-party software</h2>
+  <table>
+    <tr><td>Python 3.13 (Windows runtime)</td><td>PSF License — <code>app/runtime/LICENSE.txt</code></td></tr>
+    <tr><td>numpy 2.4</td><td>BSD 3-Clause, with bundled OpenBLAS (BSD) — <code>app/runtime/Lib/site-packages/numpy-*.dist-info/licenses</code></td></tr>
+    <tr><td>e2k 0.6 by Patchethium</td><td>Public domain (Unlicense)</td></tr>
+    <tr><td>Vazirmatn font by Saber Rastikerdar</td><td>SIL Open Font License 1.1 — <code>app/fonts/Vazirmatn-OFL.txt</code></td></tr>
+    <tr><td>VOICEVOX</td><td>Not included. Its own software license and each voice library’s terms apply.</td></tr>
+  </table>
+  <p>Details: <code>THIRD-PARTY-NOTICES.txt</code>.</p>
+</section>
+
+<section id="en-changelog" data-anchor="changelog">
+  <h2><span class="n">16</span>What’s new</h2>
+  <h3>1.0.0 — __DATE__</h3>
+  <ul>
+    <li>VoxTalk becomes Vocana: a studio in your browser, in Persian, English and Japanese.</li>
+    <li>Every VOICEVOX character, in one script: <code>@cast</code>, the Cast page, and moods that pick each character’s own style.</li>
+    <li>Credits written for you (<code>credits.txt</code>), from each character’s own terms; characters with extra conditions are marked.</li>
+    <li>Hear any line before rendering; a player with word-by-word captions; WebVTT captions; the script saved next to each render.</li>
+    <li>Windows: Python is built in — no install needed; optional Setup with Start menu and uninstall; VOICEVOX started for you.</li>
+    <li>More robust: proxies and VPNs no longer break the connection to VOICEVOX; a word VOICEVOX refuses no longer stops a render; Notepad files (BOM, ANSI, UTF-16) open; a file open in a video editor is named instead of crashing.</li>
+    <li>Reads <code>Mr.</code>, <code>2.5</code>, <code>50%</code>, <code>$5</code>, <code>1st</code>, web addresses and full-width letters; Japanese sentences go to VOICEVOX’s own reader.</li>
+    <li>Scripts written for VoxTalk still work and sound exactly the same.</li>
+  </ul>
+</section>
