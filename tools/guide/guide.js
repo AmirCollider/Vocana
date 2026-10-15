@@ -51,8 +51,8 @@
     surprised: ['Very high, big rise on “!”.', 'خیلی زیر، اوج زیاد روی «!».', 'とても高く、「!」で大きく上がる。'],
     scared: ['Trembling and high.', 'لرزان و زیر.', '震えるように、高めに。'],
     sleepy: ['Slow, low, fading ends.', 'آرام، بم، آخر جمله محو.', 'ゆっくり、低く、語尾が消えていく。'],
-    sad: ['Teary; ends fall.', 'بغض‌کرده؛ آخر جمله پایین می‌افتد.', '涙ぐんで、語尾を下げて。'],
-    defeated: ['Teary and slow, ends drop a lot.', 'بغض‌آلود و آرام، آخر جمله خیلی پایین.', '涙ぐんでゆっくり、語尾を大きく下げて。'],
+    sad: ['Low, slow and soft; ends fall.', 'آرام، پایین و نرم؛ آخر جمله پایین می‌افتد.', '低く、ゆっくり、やわらかく。語尾を下げて。'],
+    defeated: ['Low, flat and slow; ends drop a lot.', 'پایین، صاف و آرام؛ آخر جمله خیلی پایین.', '低く平らに、ゆっくり。語尾を大きく下げて。'],
     whisper: ['A whisper (louder, so it is heard).', 'نجوا (بلندتر تا شنیده شود).', 'ささやき (聞こえるよう音量を上げて)。'],
     asmr: ['A close hush, ASMR-style.', 'پچ‌پچ نزدیک، به سبک ASMR.', '近くでヒソヒソ。ASMR 風。']
   };

@@ -151,7 +151,14 @@ class Characters(unittest.TestCase):
     def test_zundamon_keeps_voxtalk_styles(self):
         zunda = self.voices.find('ずんだもん')
         old = load('moods-voxtalk.json')['moods']
+        # sad and defeated were changed on purpose: they borrowed なみだめ,
+        # which trembles on every vowel, and the owner heard them as shaky
+        # and broken. They are low and flat ノーマル now. A VoxTalk user's
+        # own moods.json is kept as it is, so their renders do not change.
+        changed = {'sad', 'defeated'}
         for m, spec in old.items():
+            if m in changed:
+                continue
             st, _how = self.voices.resolve(zunda, self.mood(m))
             self.assertEqual(st['name'], spec.get('style', 'ノーマル'), m)
 

@@ -36,7 +36,12 @@ FAMILIES = {
     'whisper':  ['ささやき', '囁き', '内緒話'],
     'hush':     ['ヒソヒソ'],
     'tired':    ['ヘロヘロ', 'へろへろ', 'けだるげ', '低血圧', 'よわよわ'],
-    'teary':    ['なみだめ', '泣き', 'びえーん', '悲しみ', 'かなしみ', 'かなしい', '哀しみ'],
+    # Crying, and quiet sorrow, are two different things. The crying styles
+    # tremble on purpose (Zundamon's なみだめ wobbles on every vowel); 'sad'
+    # used to land on them and came out shaky and hard to follow. A calm sad
+    # style, where a character has one, is 'sorrow'.
+    'teary':    ['なみだめ', '泣き', 'びえーん'],
+    'sorrow':   ['悲しみ', 'かなしみ', 'かなしい', '哀しみ'],
     'defeat':   ['絶望と敗北'],
     'scared':   ['びくびく', '恐怖', 'こわがり', 'おどおど'],
     'shy':      ['人見知り', 'おどおど'],
