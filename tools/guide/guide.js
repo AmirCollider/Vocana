@@ -49,7 +49,7 @@
     calm: ['Even and relaxed.', 'یکنواخت و آسوده.', '穏やかに、リラックスして。'],
     narrator: ['Storytelling: steady, longer comma pauses.', 'راوی: پیوسته، با مکث بلندتر سر ویرگول.', '読み聞かせ。安定して、読点の間を長めに。'],
     surprised: ['Very high, big rise on “!”.', 'خیلی زیر، اوج زیاد روی «!».', 'とても高く、「!」で大きく上がる。'],
-    scared: ['Trembling and high.', 'لرزان و زیر.', '震えるように、高めに。'],
+    scared: ['Nervous, a little high and quick.', 'مضطرب، کمی زیر و تند.', 'びくびくと、少し高めに速く。'],
     sleepy: ['Slow, low, fading ends.', 'آرام، بم، آخر جمله محو.', 'ゆっくり、低く、語尾が消えていく。'],
     sad: ['Low, slow and soft; ends fall.', 'آرام، پایین و نرم؛ آخر جمله پایین می‌افتد.', '低く、ゆっくり、やわらかく。語尾を下げて。'],
     defeated: ['Low, flat and slow; ends drop a lot.', 'پایین، صاف و آرام؛ آخر جمله خیلی پایین.', '低く平らに、ゆっくり。語尾を大きく下げて。'],

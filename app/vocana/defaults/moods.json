@@ -25,7 +25,7 @@
     "calm":      {"style": "ノーマル", "tone": "calm", "speed": 0.97, "intonation": 1.0, "pitch": 0.0, "volume": 1.0, "bounce": 0.4, "end_rise": 0.0, "exclaim_rise": 0.5},
     "narrator":  {"style": "ノーマル", "tone": ["narrator", "calm"], "speed": 0.98, "intonation": 1.1, "pitch": 0.0, "volume": 1.05, "bounce": 0.5, "end_rise": 0.0, "exclaim_rise": 1.0, "pauses": 1.0},
     "surprised": {"style": "ノーマル", "tone": "surprised", "speed": 1.05, "intonation": 1.6, "pitch": 2.5, "volume": 1.25, "bounce": 1.2, "exclaim_rise": 3.0},
-    "scared":    {"style": "なみだめ", "tone": "scared", "speed": 1.06, "intonation": 1.3, "pitch": 1.5, "volume": 0.95, "bounce": 1.2, "end_rise": 0.5},
+    "scared":    {"style": "ノーマル", "tone": "scared", "speed": 1.04, "intonation": 1.15, "pitch": 0.5, "volume": 0.9, "bounce": 0.6, "end_rise": 0.5},
     "sleepy":    {"style": "ヘロヘロ", "tone": "tired", "speed": 0.85, "intonation": 0.8, "pitch": -1.5, "volume": 0.85, "bounce": 0.3, "end_rise": -1.5, "end_stretch": 1.5},
     "sad":       {"style": "ノーマル", "tone": ["sorrow", "calm"], "speed": 0.9, "intonation": 0.9, "pitch": -1.0, "volume": 0.92, "bounce": 0.4, "end_rise": -1.5, "end_stretch": 1.1},
     "defeated":  {"style": "ノーマル", "tone": ["defeat"], "speed": 0.88, "intonation": 0.75, "pitch": -1.5, "volume": 0.9, "bounce": 0.3, "end_rise": -2.0, "end_stretch": 1.1},
