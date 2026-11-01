@@ -126,12 +126,18 @@ class Layout:
 
     def ensure(self):
         """Create whatever is missing from the shipped defaults. Never
-        overwrites a file that exists."""
+        overwrites a file that exists; adds a new version's words to an
+        older words.json."""
         os.makedirs(self.data, exist_ok=True)
         for name in ('words.json', 'moods.json'):
             target = os.path.join(self.data, name)
             if not os.path.exists(target):
                 shutil.copyfile(os.path.join(DEFAULTS_DIR, name), target)
+        # A dictionary an older version made gets the words this one
+        # learned - once, never over the user's own (config.add_new_words).
+        # Imported here: config imports this module.
+        from .config import add_new_words
+        add_new_words(self.words)
         os.makedirs(self.renders, exist_ok=True)
         if not os.path.isdir(self.scripts):
             os.makedirs(self.scripts, exist_ok=True)

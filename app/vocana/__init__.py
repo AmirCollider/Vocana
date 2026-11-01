@@ -11,8 +11,8 @@ installer's registry entry and the update check all read VERSION.
 """
 
 NAME = 'Vocana'
-VERSION = '1.0.0'
-RELEASE_DATE = '2026-10-15'
+VERSION = '1.0.1'
+RELEASE_DATE = '2026-11-01'
 PUBLISHER = 'AmirCollider'
 HOMEPAGE = 'https://amircollider.com/vocana'
 

@@ -119,11 +119,12 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="ja-words" data-anchor="words">
   <h2><span class="n">7</span>辞書</h2>
-  <p>VOICEVOX は日本語のエンジンなので、英語を渡されると推測で読みます (「me」が「エム イー」になる)。Vocana は VOICEVOX に渡す前にすべての単語をカタカナにします。まず <code>words.json</code> (よく使う 1,400 語以上 + あなたの登録語)、残りは英語→カタカナ変換モデル e2k で。文末の母音が無声化されることもなく、外来語の言い方どおりにまとまりとアクセントをつけるので、はっきり聞こえます。</p>
+  <p>VOICEVOX は日本語のエンジンなので、英語を渡されると推測で読みます (「me」が「エム イー」になる)。Vocana は VOICEVOX に渡す前にすべての単語をカタカナにします。まず <code>words.json</code> (よく使う 2,000 語以上 + あなたの登録語)、残りは英語→カタカナ変換モデル e2k で。文末の母音が無声化されることもなく、外来語の言い方どおりにまとまりとアクセントをつけるので、はっきり聞こえます。</p>
   <p>名前・ゲームタイトル・ブランド名などがうまく読まれないときは、辞書ページかファイルで正しいカタカナを登録します:</p>
 <pre>"amircollider": "アミールコライダー",
 "vocana": "ボカナ"</pre>
   <p>聞こえてほしいとおりに書きます。<code>ー</code> で母音を伸ばし、<code>ッ</code> で短く詰まります。スクリプトページには、モデルが推測した単語が ▶ と <b>修正</b> つきで並びます。</p>
+  <p>Vocana は新しいバージョンごとに読める単語が増えます。新バージョンの初回起動時に、新しい単語をあなたの <code>words.json</code> へ 1 回だけ追加します。すでに登録してある単語は上書きせず、削除した単語が戻ることもありません。各バージョンで追加された単語はリリースノートで確認できます: <a href="https://amircollider.com/ja/vocana/release-notes">amircollider.com/vocana/release-notes</a>。</p>
 </section>
 
 <section id="ja-files" data-anchor="files">
@@ -235,7 +236,13 @@ python vocana.py studio</pre>
 
 <section id="ja-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>新機能</h2>
-  <h3>1.0.0 — __DATE__</h3>
+  <h3>1.0.1 — __DATE__</h3>
+  <ul>
+    <li>辞書に 617 語を追加 (合計 2,049 語)。どれもモデルが読み間違えていた単語です: <i>shy</i> はシャイ (シーではなく)、<i>skies</i>、<i>define</i>、<i>quietly</i>、<i>exciting</i> (「エキサイト」ではなく)、<i>thousands</i>、<i>thoughts</i>、<i>heroes</i>、<i>leather</i> など。ローマ字の日本語 (<i>kawaii</i>、<i>desu</i>、<i>sugoi</i>)、VOICEVOX キャラクターの名前、動画でよく使う単語 (<i>livestream</i>、<i>thumbnail</i>、<i>chatgpt</i>) も。</li>
+    <li>アップデートがあなたの辞書にも届きます。新しいバージョンは追加した単語をあなたの <code>words.json</code> に 1 回だけ足し、登録済みの単語は上書きしません。</li>
+    <li><i>sad</i>・<i>defeated</i>・<i>scared</i> は震えず、落ち着いてはっきり聞こえるようになりました。</li>
+  </ul>
+  <h3>1.0.0 — 2026-10-15</h3>
   <ul>
     <li>VoxTalk が Vocana に。ブラウザーで使うスタジオを、ペルシャ語・英語・日本語で。</li>
     <li>VOICEVOX の全キャラクターを 1 つのスクリプトで: <code>@cast</code>、キャストページ、各キャラクター自身のスタイルを選ぶムード。</li>

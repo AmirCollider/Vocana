@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, 'app'))
 
-from vocana import config as cfgmod  # noqa: E402
+from vocana import VERSION, config as cfgmod  # noqa: E402
 from vocana.kana import Kana  # noqa: E402
 from vocana.render import Vocana, safe_name, srt_time, vtt_time  # noqa: E402
 from vocana.script import parse_script, cast_line  # noqa: E402
@@ -283,6 +283,91 @@ class Plan(unittest.TestCase):
         found = sorted((w['n'], w['mood']) for w in plan['warnings'] if w['code'] == 'unknown_mood')
         self.assertEqual(found, [(1, 'happpy'), (2, 'whisperr')])
 
+
+
+class NewWords(unittest.TestCase):
+    """A version's new words reach a words.json an older version made
+    (config.add_new_words, run by Layout.ensure at every start)."""
+
+    def setUp(self):
+        self.d = tempfile.mkdtemp(prefix='vocana-words-')
+        self.p = os.path.join(self.d, 'words.json')
+        with open(os.path.join(DEFAULTS, 'new-words.json'), encoding='utf-8') as f:
+            self.lists = {k: v for k, v in json.load(f).items() if not k.startswith('_')}
+        self.newest = max(self.lists, key=cfgmod.version_tuple)
+
+    def write(self, data):
+        with open(self.p, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False)
+
+    def read(self):
+        with open(self.p, encoding='utf-8') as f:
+            return json.load(f)
+
+    def test_an_old_dictionary_gets_the_new_words_once(self):
+        # A 1.0.0 (or VoxTalk) file: no _dictionary. The user's own reading
+        # of a word on the list stays; the rest of the list is added.
+        self.write({'_about': 'mine', 'hello': 'ハロー', 'Shy': 'シャーイ'})
+        added = cfgmod.add_new_words(self.p)
+        data = self.read()
+        self.assertNotIn('shy', added)
+        self.assertEqual(data['Shy'], 'シャーイ')
+        self.assertEqual(data['exciting'], 'エキサイティング')
+        self.assertEqual(data['_dictionary'], self.newest)
+        self.assertEqual(list(data)[:4], ['_about', '_dictionary', 'hello', 'Shy'])
+        self.assertEqual(data['_about'], 'mine')
+        # A word the user deletes afterwards stays deleted.
+        del data['exciting']
+        self.write(data)
+        self.assertEqual(cfgmod.add_new_words(self.p), {})
+        self.assertNotIn('exciting', self.read())
+
+    def test_the_studio_reads_the_new_words(self):
+        self.write({'hello': 'ハロー'})
+        Layout = __import__('vocana.paths', fromlist=['Layout']).Layout
+        Layout(self.d).ensure()
+        words, _w = cfgmod.load_words(self.p)
+        k = Kana(words, use_model=False)
+        self.assertEqual(k.lookup('shy'), ('シャイ', 'dict'))
+        self.assertEqual(k.lookup('Skies'), ('スカイズ', 'dict'))
+        self.assertEqual(k.lookup('hello'), ('ハロー', 'dict'))
+
+    def test_a_broken_or_current_file_is_left_alone(self):
+        with open(self.p, 'w', encoding='utf-8') as f:
+            f.write('{"hello": "ハロー",}')
+        self.assertEqual(cfgmod.add_new_words(self.p), {})
+        with open(self.p, encoding='utf-8') as f:
+            self.assertEqual(f.read(), '{"hello": "ハロー",}')
+        self.write({'_dictionary': self.newest, 'hello': 'ハロー'})
+        self.assertEqual(cfgmod.add_new_words(self.p), {})
+        self.assertEqual(self.read(), {'_dictionary': self.newest, 'hello': 'ハロー'})
+        self.assertEqual(cfgmod.add_new_words(os.path.join(self.d, 'missing.json')), {})
+
+    def test_the_defaults_carry_every_list(self):
+        # A fresh copy starts with every word ever listed, marked with the
+        # newest list, so its first start adds nothing.
+        with open(os.path.join(DEFAULTS, 'words.json'), encoding='utf-8') as f:
+            defaults = json.load(f)
+        self.assertEqual(defaults['_dictionary'], self.newest)
+        self.assertLessEqual(cfgmod.version_tuple(self.newest), cfgmod.version_tuple(VERSION))
+        for ver, block in self.lists.items():
+            for k, v in block.items():
+                self.assertEqual(defaults.get(k), v, '%s (%s)' % (k, ver))
+        shutil.copyfile(os.path.join(DEFAULTS, 'words.json'), self.p)
+        self.assertEqual(cfgmod.add_new_words(self.p), {})
+
+    def test_every_new_word_is_said_whole(self):
+        # Every mora VOICEVOX accepts: moras_of drops what the engine
+        # would refuse, so a dropped letter is a word said wrong.
+        from vocana.kana import VALID, SMALL, moras_of
+        single = {m for m in VALID if len(m) == 1}
+        for block in self.lists.values():
+            for k, v in block.items():
+                self.assertTrue(moras_of(v), k)
+                for i, c in enumerate(v):
+                    ok = c == 'ー' or c in single or (c in SMALL and v[i - 1:i + 1] in VALID)
+                    self.assertTrue(ok, '%s: %s' % (k, v))
+                self.assertEqual(k, k.lower().strip(), k)
 
 if __name__ == '__main__':
     unittest.main()

@@ -153,7 +153,7 @@ textarea.play { font-family: var(--mono); direction: ltr; text-align: left; min-
     <h1>Vocana</h1>
     <p class="tag">انگلیسی ساده بنویسید، با هر صدای VOICEVOX بشنوید.</p>
     <p>اسکریپت خود را به انگلیسی معمولی بنویسید. Vocana هر کلمه را همان‌طور که یک صدای ژاپنی می‌تواند بگوید به کاتاکانا تبدیل می‌کند، ملودی را برای حال‌وهوایی که خواسته‌اید شکل می‌دهد و صدا، زیرنویس و زمان‌بندی کلمه‌به‌کلمه را برای ویدیوی شما تحویل می‌دهد — با همه‌ی شخصیت‌های VOICEVOX، نه فقط یکی.</p>
-    <p class="meta">نسخه‌ی <span class="ltr">1.0.0</span> · <span class="ltr">2026-10-15</span> · ساخته‌ی AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <p class="meta">نسخه‌ی <span class="ltr">1.0.1</span> · <span class="ltr">2026-11-01</span> · ساخته‌ی AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
     <div class="chips"><span class="chip">رایگان</span><span class="chip">ویندوز · مک · لینوکس</span><span class="chip">بدون اینترنت</span><span class="chip">فارسی · English · 日本語</span></div>
   </div>
 </div>
@@ -268,11 +268,12 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="fa-words" data-anchor="words">
   <h2><span class="n">۷</span>واژه‌نامه</h2>
-  <p>VOICEVOX یک موتور ژاپنی است: به انگلیسی که می‌رسد حدس می‌زند («me» می‌شود حرف‌های «M E»). Vocana پیش از آن‌که VOICEVOX چیزی ببیند هر کلمه را به کاتاکانا می‌نویسد — اول از <code>words.json</code> (بیش از ۱۴۰۰ کلمه‌ی پرکاربرد، به‌علاوه‌ی کلمه‌های خودتان)، بعد برای بقیه از e2k که یک مدل تبدیل انگلیسی به کاتاکاناست. آخر جمله هیچ واکه‌ای پچ‌پچی نمی‌شود، و کلمه‌ها همان‌طور که ژاپنی‌ها کلمه‌های قرضی را می‌گویند گروه‌بندی و تکیه‌گذاری می‌شوند، پس واضح می‌مانند.</p>
+  <p>VOICEVOX یک موتور ژاپنی است: به انگلیسی که می‌رسد حدس می‌زند («me» می‌شود حرف‌های «M E»). Vocana پیش از آن‌که VOICEVOX چیزی ببیند هر کلمه را به کاتاکانا می‌نویسد — اول از <code>words.json</code> (بیش از ۲۰۰۰ کلمه‌ی پرکاربرد، به‌علاوه‌ی کلمه‌های خودتان)، بعد برای بقیه از e2k که یک مدل تبدیل انگلیسی به کاتاکاناست. آخر جمله هیچ واکه‌ای پچ‌پچی نمی‌شود، و کلمه‌ها همان‌طور که ژاپنی‌ها کلمه‌های قرضی را می‌گویند گروه‌بندی و تکیه‌گذاری می‌شوند، پس واضح می‌مانند.</p>
   <p>اگر کلمه‌ای اشتباه درآمد — یک اسم، نام یک بازی، یک برند — در صفحه‌ی واژه‌نامه یا در خود فایل کاتاکانای درستش را بدهید:</p>
 <pre>"amircollider": "アミールコライダー",
 "vocana": "ボカナ"</pre>
   <p>همان‌طور بنویسید که باید شنیده شود: <code>ー</code> واکه را بلند می‌کند و <code>ッ</code> یک مکث کوتاه است. صفحه‌ی اسکریپت کلمه‌هایی را که مدل در اسکریپت شما حدس زده با دکمه‌ی ▶ و <b>اصلاح</b> فهرست می‌کند.</p>
+  <p>هر نسخه‌ی تازه‌ی Vocana کلمه‌های بیشتری بلد است. اولین اجرای آن، کلمه‌های تازه را یک بار به <code>words.json</code> شما اضافه می‌کند — هیچ‌وقت روی کلمه‌ای که خودتان دارید نمی‌نویسد، و کلمه‌ای که پاک کنید پاک می‌ماند. یادداشت‌های انتشار، همه‌ی کلمه‌هایی را که هر نسخه اضافه کرده فهرست می‌کنند: <a href="https://amircollider.com/vocana/release-notes">amircollider.com/vocana/release-notes</a>.</p>
 </section>
 
 <section id="fa-files" data-anchor="files">
@@ -384,6 +385,12 @@ python vocana.py studio</pre>
 
 <section id="fa-changelog" data-anchor="changelog">
   <h2><span class="n">۱۶</span>تازه‌ها</h2>
+  <h3><span class="ltr">1.0.1</span> — <span class="ltr">2026-11-01</span></h3>
+  <ul>
+    <li>۶۱۷ کلمه‌ی تازه در واژه‌نامه (روی هم ۲۰۴۹ کلمه)، همه کلمه‌هایی که مدل اشتباه می‌خواند: <i>shy</i> شای (نه «شی»)، <i>skies</i>، <i>define</i>، <i>quietly</i>، <i>exciting</i> (نه «excite»)، <i>thousands</i>، <i>thoughts</i>، <i>heroes</i>، <i>leather</i>…؛ کلمه‌های ژاپنی که با حروف انگلیسی نوشته می‌شوند (<i>kawaii</i>، <i>desu</i>، <i>sugoi</i>)، نام کاراکترهای VOICEVOX و کلمه‌های رایج ویدیو (<i>livestream</i>، <i>thumbnail</i>، <i>chatgpt</i>).</li>
+    <li>به‌روزرسانی به واژه‌نامه‌ی خودتان هم می‌رسد: نسخه‌ی تازه کلمه‌هایش را یک بار به <code>words.json</code> شما اضافه می‌کند و هیچ‌وقت روی کلمه‌ی خودتان نمی‌نویسد.</li>
+    <li>حس‌های <i>sad</i>، <i>defeated</i> و <i>scared</i> به‌جای لرزان، آرام و واضح‌اند.</li>
+  </ul>
   <h3><span class="ltr">1.0.0</span> — <span class="ltr">2026-10-15</span></h3>
   <ul>
     <li>VoxTalk تبدیل شد به Vocana: یک استودیو در مرورگر، به فارسی، انگلیسی و ژاپنی.</li>
@@ -405,7 +412,7 @@ python vocana.py studio</pre>
     <h1>Vocana</h1>
     <p class="tag">Plain English, any VOICEVOX voice.</p>
     <p>Write a script in normal English. Vocana turns every word into katakana the way a Japanese voice can say it, shapes the melody for the mood you asked for, and gives you the voice, captions and word-by-word timing for your video — with every VOICEVOX character, not just one.</p>
-    <p class="meta">Version 1.0.0 · 2026-10-15 · by AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <p class="meta">Version 1.0.1 · 2026-11-01 · by AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
     <div class="chips"><span class="chip">Free</span><span class="chip">Windows · macOS · Linux</span><span class="chip">Works offline</span><span class="chip">فارسی · English · 日本語</span></div>
   </div>
 </div>
@@ -520,11 +527,12 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="en-words" data-anchor="words">
   <h2><span class="n">7</span>The dictionary</h2>
-  <p>VOICEVOX is a Japanese engine: given English it guesses (“me” becomes the letters “M E”). Vocana writes every word in katakana before VOICEVOX sees it — first from <code>words.json</code> (more than 1,400 common words, plus yours), then from e2k, an English-to-katakana model, for everything else. Nothing is whispered at the end of a sentence, and the words are grouped and accented the way Japanese says loanwords, so they stay clear.</p>
+  <p>VOICEVOX is a Japanese engine: given English it guesses (“me” becomes the letters “M E”). Vocana writes every word in katakana before VOICEVOX sees it — first from <code>words.json</code> (more than 2,000 common words, plus yours), then from e2k, an English-to-katakana model, for everything else. Nothing is whispered at the end of a sentence, and the words are grouped and accented the way Japanese says loanwords, so they stay clear.</p>
   <p>If a word comes out wrong — a name, a game title, a brand — give it the right katakana on the Dictionary page, or in the file:</p>
 <pre>"amircollider": "アミールコライダー",
 "vocana": "ボカナ"</pre>
   <p>Write it the way it should sound: <code>ー</code> makes a vowel long, <code>ッ</code> is a short stop. The Script page lists the words the model guessed in your script, each with ▶ and <b>Fix</b>.</p>
+  <p>Every new version of Vocana knows more words. Its first start adds them to your <code>words.json</code> once — never over a word you already have, and a word you delete stays deleted. The release notes list every word each version added: <a href="https://amircollider.com/en/vocana/release-notes">amircollider.com/vocana/release-notes</a>.</p>
 </section>
 
 <section id="en-files" data-anchor="files">
@@ -636,6 +644,12 @@ python vocana.py studio</pre>
 
 <section id="en-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>What’s new</h2>
+  <h3>1.0.1 — 2026-11-01</h3>
+  <ul>
+    <li>617 new words in the dictionary (2,049 in all), each one a word the model read wrong: <i>shy</i> シャイ (not シー), <i>skies</i>, <i>define</i>, <i>quietly</i>, <i>exciting</i> (not “excite”), <i>thousands</i>, <i>thoughts</i>, <i>heroes</i>, <i>leather</i>…, Japanese words written in English letters (<i>kawaii</i>, <i>desu</i>, <i>sugoi</i>), the VOICEVOX characters’ names and the words videos use (<i>livestream</i>, <i>thumbnail</i>, <i>chatgpt</i>).</li>
+    <li>Updates reach your own dictionary: a new version adds its words to your <code>words.json</code> once, never over a word you have.</li>
+    <li><i>sad</i>, <i>defeated</i> and <i>scared</i> are calm and clear instead of trembling.</li>
+  </ul>
   <h3>1.0.0 — 2026-10-15</h3>
   <ul>
     <li>VoxTalk becomes Vocana: a studio in your browser, in Persian, English and Japanese.</li>
@@ -657,7 +671,7 @@ python vocana.py studio</pre>
     <h1>Vocana <small style="font-size:.5em;color:var(--mute)">ボカナ</small></h1>
     <p class="tag">英語を書くだけで、どの VOICEVOX ボイスでも。</p>
     <p>ふつうの英語で台本を書くと、Vocana がすべての単語を日本語の声が言えるカタカナに直し、指定したムードに合わせてメロディーを整え、音声・字幕・単語ごとのタイミングを動画用に書き出します。キャラクターは 1 人だけでなく、VOICEVOX の全員から選べます。</p>
-    <p class="meta">バージョン 1.0.0 · 2026-10-15 · AmirCollider 制作 · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <p class="meta">バージョン 1.0.1 · 2026-11-01 · AmirCollider 制作 · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
     <div class="chips"><span class="chip">無料</span><span class="chip">Windows · macOS · Linux</span><span class="chip">オフラインで動作</span><span class="chip">فارسی · English · 日本語</span></div>
   </div>
 </div>
@@ -772,11 +786,12 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="ja-words" data-anchor="words">
   <h2><span class="n">7</span>辞書</h2>
-  <p>VOICEVOX は日本語のエンジンなので、英語を渡されると推測で読みます (「me」が「エム イー」になる)。Vocana は VOICEVOX に渡す前にすべての単語をカタカナにします。まず <code>words.json</code> (よく使う 1,400 語以上 + あなたの登録語)、残りは英語→カタカナ変換モデル e2k で。文末の母音が無声化されることもなく、外来語の言い方どおりにまとまりとアクセントをつけるので、はっきり聞こえます。</p>
+  <p>VOICEVOX は日本語のエンジンなので、英語を渡されると推測で読みます (「me」が「エム イー」になる)。Vocana は VOICEVOX に渡す前にすべての単語をカタカナにします。まず <code>words.json</code> (よく使う 2,000 語以上 + あなたの登録語)、残りは英語→カタカナ変換モデル e2k で。文末の母音が無声化されることもなく、外来語の言い方どおりにまとまりとアクセントをつけるので、はっきり聞こえます。</p>
   <p>名前・ゲームタイトル・ブランド名などがうまく読まれないときは、辞書ページかファイルで正しいカタカナを登録します:</p>
 <pre>"amircollider": "アミールコライダー",
 "vocana": "ボカナ"</pre>
   <p>聞こえてほしいとおりに書きます。<code>ー</code> で母音を伸ばし、<code>ッ</code> で短く詰まります。スクリプトページには、モデルが推測した単語が ▶ と <b>修正</b> つきで並びます。</p>
+  <p>Vocana は新しいバージョンごとに読める単語が増えます。新バージョンの初回起動時に、新しい単語をあなたの <code>words.json</code> へ 1 回だけ追加します。すでに登録してある単語は上書きせず、削除した単語が戻ることもありません。各バージョンで追加された単語はリリースノートで確認できます: <a href="https://amircollider.com/ja/vocana/release-notes">amircollider.com/vocana/release-notes</a>。</p>
 </section>
 
 <section id="ja-files" data-anchor="files">
@@ -888,6 +903,12 @@ python vocana.py studio</pre>
 
 <section id="ja-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>新機能</h2>
+  <h3>1.0.1 — 2026-11-01</h3>
+  <ul>
+    <li>辞書に 617 語を追加 (合計 2,049 語)。どれもモデルが読み間違えていた単語です: <i>shy</i> はシャイ (シーではなく)、<i>skies</i>、<i>define</i>、<i>quietly</i>、<i>exciting</i> (「エキサイト」ではなく)、<i>thousands</i>、<i>thoughts</i>、<i>heroes</i>、<i>leather</i> など。ローマ字の日本語 (<i>kawaii</i>、<i>desu</i>、<i>sugoi</i>)、VOICEVOX キャラクターの名前、動画でよく使う単語 (<i>livestream</i>、<i>thumbnail</i>、<i>chatgpt</i>) も。</li>
+    <li>アップデートがあなたの辞書にも届きます。新しいバージョンは追加した単語をあなたの <code>words.json</code> に 1 回だけ足し、登録済みの単語は上書きしません。</li>
+    <li><i>sad</i>・<i>defeated</i>・<i>scared</i> は震えず、落ち着いてはっきり聞こえるようになりました。</li>
+  </ul>
   <h3>1.0.0 — 2026-10-15</h3>
   <ul>
     <li>VoxTalk が Vocana に。ブラウザーで使うスタジオを、ペルシャ語・英語・日本語で。</li>
@@ -902,7 +923,7 @@ python vocana.py studio</pre>
 </section>
 
 </div>
-<p class="foot">Vocana 1.0.0 · 2026-10-15 · AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+<p class="foot">Vocana 1.0.1 · 2026-11-01 · AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
 </main>
 </div>
 <script>

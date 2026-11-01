@@ -119,11 +119,12 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="en-words" data-anchor="words">
   <h2><span class="n">7</span>The dictionary</h2>
-  <p>VOICEVOX is a Japanese engine: given English it guesses (“me” becomes the letters “M E”). Vocana writes every word in katakana before VOICEVOX sees it — first from <code>words.json</code> (more than 1,400 common words, plus yours), then from e2k, an English-to-katakana model, for everything else. Nothing is whispered at the end of a sentence, and the words are grouped and accented the way Japanese says loanwords, so they stay clear.</p>
+  <p>VOICEVOX is a Japanese engine: given English it guesses (“me” becomes the letters “M E”). Vocana writes every word in katakana before VOICEVOX sees it — first from <code>words.json</code> (more than 2,000 common words, plus yours), then from e2k, an English-to-katakana model, for everything else. Nothing is whispered at the end of a sentence, and the words are grouped and accented the way Japanese says loanwords, so they stay clear.</p>
   <p>If a word comes out wrong — a name, a game title, a brand — give it the right katakana on the Dictionary page, or in the file:</p>
 <pre>"amircollider": "アミールコライダー",
 "vocana": "ボカナ"</pre>
   <p>Write it the way it should sound: <code>ー</code> makes a vowel long, <code>ッ</code> is a short stop. The Script page lists the words the model guessed in your script, each with ▶ and <b>Fix</b>.</p>
+  <p>Every new version of Vocana knows more words. Its first start adds them to your <code>words.json</code> once — never over a word you already have, and a word you delete stays deleted. The release notes list every word each version added: <a href="https://amircollider.com/en/vocana/release-notes">amircollider.com/vocana/release-notes</a>.</p>
 </section>
 
 <section id="en-files" data-anchor="files">
@@ -235,7 +236,13 @@ python vocana.py studio</pre>
 
 <section id="en-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>What’s new</h2>
-  <h3>1.0.0 — __DATE__</h3>
+  <h3>1.0.1 — __DATE__</h3>
+  <ul>
+    <li>617 new words in the dictionary (2,049 in all), each one a word the model read wrong: <i>shy</i> シャイ (not シー), <i>skies</i>, <i>define</i>, <i>quietly</i>, <i>exciting</i> (not “excite”), <i>thousands</i>, <i>thoughts</i>, <i>heroes</i>, <i>leather</i>…, Japanese words written in English letters (<i>kawaii</i>, <i>desu</i>, <i>sugoi</i>), the VOICEVOX characters’ names and the words videos use (<i>livestream</i>, <i>thumbnail</i>, <i>chatgpt</i>).</li>
+    <li>Updates reach your own dictionary: a new version adds its words to your <code>words.json</code> once, never over a word you have.</li>
+    <li><i>sad</i>, <i>defeated</i> and <i>scared</i> are calm and clear instead of trembling.</li>
+  </ul>
+  <h3>1.0.0 — 2026-10-15</h3>
   <ul>
     <li>VoxTalk becomes Vocana: a studio in your browser, in Persian, English and Japanese.</li>
     <li>Every VOICEVOX character, in one script: <code>@cast</code>, the Cast page, and moods that pick each character’s own style.</li>

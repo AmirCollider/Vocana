@@ -19,6 +19,7 @@ import copy
 import json
 import locale
 import os
+import re
 import tempfile
 
 from .paths import DEFAULTS_DIR
@@ -149,6 +150,88 @@ def save_words(path, entries, about=None):
         if isinstance(k, str) and k.strip() and not k.startswith('_') and isinstance(v, str) and v.strip():
             out[k.strip().lower()] = v.strip()
     write_json(path, out)
+
+
+# ==================================================================
+# The words a new version learned
+# ==================================================================
+# words.json is the user's own file: copied from the defaults on the first
+# start and never overwritten after that. That keeps every reading a user
+# typed - and it also kept every word a later version learned away from
+# them, because the built-in dictionary IS that file. So each version lists
+# the words it added (defaults/new-words.json), and the first start of a
+# newer version adds them to the user's file, once: never over a word the
+# file already has, and never again after the user deletes one.
+# '_dictionary' in the file names the version whose words are in it; a file
+# without it (made by 1.0.0, or by VoxTalk) is older than every list, so it
+# gets each version's new words - but not the 1,400 words 1.0.0 began
+# with, which a VoxTalk dictionary never had and whose scripts must keep
+# sounding the way they did.
+DICTIONARY_KEY = '_dictionary'
+
+
+def version_tuple(v):
+    parts = re.findall(r'\d+', str(v or ''))[:3]
+    return tuple(int(p) for p in parts) + (0,) * (3 - len(parts))
+
+
+def new_words_since(version):
+    """({word: kana} that the versions after `version` added, the newest
+    version listed). A list that cannot be read adds nothing."""
+    try:
+        data = default_json('new-words.json')
+    except (OSError, ValueError):
+        return {}, None
+    if not isinstance(data, dict):
+        return {}, None
+    have = version_tuple(version)
+    out, newest = {}, None
+    for ver in sorted((k for k in data if isinstance(k, str) and not k.startswith('_')), key=version_tuple):
+        block = data[ver]
+        if not isinstance(block, dict):
+            continue
+        newest = ver
+        if version_tuple(ver) <= have:
+            continue
+        for k, v in block.items():
+            if isinstance(k, str) and isinstance(v, str) and k.strip() and v.strip():
+                out[k.strip().lower().replace('’', "'")] = v.strip()
+    return out, newest
+
+
+def add_new_words(path):
+    """Bring the user's words.json up to this version's dictionary and
+    return the words added ({} when there was nothing to do). Never raises:
+    a file that is missing, broken or cannot be written is left exactly as
+    it is - a dictionary update must never be the reason Vocana did not
+    start, and a broken file is the user's to fix, not ours to replace."""
+    try:
+        raw = read_json(path)
+    except (ConfigError, OSError):
+        return {}
+    if not isinstance(raw, dict):
+        return {}
+    mark = raw.get(DICTIONARY_KEY)
+    mark = mark if isinstance(mark, str) else ''
+    new, newest = new_words_since(mark)
+    if newest is None or version_tuple(mark) >= version_tuple(newest):
+        return {}
+    have = {k.strip().lower().replace('’', "'") for k in raw if isinstance(k, str)}
+    added = {k: v for k, v in sorted(new.items()) if k not in have}
+    out = {}
+    for k, v in raw.items():                    # the notes first, as save_words keeps them
+        if isinstance(k, str) and k.startswith('_') and k != DICTIONARY_KEY:
+            out[k] = v
+    out[DICTIONARY_KEY] = newest
+    for k, v in raw.items():                    # then the user's words, in the user's order
+        if not (isinstance(k, str) and k.startswith('_')):
+            out[k] = v
+    out.update(added)
+    try:
+        write_json(path, out)
+    except Exception:
+        return {}
+    return added
 
 
 # ==================================================================
