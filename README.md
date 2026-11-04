@@ -15,7 +15,7 @@ Write a script in normal English. Vocana writes every word in katakana the way a
 - **A studio in your browser** — an editor that colours your script, hear any line before rendering, a player whose captions follow every word. In Persian, English and Japanese.
 - **The whole VOICEVOX cast** — `@cast METAN = 四国めたん` and each character reads its lines; a mood picks each character's own style (喜び, わーい, あまあま…).
 - **Credits done right** — every render writes `credits.txt` with the exact credit line each character's terms ask for, and the studio marks characters with extra conditions.
-- **Clear English** — a dictionary of 2,049 words that grows with every version (new words reach your own dictionary too, never over yours), an English-to-katakana model for the rest, loanword accents, nothing whispered. Every word each version added: [release notes](https://amircollider.com/en/vocana/release-notes).
+- **Clear English** — a dictionary of 3,247 words that grows with every version (new words reach your own dictionary too, never over yours), an English-to-katakana model for the rest, loanword accents, nothing whispered. Every word each version added: [release notes](https://amircollider.com/en/vocana/release-notes).
 - **Ready for video and AI** — `full.wav`, a file per line, SRT/WebVTT captions per line and per sentence, and `timing.json` with every word's time.
 - **Nothing to install on Windows** — Python is inside the folder. `Setup.bat` installs it for your user (Start menu, uninstall) if you want.
 

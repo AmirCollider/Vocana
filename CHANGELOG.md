@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.2 — 2026-11-04
+
+The dictionary learns 1,198 words, a word + 's is said right, and a whisper is a whisper again.
+
+- **1,198 new words** (3,247 in all), each one a word the English-to-katakana model read wrong. First the script that was reported: undo アンドゥー (was ウンド, "oondo"), redo リドゥー (レド, "red-o"), undoing アンドゥーイング (アンドゥー — the -ing was lost), undid, undone, redid, redone — and the words around them: ctrl コントロール (クトル), hotkey ホットキー (ホッティー), paste ペースト (ペース), retry リトライ (リトリー), reboot リブート (リブー), rewind, uploads, scripts, git ギット (ジット), github ギットハブ (ジチューブ), json ジェイソン (ジョン, "John"), linux リナックス (リヌックス).
+- Words that came out as other words: tokyo トーキョー (トコーヨー), sunshine サンシャイン (サンシン), sacred セイクリッド (サッカー, "soccer"), weakened ウィークンド (ウィークエンド, "weekend"), laughter ラフター (ローター), sweater スウェター (スイーター, "sweeter"), bathing ベイジング (バッシング, "bashing"), hm フーン (ミーム, "meme" — and so did every drawn-out "hmmm").
+- Chat, stream and game words: lol, brb, btw, idk, tbh, afk, ggs, np, nvm, irl, omw, hp, npc, op, buffed, nerfed, giveaway, shoutout, montage, sponsored; the sounds characters make: woohoo, oof, psst, pfft, ew, duh, tsk, meow, woof, achoo, whoosh, tada, zzz; Japanese in English letters: gomen, gomenasai, sumimasen, daijoubu, yamete, oyasumi, isekai, kakkoii, oniichan, oneesan.
+- Common words and names: david デイビッド (ダビード), england イングランド (エングランド), mary メアリー, steve スティーブ, peter ピーター, therefore ゼアフォー (サーフフォー), cities シティーズ (サイティーズ), greater グレーター (グリーター), ancient エインシェント (アンシエント), approximately, determined, significant, obvious, vacation, alien, aliens.
+- **A word + 's is the word the dictionary knows, then its s.** The model was given "zundamons" and said ツンダモンズ — "tsundamon's", in the shipped sample itself; now ズンダモンズ. everyone's エブリワンズ (was エバリオン), today's トゥデイズ (トデース), cat's キャッツ, God's ゴッズ, boss's ボスィズ.
+- **Drawn-out words keep their own double letters**: "Goood" is good (it was "god"), "Coool" cool ("col"), "Sleeepy" sleepy; "Pleeease" and "sooo" are read as before. A word written in words.json exactly as typed is read as written: "Zzz" is ズズズ, not the letter Z.
+- **A hyphenated word in words.json is read whole.** Such an entry was never used, and "bye-bye" was read as a stutter ("b-… bye"); it is バイバイ now. "W-Wait" is still a stutter and "well-known" still two words.
+- **`[whisper]` and `[asmr]` keep the engine's own whisper.** A whispering style (ささやき, ヒソヒソ, 囁き…) has no pitch on any syllable, and Vocana gave every syllable a made-up one — 330 Hz, a falsetto under a man's whisper. The melody is left alone for such a sentence; lengths still follow the mood.
+- Tests for each of these (tests/test_core.py). The VoxTalk regression test names its one deliberate difference, Zundamon's: lines 1–7 of the VoxTalk sample are still byte-identical, and 499 of the 503 sentences give identical kana.
+
 ## 1.0.1 — 2026-11-01
 
 The dictionary learns 617 words, and from now on every update reaches your own dictionary too.

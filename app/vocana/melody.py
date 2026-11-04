@@ -70,14 +70,24 @@ def shape(aps, spans, mood, seg, seed, accent_of=None):
 
     # 1. Nothing whispered: give every devoiced vowel a voice and a pitch,
     #    and every b and g enough time to be heard.
+    #    A whispering style (ささやき, ヒソヒソ, 囁き...) has no pitch on any
+    #    mora, not even on the vowels the text says to voice (lowercase): it
+    #    is whispered from start to end, on purpose. Giving it one put a
+    #    made-up 330 Hz under every syllable - a voice in the middle of a
+    #    whisper, and a falsetto for a man's whisper. Such a sentence keeps
+    #    the engine's own whisper; only the lengths below still apply. (A
+    #    short sentence whose every vowel the text devoices - "Kiss." - is
+    #    voiced, as before.)
     voiced = [m['pitch'] for m in flat if m['pitch'] > 0]
+    unvoiced_style = not voiced and any(m['vowel'] in ('a', 'i', 'u', 'e', 'o') for m in flat)
     mean = float(np.mean(voiced)) if voiced else 5.8
     for i, m in enumerate(flat):
-        if m['vowel'] in ('A', 'I', 'U', 'E', 'O'):
-            m['vowel'] = m['vowel'].lower()
-        if m['pitch'] <= 0 and m['vowel'] not in ('cl', 'pau', 'sil'):
-            nb = [x['pitch'] for x in flat[max(0, i - 1):i + 2] if x['pitch'] > 0]
-            m['pitch'] = float(np.mean(nb)) if nb else mean
+        if not unvoiced_style:
+            if m['vowel'] in ('A', 'I', 'U', 'E', 'O'):
+                m['vowel'] = m['vowel'].lower()
+            if m['pitch'] <= 0 and m['vowel'] not in ('cl', 'pau', 'sil'):
+                nb = [x['pitch'] for x in flat[max(0, i - 1):i + 2] if x['pitch'] > 0]
+                m['pitch'] = float(np.mean(nb)) if nb else mean
         # Inside a phrase the engine makes b and g so short they melt into the
         # vowels: "the golden" comes out "the olden", "rainbow" "rainmow".
         # (Not d: held this long, a d is heard as a t - "paddle" -> "battle".)

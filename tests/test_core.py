@@ -76,6 +76,69 @@ class Text(unittest.TestCase):
         self.assertFalse(split_line('Hehe ♡ エヘヘ', ['normal'])[0]['japanese'])
         self.assertFalse(split_line('ヴァイオリン ヵ', ['normal'])[0]['japanese'])
 
+    def words(self, text):
+        return [(w['word'], ''.join(w['moras'])) for p in self.vt.plan(text) for w in p['words']
+                if isinstance(w, dict) and not w.get('stutter')]
+
+    def test_undo_and_redo(self):
+        # The script that was reported for 1.0.2: the model said ウンド
+        # ("oondo") for undo and レド ("red-o") for redo.
+        said = dict(self.words("Control Z! I'll undo... the undo! Redo! Nothing to redo. I'm undoing time?!"))
+        self.assertEqual(said['undo'], 'アンドゥウ')
+        self.assertEqual(said['Redo'], 'リドゥウ')
+        self.assertEqual(said['redo'], 'リドゥウ')
+        self.assertEqual(said['undoing'], 'アンドゥウイング')
+        self.assertEqual(said['Z'], 'ズィイ')
+
+    def test_a_word_and_its_s(self):
+        # "Zundamon's" was given to the model as "zundamons": ツンダモンズ.
+        said = dict(self.words("Zundamon's turn! Everyone’s here, today's video."))
+        self.assertEqual(said["Zundamon's"], 'ズンダモンズ')
+        self.assertEqual(said['Everyone’s'], 'エブリワンズ')
+        self.assertEqual(said["today's"], 'トゥデイズ')
+        k = Kana({'cat': 'キャット', 'god': 'ゴッド', 'jack': 'ジャック', 'boss': 'ボス', 'george': 'ジョージ',
+                  'bush': 'ブッシュ', "it's": 'イッツ'}, use_model=False)
+        for w, want in (("cat's", 'キャッツ'), ("God's", 'ゴッズ'), ("Jack's", 'ジャックス'), ("boss's", 'ボスィズ'),
+                        ("George's", 'ジョージズ'), ("Bush's", 'ブッシズ'), ("it's", 'イッツ'), ("AI's", 'エーアイズ')):
+            self.assertEqual(k.word(w), want, w)
+
+    def test_drawn_out_words_keep_their_own_double_letters(self):
+        said = dict(self.words('Goood morning! Coool~ So sleeepy... Pleeease! Sooo nice. Zzz...'))
+        self.assertEqual(said['Goood'], 'グッド')                   # was "god"
+        self.assertEqual(said['Coool'], 'クウル')                    # was "col"
+        self.assertEqual(said['Pleeease'], 'プリイズ')
+        self.assertEqual(said['Sooo'], 'ソオ')
+        self.assertEqual(said['Zzz'], 'ズズズ')                     # not the letter Z
+        stretched = {w['word']: w['stretch'] for p in self.vt.plan('Goood! Zzz') for w in p['words']
+                     if isinstance(w, dict)}
+        self.assertEqual(stretched, {'Goood': True, 'Zzz': False})
+
+    def test_hyphenated_dictionary_words(self):
+        said = self.words('Bye-bye! W-Wait, a well-known song.')
+        self.assertIn(('Bye-bye', 'バイバイ'), said)               # one word, not a stutter
+        self.assertIn(('W-Wait', 'ウェイト'), said)                # still a stutter
+        self.assertEqual(dict(said)['well-known'], 'ウェルノウン')  # still two words
+
+    def test_a_whisper_keeps_no_pitch(self):
+        # A whispering style has no pitch on any mora. Giving it one put a
+        # voice under the whisper.
+        from vocana.melody import shape
+
+        def phrase(pitch, vowel='a'):
+            return {'moras': [{'text': 'サ', 'consonant': 's', 'consonant_length': 0.05, 'vowel': vowel,
+                               'vowel_length': 0.1, 'pitch': pitch} for _ in range(3)]}
+        seg = {'tilde': False, 'heart': False, 'exclaim': True, 'trail': False}
+        aps = [phrase(0.0, 'U'), phrase(0.0)]
+        shape(aps, [], {'bounce': 1.0, 'pitch': 2.0, 'end_rise': 3.0}, seg, seed=1)
+        self.assertTrue(all(m['pitch'] == 0.0 for ap in aps for m in ap['moras']))
+        self.assertEqual(aps[0]['moras'][0]['vowel'], 'U')
+        aps = [phrase(0.0, 'U')]                                  # "Kiss.": every vowel devoiced by the text
+        shape(aps, [], {'bounce': 0.0}, seg, seed=1)
+        self.assertTrue(all(m['pitch'] > 0 and m['vowel'] == 'u' for m in aps[0]['moras']))
+        aps = [phrase(5.5, 'U'), phrase(5.6)]                     # a voiced style still gets every vowel voiced
+        shape(aps, [], {'bounce': 1.0, 'pitch': 2.0}, seg, seed=1)
+        self.assertTrue(all(m['pitch'] > 0 and m['vowel'] in ('a', 'u') for ap in aps for m in ap['moras']))
+
     def test_unreadable_text_is_reported_not_spoken(self):
         notes = []
         segs = split_line('Hello! سلام دنیا.', ['normal'], notes=notes)

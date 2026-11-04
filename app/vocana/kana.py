@@ -176,6 +176,24 @@ did don't doesn't didn't can can't could couldn't would wouldn't will won't shou
 on at for from with by as or and but so if than then just not no too very this that these those what who how when
 """.split())
 
+def possessive(k):
+    """The katakana of a word + 's: "cat's" キャッツ, "God's" ゴッズ, "Jack's"
+    ジャックス, "boss's" ボスィズ, "George's" ジョージズ, "today's" トゥデイズ."""
+    if k.endswith(('シュ', 'ジュ')):
+        return k[:-1] + 'ズ'
+    if k.endswith(('ス', 'ズ', 'ツ')):
+        return k + 'ィズ'
+    if k.endswith(('ジ', 'チ', 'シ')):
+        return k + 'ズ'
+    if k.endswith('ト'):
+        return k[:-1] + 'ツ'
+    if k.endswith('ド'):
+        return k[:-1] + 'ズ'
+    if k.endswith(('プ', 'ク', 'フ')):
+        return k + 'ス'
+    return k + 'ズ'
+
+
 # Where a word's katakana came from. The studio shows this next to every
 # word, so the ones a model guessed can be checked and pinned in words.json.
 SOURCE_DICT = 'dict'          # words.json
@@ -242,6 +260,13 @@ class Kana:
         bare = lw.replace("'", '')
         if bare in self.words:
             return self.words[bare], SOURCE_DICT
+        if lw.endswith("'s") and len(lw) > 2 and lw[-3].isalnum():
+            # "Zundamon's", "everyone's", "today's": the word the dictionary
+            # knows, and the s said after it. The model was given
+            # "zundamons" instead and guessed ツンダモンズ, エバリオン, トデース.
+            k, src = self.lookup(w.replace('’', "'")[:-2])
+            if k:
+                return possessive(k), src
         m = re.fullmatch(r'(\d+)(st|nd|rd|th)', bare)
         if m:                                               # 1st, 22nd, 100th
             return ''.join(self.word(x) for x in ordinal_words(m.group(1)).split()), SOURCE_NUMBER

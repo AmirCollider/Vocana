@@ -141,6 +141,11 @@ def split_line(text, moods, sentence_gap=None, notes=None):
     return segs
 
 
+def dict_key(w):
+    """A word as words.json keys are stored."""
+    return w.lower().replace('’', "'")
+
+
 def sentence_words(body, kana):
     """[(display_word, moras, flags)] and ',' for pauses inside a sentence."""
     out = []
@@ -153,13 +158,29 @@ def sentence_words(body, kana):
         wf = fold(w)
         stretch = bool(re.search(r'([A-Za-z])\1\1', wf))
         w2 = re.sub(r'([A-Za-z])\1{2,}', r'\1', wf)       # Pleeease -> Please
+        if stretch:
+            # A run of three or more letters is a word drawn out, and it was
+            # always read with the run cut to one letter: right for
+            # "Pleeease" and "sooo", wrong for a word whose own spelling has
+            # two - "Goood" came out "god", "Coool" "col", "Sleeepy"
+            # "slepy". When the one-letter form is not a word the dictionary
+            # knows and the two-letter form is, the two-letter form it is.
+            # A word written in the dictionary exactly as typed ("zzz") is
+            # read as written.
+            if dict_key(wf) in kana.words:
+                w2, stretch = wf, False
+            elif dict_key(w2) not in kana.words:
+                w2b = re.sub(r'([A-Za-z])\1{2,}', r'\1\1', wf)
+                if dict_key(w2b) in kana.words:
+                    w2 = w2b
         stutter = None
-        m = re.fullmatch(r"([A-Za-z]{1,3})-(\1[A-Za-z']*)", w2, flags=re.I)
+        # "W-Wait" is a stutter; "bye-bye" in the dictionary is a word.
+        m = None if dict_key(w2) in kana.words else re.fullmatch(r"([A-Za-z]{1,3})-(\1[A-Za-z']*)", w2, flags=re.I)
         if m:
             w2 = m.group(2)
             stutter = True
         sources = []
-        if '-' in w2:                                       # well-known -> well + known
+        if '-' in w2 and dict_key(w2) not in kana.words:     # well-known -> well + known
             parts = [kana.lookup(x) for x in w2.split('-') if x]
             moras = moras_of(''.join(k for k, _s in parts))
             sources = [s for _k, s in parts]
