@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **VOICEVOX 0.26 has characters again.** It names its talking styles `streaming_talk` where older engines said `talk`, and Vocana kept only `talk` — so every character was dropped and a render stopped at "VOICEVOX has no characters". Both names read text now; singing styles are still left out (`engine.is_talk_style`, tests/test_core.py).
+
 ## 1.0.2 — 2026-11-04
 
 The dictionary learns 1,198 words, a word + 's is said right, and a whisper is a whisper again.

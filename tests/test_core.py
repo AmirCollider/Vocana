@@ -432,5 +432,19 @@ class NewWords(unittest.TestCase):
                     self.assertTrue(ok, '%s: %s' % (k, v))
                 self.assertEqual(k, k.lower().strip(), k)
 
+
+
+
+class TalkStyles(unittest.TestCase):
+    def test_streaming_talk_styles_are_voices(self):
+        # VOICEVOX 0.26 says 'streaming_talk' for every talking style.
+        from vocana.engine import is_talk_style
+        self.assertTrue(is_talk_style({'type': 'talk'}))
+        self.assertTrue(is_talk_style({'type': 'streaming_talk'}))
+        self.assertTrue(is_talk_style({}))
+        self.assertFalse(is_talk_style({'type': 'frame_decode'}))
+        self.assertFalse(is_talk_style({'type': 'sing'}))
+
+
 if __name__ == '__main__':
     unittest.main()

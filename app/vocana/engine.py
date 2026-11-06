@@ -55,6 +55,15 @@ def normalize_url(url):
     return urllib.parse.urlunsplit((parts.scheme or 'http', netloc, parts.path.rstrip('/'), '', ''))
 
 
+# The style types that read text. Everything else (frame_decode, sing,
+# singing_teacher...) only sings.
+TALK_TYPES = ('talk', 'streaming_talk')
+
+
+def is_talk_style(style):
+    return (style or {}).get('type', 'talk') in TALK_TYPES
+
+
 class Engine:
     def __init__(self, url=DEFAULT_URL, timeout=120):
         self.url = normalize_url(url)
@@ -131,8 +140,10 @@ class Engine:
                 sp = self._req('GET', '/speakers', timeout=30)
                 # Singing-only styles (type 'frame_decode' / 'sing') cannot
                 # read text. Older engines have no type: they are all talk.
+                # VOICEVOX 0.26 calls its talking styles 'streaming_talk':
+                # keeping only 'talk' dropped every voice ("no characters").
                 for s in sp:
-                    s['styles'] = [st for st in s.get('styles', []) if st.get('type', 'talk') == 'talk']
+                    s['styles'] = [st for st in s.get('styles', []) if is_talk_style(st)]
                 self._speakers = [s for s in sp if s['styles']]
                 self._speakers_at = time.time()
             return self._speakers
