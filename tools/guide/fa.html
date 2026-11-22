@@ -87,7 +87,7 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="fa-cast" data-anchor="cast">
   <h2><span class="n">۵</span>شخصیت‌ها، سبک‌ها و اعتبار</h2>
-  <p>هر شخصیتی که VOICEVOX شما دارد می‌تواند خط بخواند — ۴۳ شخصیت در VOICEVOX ۰٫۲۵٫۲، و بیشتر اگر کتابخانه‌ی صدا اضافه کنید. با <code>@cast</code> بگویید چه کسی یک برچسب را بخواند:</p>
+  <p>هر شخصیتی که VOICEVOX شما دارد می‌تواند خط بخواند — ۴۴ شخصیت در VOICEVOX ۰٫۲۶٫۳، و بیشتر اگر کتابخانه‌ی صدا اضافه کنید. با <code>@cast</code> بگویید چه کسی یک برچسب را بخواند:</p>
 <pre>@cast ME = ずんだもん
 @cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
 @cast RYU = aoyama ryusei</pre>
@@ -199,7 +199,7 @@ python vocana.py studio</pre>
   <details><summary>Vocana رایگان است؟</summary><p>بله، برای کار شخصی و تجاری. مجوز را پایین‌تر ببینید.</p></details>
   <details><summary>می‌توانم از صدا استفاده‌ی تجاری کنم؟</summary><p>Vocana هیچ شرطی اضافه نمی‌کند. صداها متعلق به شخصیت‌های VOICEVOX هستند: قوانین هر کدام را (که در صفحه‌ی شخصیت‌ها آمده) رعایت کنید و همیشه خط اعتبار را بیاورید.</p></details>
   <details><summary>اینترنت لازم دارد؟</summary><p>نه. Vocana و VOICEVOX روی کامپیوتر خودتان اجرا می‌شوند. تنها درخواستی که به اینترنت می‌رود بررسی اختیاری نسخه‌ی جدید، روزی یک بار است.</p></details>
-  <details><summary>با AivisSpeech، COEIROINK یا موتورهای دیگر کار می‌کند؟</summary><p>Vocana برای VOICEVOX (۰٫۲۵٫۲) ساخته و آزمایش شده. موتورهایی که API همان VOICEVOX را دارند شاید با دادن نشانی‌شان در تنظیمات کار کنند، ولی آزمایش نشده‌اند.</p></details>
+  <details><summary>با AivisSpeech، COEIROINK یا موتورهای دیگر کار می‌کند؟</summary><p>Vocana برای VOICEVOX (۰٫۲۵ تا ۰٫۲۶) ساخته و آزمایش شده. موتورهایی که API همان VOICEVOX را دارند شاید با دادن نشانی‌شان در تنظیمات کار کنند، ولی آزمایش نشده‌اند.</p></details>
   <details><summary>می‌تواند فارسی بخواند؟</summary><p>نه — VOICEVOX ژاپنی حرف می‌زند و Vocana انگلیسی (و ژاپنی) را در آن به کار می‌اندازد. خود استودیو فارسی، انگلیسی و ژاپنی است.</p></details>
   <details><summary>VoxTalk چه شد؟</summary><p>Vocana همان VoxTalk است که بزرگ شده. اسکریپت‌ها، <code>words.json</code> و <code>moods.json</code>ی که برای VoxTalk نوشته شده بودند بدون تغییر کار می‌کنند و دقیقاً همان صدا را می‌دهند.</p></details>
 </section>
@@ -236,7 +236,13 @@ python vocana.py studio</pre>
 
 <section id="fa-changelog" data-anchor="changelog">
   <h2><span class="n">۱۶</span>تازه‌ها</h2>
-  <h3><span class="ltr">1.0.2</span> — <span class="ltr">__DATE__</span></h3>
+  <h3><span class="ltr">1.0.3</span> — <span class="ltr">__DATE__</span></h3>
+  <ul>
+    <li><b>پشتیبانی از VOICEVOX ۰٫۲۶ (۰٫۲۶٫۰ تا ۰٫۲۶٫۳):</b> سبک‌های گفتاری <code>streaming_talk</code> دوباره شناخته می‌شوند، موتور جداشده‌ی VOICEVOX ۰٫۲۶ (<code>vvpp-engines</code>) خودکار پیدا می‌شود و نام لاتین شخصیت‌های <b>ブイブイ・コバコ</b> (<i>buibui kobako</i>، <i>cobaco</i>) و <b>黒沢冴白</b> (<i>kurosawa kohaku</i>) اضافه شد.</li>
+    <li>۲۲ تلفظ تازه برای نام شخصیت‌های VOICEVOX در واژه‌نامه (روی هم ۳۲۶۹ کلمه: <i>buibui</i>، <i>kobako</i>، <i>kurosawa</i>، <i>kohaku</i>، <i>ryusei</i>، <i>tsurugi</i>، <i>mochikosan</i>…).</li>
+    <li>رفع اشکال مکث‌های میان خط مانند <code>(pause 0.5)</code>، فایل خط‌هایی که <code>・</code> در نام گوینده دارند (مثل <code>01_ブイブイ・コバコ.wav</code>)، از دست رفتن ویرایش‌های صفحه‌ی حال‌وهوا پس از ذخیره‌ی خودکار، حفظ <code>intonation</code> در صفحه‌ی شخصیت‌ها، مرور کامل و ویرایش درون‌خطی واژه‌نامه، توقف کامل صدا هنگام خروج از خروجی‌ها و تازه‌سازی خودکار کش صداها پس از راه‌اندازی دوباره یا تغییر موتور.</li>
+  </ul>
+  <h3><span class="ltr">1.0.2</span> — <span class="ltr">2026-11-04</span></h3>
   <ul>
     <li>۱۱۹۸ کلمه‌ی تازه در واژه‌نامه (روی هم ۳۲۴۷ کلمه)، همه کلمه‌هایی که مدل اشتباه می‌خواند: <i>undo</i> «آندو» (نه «اوندو»)، <i>redo</i> «ری‌دو» (نه «رِدو»)، <i>undoing</i>، <i>ctrl</i>، <i>hotkey</i>، <i>paste</i>، <i>retry</i>، <i>github</i>، <i>tokyo</i>، <i>sunshine</i>، <i>sacred</i> (نه «فوتبال»)…؛ کلمه‌های چت و بازی (<i>lol</i>، <i>brb</i>، <i>afk</i>، <i>npc</i>)، صداهایی که کاراکترها درمی‌آورند (<i>oof</i>، <i>psst</i>، <i>meow</i>، <i>zzz</i>) و ژاپنیِ بیشتری با حروف انگلیسی (<i>gomen</i>، <i>sumimasen</i>، <i>isekai</i>).</li>
     <li>کلمه‌ای که ’s گرفته، همان کلمه‌ی واژه‌نامه است و بعد s: <i>Zundamon’s</i> «زونداموندز» (نه «سونداموندز»)، <i>everyone’s</i>، <i>today’s</i>.</li>

@@ -96,9 +96,15 @@ def split_line(text, moods, sentence_gap=None, notes=None):
     Text VOICEVOX cannot say (Persian, Arabic, Korean...) is left out, and
     when `notes` is a list it is told about it, so the studio can say why a
     sentence made no sound."""
-    text = speakable(text)
-    text = PAUSE.sub(lambda m: ' \0%s\0 ' % m.group(1), text)
+    pauses = []
+
+    def _keep_pause(m):
+        pauses.append(min(float(m.group(1)), 60.0))
+        return ' \0%d\0 ' % (len(pauses) - 1)
+
+    text = PAUSE.sub(_keep_pause, text)
     text = re.sub(r'\([^)]*\)', ' ', text)
+    text = speakable(text)
     text = re.sub(r'\b([AaPp])\.\s?[Mm]\.', lambda m: (' エーエム.' if m.group(1) in 'Aa' else ' ピーエム.'), text)  # 3 a.m.
     segs, current, asked = [], list(moods), {}
     for k, chunk in enumerate(re.split(r'\[([^\]]*)\]', text)):
@@ -108,7 +114,7 @@ def split_line(text, moods, sentence_gap=None, notes=None):
         for j, piece in enumerate(chunk.split('\0')):
             if j % 2:                                     # the seconds of a (pause N)
                 if segs:
-                    asked[len(segs) - 1] = float(piece)
+                    asked[len(segs) - 1] = pauses[int(piece)]
                 continue
             parts = SENT.split(piece)
             for i in range(0, len(parts), 2):

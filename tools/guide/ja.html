@@ -87,7 +87,7 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="ja-cast" data-anchor="cast">
   <h2><span class="n">5</span>キャラクター・スタイル・クレジット</h2>
-  <p>お使いの VOICEVOX にいるキャラクターなら誰でもセリフを読めます (VOICEVOX 0.25.2 で 43 人。音声ライブラリを追加すればさらに)。タグを誰が読むかは <code>@cast</code> で指定します:</p>
+  <p>お使いの VOICEVOX にいるキャラクターなら誰でもセリフを読めます (VOICEVOX 0.26.3 で 44 人。音声ライブラリを追加すればさらに)。タグを誰が読むかは <code>@cast</code> で指定します:</p>
 <pre>@cast ME = ずんだもん
 @cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
 @cast RYU = aoyama ryusei</pre>
@@ -199,7 +199,7 @@ python vocana.py studio</pre>
   <details><summary>Vocana は無料ですか？</summary><p>はい。個人でも商用でも無料です。下のライセンスをご覧ください。</p></details>
   <details><summary>音声を商用利用できますか？</summary><p>Vocana は条件を追加しません。声は VOICEVOX のキャラクターのものなので、各キャラクターの規約 (キャストページに表示) に従い、必ずクレジットを記載してください。</p></details>
   <details><summary>インターネットは必要ですか？</summary><p>いいえ。Vocana も VOICEVOX もあなたの PC で動きます。インターネットへの通信は、任意の 1 日 1 回の更新確認だけです。</p></details>
-  <details><summary>AivisSpeech や COEIROINK などでも使えますか？</summary><p>Vocana は VOICEVOX (0.25.2) 用に作り、テストしています。VOICEVOX 互換の API を持つエンジンは、設定でアドレスを指定すれば動く可能性がありますが、テストはしていません。</p></details>
+  <details><summary>AivisSpeech や COEIROINK などでも使えますか？</summary><p>Vocana は VOICEVOX (0.25〜0.26) 用に作り、テストしています。VOICEVOX 互換の API を持つエンジンは、設定でアドレスを指定すれば動く可能性がありますが、テストはしていません。</p></details>
   <details><summary>ペルシャ語は読めますか？</summary><p>いいえ。VOICEVOX は日本語を話し、Vocana はそこで英語 (と日本語) を使えるようにします。スタジオ自体はペルシャ語・英語・日本語に対応しています。</p></details>
   <details><summary>VoxTalk はどうなりましたか？</summary><p>Vocana は VoxTalk が成長した姿です。VoxTalk 用のスクリプト・<code>words.json</code>・<code>moods.json</code> はそのまま使え、まったく同じ音になります。</p></details>
 </section>
@@ -236,7 +236,13 @@ python vocana.py studio</pre>
 
 <section id="ja-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>新機能</h2>
-  <h3>1.0.2 — __DATE__</h3>
+  <h3>1.0.3 — __DATE__</h3>
+  <ul>
+    <li><b>VOICEVOX 0.26 対応 (0.26.0〜0.26.3):</b> <code>streaming_talk</code> スタイルを再び認識し、分離されたエンジン (<code>vvpp-engines</code>) を自動検出し、<b>ブイブイ・コバコ</b> (<i>buibui kobako</i>、<i>cobaco</i>) と <b>黒沢冴白</b> (<i>kurosawa kohaku</i>) のローマ字別名を追加しました。</li>
+    <li>辞書にキャラクター名の読み 22 語を追加 (合計 3,269 語: <i>buibui</i>、<i>kobako</i>、<i>kurosawa</i>、<i>kohaku</i>、<i>ryusei</i>、<i>tsurugi</i>、<i>mochikosan</i> など)。</li>
+    <li>行途中の <code>(pause 0.5)</code>、話者名に <code>・</code> を含む行ファイル (<code>01_ブイブイ・コバコ.wav</code> など)、自動保存後にムード編集が消える問題、キャストの <code>intonation</code> 保持、辞書の全件表示とインライン編集、書き出しページ離脱時の音声停止、エンジン再起動時のキャッシュ更新を修正しました。</li>
+  </ul>
+  <h3>1.0.2 — 2026-11-04</h3>
   <ul>
     <li>辞書に 1,198 語を追加 (合計 3,247 語)。どれもモデルが読み間違えていた単語です: <i>undo</i> はアンドゥー (ウンドではなく)、<i>redo</i> はリドゥー (レドではなく)、<i>undoing</i>、<i>ctrl</i>、<i>hotkey</i>、<i>paste</i>、<i>retry</i>、<i>github</i>、<i>tokyo</i> (トコーヨーではなく)、<i>sunshine</i>、<i>sacred</i> (サッカーではなく) など。チャットやゲームの言葉 (<i>lol</i>、<i>brb</i>、<i>afk</i>、<i>npc</i>)、キャラクターの声 (<i>oof</i>、<i>psst</i>、<i>meow</i>、<i>zzz</i>)、ローマ字の日本語 (<i>gomen</i>、<i>sumimasen</i>、<i>isekai</i>) も。</li>
     <li>’s の付いた単語は、辞書の単語のあとに s を読みます: <i>Zundamon’s</i> はズンダモンズ (ツンダモンズではなく)、<i>everyone’s</i>、<i>today’s</i>。</li>

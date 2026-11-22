@@ -32,7 +32,7 @@ import numpy as np
 
 from . import config as cfgmod
 from .engine import Engine, EngineError
-from .kana import Kana, loanword_accent, SOURCE_MODEL, SOURCE_SPELLED
+from .kana import Kana, loanword_accent, moras_of, SOURCE_MODEL, SOURCE_SPELLED
 from .melody import shape, mora_times
 from .paths import layout as get_layout
 from .script import parse_script
@@ -143,8 +143,8 @@ WIN_RESERVED = {'con', 'prn', 'aux', 'nul'} | {'com%d' % i for i in range(1, 10)
 def safe_name(name, fallback='render'):
     """A file or folder name every OS accepts."""
     name = re.sub(r'[<>:"/\\|?*\x00-\x1f†]+', '_', str(name)).strip().strip('.')
-    name = re.sub(r'\s+', ' ', name)[:80].strip()
-    if not name or name.lower() in WIN_RESERVED:
+    name = re.sub(r'\s+', ' ', name)[:80].strip(' .')
+    if not name or name.split('.')[0].lower() in WIN_RESERVED:
         name = fallback
     return name
 
@@ -186,6 +186,7 @@ class Vocana:
         if not hasattr(self, 'engine') or self.engine.url != Engine(url).url:
             self.engine = Engine(url)
             self._voices = None
+            self._credits.clear()
         self._stamp = self._mtimes()
 
     def reload_if_changed(self):
@@ -194,10 +195,18 @@ class Vocana:
             return True
         return False
 
+    def clear_voices_cache(self):
+        """Drop cached voices, credits and engine metadata (e.g. after VOICEVOX
+        restarts or changes version)."""
+        with self._voices_lock:
+            self._voices = None
+            self._credits.clear()
+            self.engine.clear_cache()
+
     # --------------------------------------------------------------
     def voices(self, refresh=False):
         with self._voices_lock:
-            if self._voices is None or refresh:
+            if self._voices is None or refresh or not self.engine._speakers:
                 self._voices = Voices(self.engine.speakers(refresh=refresh))
             return self._voices
 
@@ -436,9 +445,15 @@ class Vocana:
             if e.kind == 'down' or e.code not in (400, 422, 500):
                 raise
             first = e
-        # 1) every phrase accented on its first mora
+        # 1) every phrase accented on its first mora (split by mora so
+        #    two-character moras like シャ or ティ are never cut in half)
         flat = re.sub(r"'", '', p['kana'])
-        simple = '/'.join(ph[:1] + "'" + ph[1:] if ph else ph for ph in re.split(r'[/、]', flat.rstrip('？')))
+        simple_parts = []
+        for ph in re.split(r'[/、]', flat.rstrip('？')):
+            ms = moras_of(ph)
+            if ms:
+                simple_parts.append(ms[0] + "'" + ''.join(ms[1:]))
+        simple = '/'.join(simple_parts)
         if p['seg']['question']:
             simple += '？'
         try:
@@ -468,7 +483,14 @@ class Vocana:
         notes = notes if notes is not None else []
         out, sentences, n = [], [], 0
         sr = SR
-        for i, p in enumerate(self.plan(text, moods, sentence_gap, who, char, voices, notes)):
+        plan_notes = []
+        planned = self.plan(text, moods, sentence_gap, who, char, voices, plan_notes)
+        for nt in plan_notes:
+            if 'unreadable' in nt:
+                notes.append({'code': 'unreadable_text', 'text': nt['unreadable']})
+            else:
+                notes.append(nt)
+        for i, p in enumerate(planned):
             if cancel is not None and cancel.is_set():
                 raise Cancelled()
             mood = p['mood']
@@ -536,10 +558,10 @@ class Vocana:
     # --------------------------------------------------------------
     # Rendering a whole script
     # --------------------------------------------------------------
-    def render_script(self, source, out_dir, progress=None, cancel=None, script_name=None):
+    def render_script(self, source, out_dir, progress=None, cancel=None, script_name=None, is_path=None):
         """source: a path to a .txt or the script text itself."""
         self.reload_if_changed()
-        if isinstance(source, str) and '\n' not in source and os.path.isfile(source):
+        if is_path is not False and isinstance(source, str) and '\n' not in source and os.path.isfile(source):
             text, _enc = cfgmod.read_text(source)
             script_name = script_name or os.path.splitext(os.path.basename(source))[0]
         else:

@@ -70,8 +70,10 @@ def report(data_dir=None, engine_url=None):
             n = 0
         row('engine', 'VOICEVOX', 'ok', '%s at %s, %d characters' % (ver, eng.url, n), version=ver, characters=n)
     else:
+        from .config import load_settings
         from .system import find_voicevox
-        found = find_voicevox()
+        vv_path = load_settings(lay.settings).get('voicevox_path', '')
+        found = find_voicevox(vv_path)
         where = found['engine'] or found['app']
         row('engine', 'VOICEVOX', 'warn',
             'not running at %s%s' % (eng.url, (' - installed at ' + where + '; the studio can start it') if where

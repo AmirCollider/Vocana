@@ -146,6 +146,16 @@ class Text(unittest.TestCase):
         self.assertEqual(notes, [{'unreadable': 'سلام دنیا'}])
         self.assertEqual(segs[-1]['pause'], 0.0)       # no trailing silence for the skipped part
 
+    def test_inline_decimal_pauses(self):
+        segs = split_line('One! (pause 0.5) Two! (pause 1.25s) Three.', ['normal'])
+        self.assertEqual(len(segs), 3)
+        self.assertEqual([s['pause'] for s in segs], [0.5, 1.25, 0.0])
+        self.assertEqual([(s['body'] + s['sep']).strip() for s in segs], ['One!', 'Two!', 'Three.'])
+        segs2 = split_line('Hello! (pause 0.5) (laughs) World.', ['normal'])
+        self.assertEqual(len(segs2), 2)
+        self.assertEqual(segs2[0]['pause'], 0.5)
+        self.assertEqual((segs2[1]['body'] + segs2[1]['sep']).strip(), 'World.')
+
 
 class Script(unittest.TestCase):
     def test_voxtalk_scripts_parse_the_same(self):
@@ -247,7 +257,23 @@ class Characters(unittest.TestCase):
         self.assertEqual(self.voices.find('shikoku metan')['name'], '四国めたん')
         self.assertEqual(self.voices.find('3')['name'], 'ずんだもん')
         self.assertEqual(self.voices.find('小夜/SAYO')['name'], '小夜/SAYO')
+        self.assertEqual(self.voices.find('kurosawa kohaku')['name'], '黒沢冴白')
+        self.assertEqual(self.voices.find('kohaku')['name'], '黒沢冴白')
         self.assertIsNone(self.voices.find('nobody'))
+
+    def test_voicevox_026_kobako(self):
+        speakers = load('speakers-0.25.2.json') + [{
+            'name': 'ブイブイ・コバコ',
+            'speaker_uuid': '0d1745d9-ba28-4bf1-b792-3e670ee980ee',
+            'styles': [{'name': 'ノーマル', 'id': 127, 'type': 'streaming_talk'}],
+        }]
+        v = Voices(speakers)
+        for q in ('ブイブイ・コバコ', 'buibui kobako', 'vv cobaco', 'cobaco', 'kobako', '127'):
+            self.assertEqual(v.find(q)['name'], 'ブイブイ・コバコ', q)
+        pol = policy_summary('ブイブイ・コバコ', 'クレジット表記は「VOICEVOX:ブイブイ・コバコ」\nhttps://vv-cobaco.com/terms')
+        self.assertEqual(pol['credit'], 'VOICEVOX:ブイブイ・コバコ')
+        self.assertFalse(pol['conditions'])
+        self.assertEqual(pol['urls'], ['https://vv-cobaco.com/terms'])
 
     def test_credit_lines_from_terms(self):
         pol = load('policies-0.25.2.json')
@@ -304,10 +330,10 @@ class Files(unittest.TestCase):
 
     def test_atomic_save_keeps_notes(self):
         p = self.path('words.json')
-        cfgmod.save_words(p, {'Zeta': 'ゼータ', 'alpha': 'アルファ'})
+        cfgmod.save_words(p, {'Zeta': 'ゼータ', 'alpha': 'アルファ', 'don’t': 'ドント'})
         with open(p, encoding='utf-8') as f:
             data = json.load(f)
-        self.assertEqual(list(data), ['_about', 'alpha', 'zeta'])
+        self.assertEqual(list(data), ['_about', 'alpha', "don't", 'zeta'])
         self.assertFalse([n for n in os.listdir(self.d) if n.endswith('.tmp')])
 
     def test_settings_types(self):
@@ -320,6 +346,8 @@ class Files(unittest.TestCase):
 
     def test_safe_names_and_times(self):
         self.assertEqual(safe_name('CON'), 'render')
+        self.assertEqual(safe_name('CON.txt'), 'render')
+        self.assertFalse(safe_name('a' * 79 + '..txt').endswith('.'))
         self.assertEqual(safe_name('a/b:c*?'), 'a_b_c_')
         self.assertEqual(safe_name('小夜/SAYO'), '小夜_SAYO')
         self.assertEqual(srt_time(3661.5), '01:01:01,500')
@@ -376,6 +404,7 @@ class NewWords(unittest.TestCase):
         self.assertNotIn('shy', added)
         self.assertEqual(data['Shy'], 'シャーイ')
         self.assertEqual(data['exciting'], 'エキサイティング')
+        self.assertEqual(data['buibui'], 'ブイブイ')
         self.assertEqual(data['_dictionary'], self.newest)
         self.assertEqual(list(data)[:4], ['_about', '_dictionary', 'hello', 'Shy'])
         self.assertEqual(data['_about'], 'mine')
@@ -393,6 +422,7 @@ class NewWords(unittest.TestCase):
         k = Kana(words, use_model=False)
         self.assertEqual(k.lookup('shy'), ('シャイ', 'dict'))
         self.assertEqual(k.lookup('Skies'), ('スカイズ', 'dict'))
+        self.assertEqual(k.lookup('buibui'), ('ブイブイ', 'dict'))
         self.assertEqual(k.lookup('hello'), ('ハロー', 'dict'))
 
     def test_a_broken_or_current_file_is_left_alone(self):
@@ -433,17 +463,98 @@ class NewWords(unittest.TestCase):
                 self.assertEqual(k, k.lower().strip(), k)
 
 
-
-
 class TalkStyles(unittest.TestCase):
     def test_streaming_talk_styles_are_voices(self):
         # VOICEVOX 0.26 says 'streaming_talk' for every talking style.
         from vocana.engine import is_talk_style
         self.assertTrue(is_talk_style({'type': 'talk'}))
         self.assertTrue(is_talk_style({'type': 'streaming_talk'}))
+        self.assertTrue(is_talk_style({'type': None}))
+        self.assertTrue(is_talk_style({'type': 'future_talk'}))
         self.assertTrue(is_talk_style({}))
         self.assertFalse(is_talk_style({'type': 'frame_decode'}))
         self.assertFalse(is_talk_style({'type': 'sing'}))
+        self.assertFalse(is_talk_style({'type': 'singing_teacher'}))
+
+
+class EngineDiscovery(unittest.TestCase):
+    """VOICEVOX 0.26 separates its engine into userData/vvpp-engines/."""
+
+    def _make_engine(self, folder, exe_name='run', uuid='', version=''):
+        os.makedirs(folder, exist_ok=True)
+        exe = os.path.join(folder, exe_name)
+        with open(exe, 'w', encoding='utf-8') as f:
+            f.write('#!/bin/sh\n')
+        if uuid or version:
+            with open(os.path.join(folder, 'engine_manifest.json'), 'w', encoding='utf-8') as f:
+                json.dump({'uuid': uuid, 'version': version, 'command': exe_name}, f)
+        return exe
+
+    def test_vvpp_engine_prefers_official_and_newer(self):
+        from vocana import system as sysmod
+        root = tempfile.mkdtemp(prefix='vocana-vvpp-')
+        try:
+            self._make_engine(os.path.join(root, 'ThirdParty+1111'), 'run', '1111', '9.9.9')
+            old_off = self._make_engine(os.path.join(root, 'VOICEVOX+old'), 'run',
+                                        sysmod.DEFAULT_ENGINE_UUIDS[0], '0.26.0')
+            new_off = self._make_engine(os.path.join(root, 'VOICEVOX+new'), 'run',
+                                        sysmod.DEFAULT_ENGINE_UUIDS[0], '0.26.2')
+            exe, ver = sysmod.find_vvpp_engine([root])
+            self.assertEqual(exe, new_off)
+            self.assertEqual(ver, (0, 26, 2))
+            self.assertNotEqual(exe, old_off)
+        finally:
+            shutil.rmtree(root, ignore_errors=True)
+
+    def test_find_voicevox_uses_vvpp_and_respects_user_path(self):
+        from vocana import system as sysmod
+        tmp = tempfile.mkdtemp(prefix='vocana-find-')
+        try:
+            vvpp = os.path.join(tmp, 'vvpp-engines')
+            vvpp_exe = self._make_engine(os.path.join(vvpp, 'VOICEVOX+default'), 'run',
+                                         sysmod.DEFAULT_ENGINE_UUIDS[0], '0.26.2')
+            # Clean 0.26 install: app folder has VOICEVOX.exe only, engine lives in vvpp-engines
+            app_dir = os.path.join(tmp, 'VOICEVOX-0.26')
+            os.makedirs(app_dir, exist_ok=True)
+            app_exe = os.path.join(app_dir, 'VOICEVOX.exe')
+            open(app_exe, 'w').close()
+            found = sysmod.find_voicevox(user_path=app_exe, vvpp_roots=[vvpp])
+            self.assertEqual(found['app'], app_exe)
+            self.assertEqual(found['engine'], vvpp_exe)
+            # Explicit custom engine path in Settings is never overridden by vvpp-engines
+            custom_exe = self._make_engine(os.path.join(tmp, 'custom-engine'), 'run', '', '0.25.0')
+            found2 = sysmod.find_voicevox(user_path=custom_exe, vvpp_roots=[vvpp])
+            self.assertEqual(found2['engine'], custom_exe)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+
+class StudioAssets(unittest.TestCase):
+    def test_cli_warnings_and_i18n_keys(self):
+        from vocana.cli import WARN_TEXT
+        from vocana.voices import FAMILIES
+        for code in ('words_invalid', 'moods_invalid', 'word_empty', 'word_no_kana',
+                     'mood_clamped', 'mood_value', 'mood_invalid', 'cast_invalid',
+                     'cast_value', 'cast_clamped', 'unreadable_text'):
+            self.assertIn(code, WARN_TEXT, code)
+        if shutil.which('node'):
+            import subprocess
+            i18n_path = os.path.join(ROOT, 'app', 'studio', 'i18n.js')
+            out = subprocess.check_output(
+                ['node', '-e',
+                 'global.window={}; require(process.argv[1]); console.log(JSON.stringify(window.VOCANA_I18N));',
+                 i18n_path],
+                text=True,
+            )
+            i18n = json.loads(out)
+            en_base = {k for k in i18n['en'] if not k.endswith('.one')}
+            for lang in ('fa', 'ja'):
+                lang_base = {k for k in i18n[lang] if not k.endswith('.one')}
+                self.assertEqual(en_base - lang_base, set(), f'missing keys in {lang}')
+                self.assertEqual(lang_base - en_base, set(), f'extra keys in {lang}')
+            for fam in FAMILIES:
+                for lang in ('en', 'fa', 'ja'):
+                    self.assertIn('tone.' + fam, i18n[lang], (lang, fam))
 
 
 if __name__ == '__main__':

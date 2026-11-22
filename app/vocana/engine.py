@@ -56,12 +56,18 @@ def normalize_url(url):
 
 
 # The style types that read text. Everything else (frame_decode, sing,
-# singing_teacher...) only sings.
+# singing_teacher...) only sings. VOICEVOX 0.26 renamed talking styles to
+# 'streaming_talk'; filtering out singing styles rather than hard-coding one
+# name keeps future talking types working too.
 TALK_TYPES = ('talk', 'streaming_talk')
+SING_TYPES = ('frame_decode', 'sing', 'singing_teacher')
 
 
 def is_talk_style(style):
-    return (style or {}).get('type', 'talk') in TALK_TYPES
+    t = (style or {}).get('type') or 'talk'
+    if t in TALK_TYPES:
+        return True
+    return t not in SING_TYPES and 'sing' not in str(t).lower()
 
 
 class Engine:
@@ -74,6 +80,16 @@ class Engine:
         self._info = {}
         self._manifest = None
         self._lock = threading.Lock()
+
+    def clear_cache(self):
+        """Drop cached speakers, portraits, manifest and audio_query templates
+        (called when VOICEVOX restarts or switches version)."""
+        with self._lock:
+            self._template.clear()
+            self._speakers = None
+            self._speakers_at = 0.0
+            self._info.clear()
+            self._manifest = None
 
     # --------------------------------------------------------------
     def _req(self, method, path, params=None, body=None, raw=False, timeout=None):
@@ -94,7 +110,8 @@ class Engine:
                 detail = _error_detail(e)
                 raise EngineError('VOICEVOX said %s for %s: %s' % (e.code, path, detail),
                                   code=e.code, path=path, detail=detail)
-            except (ConnectionResetError, http.client.RemoteDisconnected, http.client.IncompleteRead) as e:
+            except (ConnectionResetError, ConnectionAbortedError, http.client.RemoteDisconnected,
+                    http.client.IncompleteRead) as e:
                 # The engine dropped the connection mid-answer: it happens
                 # while it loads a voice. Once more, then give up.
                 last = e
@@ -127,35 +144,50 @@ class Engine:
             return None
 
     def manifest(self):
-        if self._manifest is None:
-            try:
-                self._manifest = self._req('GET', '/engine_manifest', timeout=10)
-            except EngineError:
-                self._manifest = {}
-        return self._manifest
+        with self._lock:
+            if self._manifest is not None:
+                return self._manifest
+        try:
+            m = self._req('GET', '/engine_manifest', timeout=10)
+        except EngineError:
+            m = {}
+        with self._lock:
+            self._manifest = m
+            return self._manifest
 
     def speakers(self, refresh=False):
         with self._lock:
-            if refresh or self._speakers is None or time.time() - self._speakers_at > 300:
-                sp = self._req('GET', '/speakers', timeout=30)
-                # Singing-only styles (type 'frame_decode' / 'sing') cannot
-                # read text. Older engines have no type: they are all talk.
-                # VOICEVOX 0.26 calls its talking styles 'streaming_talk':
-                # keeping only 'talk' dropped every voice ("no characters").
-                for s in sp:
-                    s['styles'] = [st for st in s.get('styles', []) if is_talk_style(st)]
-                self._speakers = [s for s in sp if s['styles']]
-                self._speakers_at = time.time()
+            if not refresh and self._speakers and time.time() - self._speakers_at <= 300:
+                return self._speakers
+        sp = self._req('GET', '/speakers', timeout=30)
+        # Singing-only styles (type 'frame_decode' / 'sing') cannot
+        # read text. Older engines have no type: they are all talk.
+        # VOICEVOX 0.26 calls its talking styles 'streaming_talk':
+        # keeping only 'talk' dropped every voice ("no characters").
+        filtered = []
+        for s in sp:
+            styles = [st for st in s.get('styles', []) if is_talk_style(st)]
+            if styles:
+                entry = dict(s)
+                entry['styles'] = styles
+                filtered.append(entry)
+        with self._lock:
+            self._speakers = filtered
+            self._speakers_at = time.time() if filtered else 0.0
             return self._speakers
 
     def speaker_info(self, uuid):
-        if uuid not in self._info:
-            feats = self.manifest().get('supported_features') or {}
-            params = {'speaker_uuid': uuid}
-            if feats.get('return_resource_url'):
-                params['resource_format'] = 'url'
-            self._info[uuid] = self._req('GET', '/speaker_info', params, timeout=30)
-        return self._info[uuid]
+        with self._lock:
+            if uuid in self._info:
+                return self._info[uuid]
+        feats = self.manifest().get('supported_features') or {}
+        params = {'speaker_uuid': uuid}
+        if feats.get('return_resource_url'):
+            params['resource_format'] = 'url'
+        info = self._req('GET', '/speaker_info', params, timeout=30)
+        with self._lock:
+            self._info[uuid] = info
+            return info
 
     def resource(self, path):
         """(bytes, content type) of an engine resource: an icon, a portrait,
@@ -186,9 +218,13 @@ class Engine:
                          {'text': text, 'speaker': sid, 'is_kana': 'true' if is_kana else 'false'})
 
     def template(self, sid):
-        if sid not in self._template:
-            self._template[sid] = self._req('POST', '/audio_query', {'text': 'あ', 'speaker': sid})
-        return json.loads(json.dumps(self._template[sid]))
+        with self._lock:
+            tpl = self._template.get(sid)
+        if tpl is None:
+            tpl = self._req('POST', '/audio_query', {'text': 'あ', 'speaker': sid})
+            with self._lock:
+                self._template[sid] = tpl
+        return json.loads(json.dumps(tpl))
 
     def synthesis(self, query, sid):
         return self._req('POST', '/synthesis', {'speaker': sid, 'enable_interrogative_upspeak': 'true'},
@@ -201,7 +237,10 @@ def _error_detail(e):
     except Exception:
         return ''
     try:
-        d = json.loads(body).get('detail')
+        obj = json.loads(body)
+        d = obj.get('detail') if isinstance(obj, dict) else None
+        if not d and isinstance(obj, dict):
+            d = obj.get('message')
         if isinstance(d, list):
             return '; '.join(str(x.get('msg', x)) if isinstance(x, dict) else str(x) for x in d)[:300]
         if d:

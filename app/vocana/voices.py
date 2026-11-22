@@ -102,6 +102,7 @@ ALIASES = {
     'ぞん子': ['zonko'],
     '中部つるぎ': ['chubu tsurugi', 'tsurugi'],
     '離途': ['rito'],
+    '黒沢冴白': ['kurosawa kohaku', 'kohaku'],
     'ユーレイちゃん': ['yurei chan', 'yureichan', 'yurei'],
     '東北ずん子': ['tohoku zunko', 'zunko'],
     '東北きりたん': ['tohoku kiritan', 'kiritan'],
@@ -110,6 +111,7 @@ ALIASES = {
     '夜語トバリ': ['yogatari tobari', 'tobari'],
     '暁記ミタマ': ['mitama'],
     '里石ユカ': ['satoishi yuka', 'yuka'],
+    'ブイブイ・コバコ': ['buibui kobako', 'vv cobaco', 'cobaco', 'kobako'],
 }
 
 

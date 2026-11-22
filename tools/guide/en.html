@@ -87,7 +87,7 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="en-cast" data-anchor="cast">
   <h2><span class="n">5</span>Characters, styles and credits</h2>
-  <p>Every character your VOICEVOX has can read lines — 43 in VOICEVOX 0.25.2, more when you add voice libraries. Say who reads a tag with <code>@cast</code>:</p>
+  <p>Every character your VOICEVOX has can read lines — 44 in VOICEVOX 0.26.3, more when you add voice libraries. Say who reads a tag with <code>@cast</code>:</p>
 <pre>@cast ME = ずんだもん
 @cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
 @cast RYU = aoyama ryusei</pre>
@@ -199,7 +199,7 @@ python vocana.py studio</pre>
   <details><summary>Is Vocana free?</summary><p>Yes, for personal and commercial work. See the license below.</p></details>
   <details><summary>Can I use the audio commercially?</summary><p>Vocana adds no conditions. The voices are VOICEVOX characters: follow each one’s terms (shown on the Cast page) and always include the credit line.</p></details>
   <details><summary>Does it need the internet?</summary><p>No. Vocana and VOICEVOX run on your computer. The only request to the internet is the optional once-a-day update check.</p></details>
-  <details><summary>Does it work with AivisSpeech, COEIROINK or other engines?</summary><p>Vocana is made and tested for VOICEVOX (0.25.2). Engines that copy VOICEVOX’s API may work if you set their address in Settings, but they are not tested.</p></details>
+  <details><summary>Does it work with AivisSpeech, COEIROINK or other engines?</summary><p>Vocana is made and tested for VOICEVOX (0.25–0.26). Engines that copy VOICEVOX’s API may work if you set their address in Settings, but they are not tested.</p></details>
   <details><summary>Can it read Persian?</summary><p>No — VOICEVOX speaks Japanese, and Vocana makes English (and Japanese) work in it. The studio itself is in Persian, English and Japanese.</p></details>
   <details><summary>Where did VoxTalk go?</summary><p>Vocana is VoxTalk, grown up. Scripts, <code>words.json</code> and <code>moods.json</code> written for VoxTalk work unchanged and sound the same.</p></details>
 </section>
@@ -236,7 +236,13 @@ python vocana.py studio</pre>
 
 <section id="en-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>What’s new</h2>
-  <h3>1.0.2 — __DATE__</h3>
+  <h3>1.0.3 — __DATE__</h3>
+  <ul>
+    <li><b>VOICEVOX 0.26 support (0.26.0–0.26.3):</b> talking styles named <code>streaming_talk</code> are recognised again, Vocana finds VOICEVOX 0.26’s separated engine (<code>vvpp-engines</code>), and <b>ブイブイ・コバコ</b> (<i>buibui kobako</i>, <i>cobaco</i>) and <b>黒沢冴白</b> (<i>kurosawa kohaku</i>) have romanised aliases.</li>
+    <li>22 new character-name readings in the dictionary (3,269 in all: <i>buibui</i>, <i>kobako</i>, <i>kurosawa</i>, <i>kohaku</i>, <i>ryusei</i>, <i>tsurugi</i>, <i>mochikosan</i>…).</li>
+    <li>Fixed inline pauses such as <code>(pause 0.5)</code>, line files with <code>・</code> in the speaker name (such as <code>01_ブイブイ・コバコ.wav</code>), Moods edits lost after autosave, Cast <code>intonation</code> preservation, full Dictionary browsing and inline editing, audio cleanup when leaving Renders, and engine cache refreshes.</li>
+  </ul>
+  <h3>1.0.2 — 2026-11-04</h3>
   <ul>
     <li>1,198 new words in the dictionary (3,247 in all), each one a word the model read wrong: <i>undo</i> アンドゥー (not ウンド), <i>redo</i> リドゥー (not レド), <i>undoing</i>, <i>ctrl</i>, <i>hotkey</i>, <i>paste</i>, <i>retry</i>, <i>github</i>, <i>tokyo</i> (not トコーヨー), <i>sunshine</i>, <i>sacred</i> (not “soccer”)…, chat and game words (<i>lol</i>, <i>brb</i>, <i>afk</i>, <i>npc</i>), the sounds characters make (<i>oof</i>, <i>psst</i>, <i>meow</i>, <i>zzz</i>) and more Japanese in English letters (<i>gomen</i>, <i>sumimasen</i>, <i>isekai</i>).</li>
     <li>A word + ’s is the word from the dictionary, then its s: <i>Zundamon’s</i> ズンダモンズ (not “tsundamon’s”), <i>everyone’s</i>, <i>today’s</i>.</li>

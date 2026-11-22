@@ -47,6 +47,16 @@ WARN_TEXT = {
     'no_model': 'e2k is not installed: words not in words.json are spelled letter by letter',
     'kana_simplified': 'VOICEVOX refused the accents of "{kana}"; read with simpler accents',
     'kana_plain': 'VOICEVOX refused "{kana}"; read as plain katakana',
+    'words_invalid': 'words.json: {message}',
+    'moods_invalid': 'moods.json: {message}',
+    'word_empty': 'dictionary: "{word}" is empty',
+    'word_no_kana': 'dictionary: "{word}" has no katakana, ignored',
+    'mood_clamped': 'mood "{mood}": {key} was {value}, limited to {low}..{high}',
+    'mood_value': 'mood "{mood}": {key} is not a number',
+    'mood_invalid': 'mood "{mood}" is not valid',
+    'cast_invalid': 'cast "{who}" has no character',
+    'cast_value': 'cast "{who}": {key} is not a number',
+    'cast_clamped': 'cast "{who}": {key} limited to {low}..{high}',
 }
 
 

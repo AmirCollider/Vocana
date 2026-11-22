@@ -148,7 +148,7 @@ def save_words(path, entries, about=None):
     for k in sorted(entries, key=lambda s: s.lower()):
         v = entries[k]
         if isinstance(k, str) and k.strip() and not k.startswith('_') and isinstance(v, str) and v.strip():
-            out[k.strip().lower()] = v.strip()
+            out[k.strip().lower().replace('’', "'")] = v.strip()
     write_json(path, out)
 
 

@@ -153,7 +153,7 @@ textarea.play { font-family: var(--mono); direction: ltr; text-align: left; min-
     <h1>Vocana</h1>
     <p class="tag">انگلیسی ساده بنویسید، با هر صدای VOICEVOX بشنوید.</p>
     <p>اسکریپت خود را به انگلیسی معمولی بنویسید. Vocana هر کلمه را همان‌طور که یک صدای ژاپنی می‌تواند بگوید به کاتاکانا تبدیل می‌کند، ملودی را برای حال‌وهوایی که خواسته‌اید شکل می‌دهد و صدا، زیرنویس و زمان‌بندی کلمه‌به‌کلمه را برای ویدیوی شما تحویل می‌دهد — با همه‌ی شخصیت‌های VOICEVOX، نه فقط یکی.</p>
-    <p class="meta">نسخه‌ی <span class="ltr">1.0.2</span> · <span class="ltr">2026-11-04</span> · ساخته‌ی AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <p class="meta">نسخه‌ی <span class="ltr">1.0.3</span> · <span class="ltr">2026-11-22</span> · ساخته‌ی AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
     <div class="chips"><span class="chip">رایگان</span><span class="chip">ویندوز · مک · لینوکس</span><span class="chip">بدون اینترنت</span><span class="chip">فارسی · English · 日本語</span></div>
   </div>
 </div>
@@ -236,7 +236,7 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="fa-cast" data-anchor="cast">
   <h2><span class="n">۵</span>شخصیت‌ها، سبک‌ها و اعتبار</h2>
-  <p>هر شخصیتی که VOICEVOX شما دارد می‌تواند خط بخواند — ۴۳ شخصیت در VOICEVOX ۰٫۲۵٫۲، و بیشتر اگر کتابخانه‌ی صدا اضافه کنید. با <code>@cast</code> بگویید چه کسی یک برچسب را بخواند:</p>
+  <p>هر شخصیتی که VOICEVOX شما دارد می‌تواند خط بخواند — ۴۴ شخصیت در VOICEVOX ۰٫۲۶٫۳، و بیشتر اگر کتابخانه‌ی صدا اضافه کنید. با <code>@cast</code> بگویید چه کسی یک برچسب را بخواند:</p>
 <pre>@cast ME = ずんだもん
 @cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
 @cast RYU = aoyama ryusei</pre>
@@ -348,7 +348,7 @@ python vocana.py studio</pre>
   <details><summary>Vocana رایگان است؟</summary><p>بله، برای کار شخصی و تجاری. مجوز را پایین‌تر ببینید.</p></details>
   <details><summary>می‌توانم از صدا استفاده‌ی تجاری کنم؟</summary><p>Vocana هیچ شرطی اضافه نمی‌کند. صداها متعلق به شخصیت‌های VOICEVOX هستند: قوانین هر کدام را (که در صفحه‌ی شخصیت‌ها آمده) رعایت کنید و همیشه خط اعتبار را بیاورید.</p></details>
   <details><summary>اینترنت لازم دارد؟</summary><p>نه. Vocana و VOICEVOX روی کامپیوتر خودتان اجرا می‌شوند. تنها درخواستی که به اینترنت می‌رود بررسی اختیاری نسخه‌ی جدید، روزی یک بار است.</p></details>
-  <details><summary>با AivisSpeech، COEIROINK یا موتورهای دیگر کار می‌کند؟</summary><p>Vocana برای VOICEVOX (۰٫۲۵٫۲) ساخته و آزمایش شده. موتورهایی که API همان VOICEVOX را دارند شاید با دادن نشانی‌شان در تنظیمات کار کنند، ولی آزمایش نشده‌اند.</p></details>
+  <details><summary>با AivisSpeech، COEIROINK یا موتورهای دیگر کار می‌کند؟</summary><p>Vocana برای VOICEVOX (۰٫۲۵ تا ۰٫۲۶) ساخته و آزمایش شده. موتورهایی که API همان VOICEVOX را دارند شاید با دادن نشانی‌شان در تنظیمات کار کنند، ولی آزمایش نشده‌اند.</p></details>
   <details><summary>می‌تواند فارسی بخواند؟</summary><p>نه — VOICEVOX ژاپنی حرف می‌زند و Vocana انگلیسی (و ژاپنی) را در آن به کار می‌اندازد. خود استودیو فارسی، انگلیسی و ژاپنی است.</p></details>
   <details><summary>VoxTalk چه شد؟</summary><p>Vocana همان VoxTalk است که بزرگ شده. اسکریپت‌ها، <code>words.json</code> و <code>moods.json</code>ی که برای VoxTalk نوشته شده بودند بدون تغییر کار می‌کنند و دقیقاً همان صدا را می‌دهند.</p></details>
 </section>
@@ -385,6 +385,12 @@ python vocana.py studio</pre>
 
 <section id="fa-changelog" data-anchor="changelog">
   <h2><span class="n">۱۶</span>تازه‌ها</h2>
+  <h3><span class="ltr">1.0.3</span> — <span class="ltr">2026-11-22</span></h3>
+  <ul>
+    <li><b>پشتیبانی از VOICEVOX ۰٫۲۶ (۰٫۲۶٫۰ تا ۰٫۲۶٫۳):</b> سبک‌های گفتاری <code>streaming_talk</code> دوباره شناخته می‌شوند، موتور جداشده‌ی VOICEVOX ۰٫۲۶ (<code>vvpp-engines</code>) خودکار پیدا می‌شود و نام لاتین شخصیت‌های <b>ブイブイ・コバコ</b> (<i>buibui kobako</i>، <i>cobaco</i>) و <b>黒沢冴白</b> (<i>kurosawa kohaku</i>) اضافه شد.</li>
+    <li>۲۲ تلفظ تازه برای نام شخصیت‌های VOICEVOX در واژه‌نامه (روی هم ۳۲۶۹ کلمه: <i>buibui</i>، <i>kobako</i>، <i>kurosawa</i>، <i>kohaku</i>، <i>ryusei</i>، <i>tsurugi</i>، <i>mochikosan</i>…).</li>
+    <li>رفع اشکال مکث‌های میان خط مانند <code>(pause 0.5)</code>، فایل خط‌هایی که <code>・</code> در نام گوینده دارند (مثل <code>01_ブイブイ・コバコ.wav</code>)، از دست رفتن ویرایش‌های صفحه‌ی حال‌وهوا پس از ذخیره‌ی خودکار، حفظ <code>intonation</code> در صفحه‌ی شخصیت‌ها، مرور کامل و ویرایش درون‌خطی واژه‌نامه، توقف کامل صدا هنگام خروج از خروجی‌ها و تازه‌سازی خودکار کش صداها پس از راه‌اندازی دوباره یا تغییر موتور.</li>
+  </ul>
   <h3><span class="ltr">1.0.2</span> — <span class="ltr">2026-11-04</span></h3>
   <ul>
     <li>۱۱۹۸ کلمه‌ی تازه در واژه‌نامه (روی هم ۳۲۴۷ کلمه)، همه کلمه‌هایی که مدل اشتباه می‌خواند: <i>undo</i> «آندو» (نه «اوندو»)، <i>redo</i> «ری‌دو» (نه «رِدو»)، <i>undoing</i>، <i>ctrl</i>، <i>hotkey</i>، <i>paste</i>، <i>retry</i>، <i>github</i>، <i>tokyo</i>، <i>sunshine</i>، <i>sacred</i> (نه «فوتبال»)…؛ کلمه‌های چت و بازی (<i>lol</i>، <i>brb</i>، <i>afk</i>، <i>npc</i>)، صداهایی که کاراکترها درمی‌آورند (<i>oof</i>، <i>psst</i>، <i>meow</i>، <i>zzz</i>) و ژاپنیِ بیشتری با حروف انگلیسی (<i>gomen</i>، <i>sumimasen</i>، <i>isekai</i>).</li>
@@ -418,7 +424,7 @@ python vocana.py studio</pre>
     <h1>Vocana</h1>
     <p class="tag">Plain English, any VOICEVOX voice.</p>
     <p>Write a script in normal English. Vocana turns every word into katakana the way a Japanese voice can say it, shapes the melody for the mood you asked for, and gives you the voice, captions and word-by-word timing for your video — with every VOICEVOX character, not just one.</p>
-    <p class="meta">Version 1.0.2 · 2026-11-04 · by AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <p class="meta">Version 1.0.3 · 2026-11-22 · by AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
     <div class="chips"><span class="chip">Free</span><span class="chip">Windows · macOS · Linux</span><span class="chip">Works offline</span><span class="chip">فارسی · English · 日本語</span></div>
   </div>
 </div>
@@ -501,7 +507,7 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="en-cast" data-anchor="cast">
   <h2><span class="n">5</span>Characters, styles and credits</h2>
-  <p>Every character your VOICEVOX has can read lines — 43 in VOICEVOX 0.25.2, more when you add voice libraries. Say who reads a tag with <code>@cast</code>:</p>
+  <p>Every character your VOICEVOX has can read lines — 44 in VOICEVOX 0.26.3, more when you add voice libraries. Say who reads a tag with <code>@cast</code>:</p>
 <pre>@cast ME = ずんだもん
 @cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
 @cast RYU = aoyama ryusei</pre>
@@ -613,7 +619,7 @@ python vocana.py studio</pre>
   <details><summary>Is Vocana free?</summary><p>Yes, for personal and commercial work. See the license below.</p></details>
   <details><summary>Can I use the audio commercially?</summary><p>Vocana adds no conditions. The voices are VOICEVOX characters: follow each one’s terms (shown on the Cast page) and always include the credit line.</p></details>
   <details><summary>Does it need the internet?</summary><p>No. Vocana and VOICEVOX run on your computer. The only request to the internet is the optional once-a-day update check.</p></details>
-  <details><summary>Does it work with AivisSpeech, COEIROINK or other engines?</summary><p>Vocana is made and tested for VOICEVOX (0.25.2). Engines that copy VOICEVOX’s API may work if you set their address in Settings, but they are not tested.</p></details>
+  <details><summary>Does it work with AivisSpeech, COEIROINK or other engines?</summary><p>Vocana is made and tested for VOICEVOX (0.25–0.26). Engines that copy VOICEVOX’s API may work if you set their address in Settings, but they are not tested.</p></details>
   <details><summary>Can it read Persian?</summary><p>No — VOICEVOX speaks Japanese, and Vocana makes English (and Japanese) work in it. The studio itself is in Persian, English and Japanese.</p></details>
   <details><summary>Where did VoxTalk go?</summary><p>Vocana is VoxTalk, grown up. Scripts, <code>words.json</code> and <code>moods.json</code> written for VoxTalk work unchanged and sound the same.</p></details>
 </section>
@@ -650,6 +656,12 @@ python vocana.py studio</pre>
 
 <section id="en-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>What’s new</h2>
+  <h3>1.0.3 — 2026-11-22</h3>
+  <ul>
+    <li><b>VOICEVOX 0.26 support (0.26.0–0.26.3):</b> talking styles named <code>streaming_talk</code> are recognised again, Vocana finds VOICEVOX 0.26’s separated engine (<code>vvpp-engines</code>), and <b>ブイブイ・コバコ</b> (<i>buibui kobako</i>, <i>cobaco</i>) and <b>黒沢冴白</b> (<i>kurosawa kohaku</i>) have romanised aliases.</li>
+    <li>22 new character-name readings in the dictionary (3,269 in all: <i>buibui</i>, <i>kobako</i>, <i>kurosawa</i>, <i>kohaku</i>, <i>ryusei</i>, <i>tsurugi</i>, <i>mochikosan</i>…).</li>
+    <li>Fixed inline pauses such as <code>(pause 0.5)</code>, line files with <code>・</code> in the speaker name (such as <code>01_ブイブイ・コバコ.wav</code>), Moods edits lost after autosave, Cast <code>intonation</code> preservation, full Dictionary browsing and inline editing, audio cleanup when leaving Renders, and engine cache refreshes.</li>
+  </ul>
   <h3>1.0.2 — 2026-11-04</h3>
   <ul>
     <li>1,198 new words in the dictionary (3,247 in all), each one a word the model read wrong: <i>undo</i> アンドゥー (not ウンド), <i>redo</i> リドゥー (not レド), <i>undoing</i>, <i>ctrl</i>, <i>hotkey</i>, <i>paste</i>, <i>retry</i>, <i>github</i>, <i>tokyo</i> (not トコーヨー), <i>sunshine</i>, <i>sacred</i> (not “soccer”)…, chat and game words (<i>lol</i>, <i>brb</i>, <i>afk</i>, <i>npc</i>), the sounds characters make (<i>oof</i>, <i>psst</i>, <i>meow</i>, <i>zzz</i>) and more Japanese in English letters (<i>gomen</i>, <i>sumimasen</i>, <i>isekai</i>).</li>
@@ -683,7 +695,7 @@ python vocana.py studio</pre>
     <h1>Vocana <small style="font-size:.5em;color:var(--mute)">ボカナ</small></h1>
     <p class="tag">英語を書くだけで、どの VOICEVOX ボイスでも。</p>
     <p>ふつうの英語で台本を書くと、Vocana がすべての単語を日本語の声が言えるカタカナに直し、指定したムードに合わせてメロディーを整え、音声・字幕・単語ごとのタイミングを動画用に書き出します。キャラクターは 1 人だけでなく、VOICEVOX の全員から選べます。</p>
-    <p class="meta">バージョン 1.0.2 · 2026-11-04 · AmirCollider 制作 · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+    <p class="meta">バージョン 1.0.3 · 2026-11-22 · AmirCollider 制作 · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
     <div class="chips"><span class="chip">無料</span><span class="chip">Windows · macOS · Linux</span><span class="chip">オフラインで動作</span><span class="chip">فارسی · English · 日本語</span></div>
   </div>
 </div>
@@ -766,7 +778,7 @@ ME [pleading]: Pleeease? I'm *really* good, I promise!</pre>
 
 <section id="ja-cast" data-anchor="cast">
   <h2><span class="n">5</span>キャラクター・スタイル・クレジット</h2>
-  <p>お使いの VOICEVOX にいるキャラクターなら誰でもセリフを読めます (VOICEVOX 0.25.2 で 43 人。音声ライブラリを追加すればさらに)。タグを誰が読むかは <code>@cast</code> で指定します:</p>
+  <p>お使いの VOICEVOX にいるキャラクターなら誰でもセリフを読めます (VOICEVOX 0.26.3 で 44 人。音声ライブラリを追加すればさらに)。タグを誰が読むかは <code>@cast</code> で指定します:</p>
 <pre>@cast ME = ずんだもん
 @cast METAN = 四国めたん / ツンツン, pitch +1, speed 1.05
 @cast RYU = aoyama ryusei</pre>
@@ -878,7 +890,7 @@ python vocana.py studio</pre>
   <details><summary>Vocana は無料ですか？</summary><p>はい。個人でも商用でも無料です。下のライセンスをご覧ください。</p></details>
   <details><summary>音声を商用利用できますか？</summary><p>Vocana は条件を追加しません。声は VOICEVOX のキャラクターのものなので、各キャラクターの規約 (キャストページに表示) に従い、必ずクレジットを記載してください。</p></details>
   <details><summary>インターネットは必要ですか？</summary><p>いいえ。Vocana も VOICEVOX もあなたの PC で動きます。インターネットへの通信は、任意の 1 日 1 回の更新確認だけです。</p></details>
-  <details><summary>AivisSpeech や COEIROINK などでも使えますか？</summary><p>Vocana は VOICEVOX (0.25.2) 用に作り、テストしています。VOICEVOX 互換の API を持つエンジンは、設定でアドレスを指定すれば動く可能性がありますが、テストはしていません。</p></details>
+  <details><summary>AivisSpeech や COEIROINK などでも使えますか？</summary><p>Vocana は VOICEVOX (0.25〜0.26) 用に作り、テストしています。VOICEVOX 互換の API を持つエンジンは、設定でアドレスを指定すれば動く可能性がありますが、テストはしていません。</p></details>
   <details><summary>ペルシャ語は読めますか？</summary><p>いいえ。VOICEVOX は日本語を話し、Vocana はそこで英語 (と日本語) を使えるようにします。スタジオ自体はペルシャ語・英語・日本語に対応しています。</p></details>
   <details><summary>VoxTalk はどうなりましたか？</summary><p>Vocana は VoxTalk が成長した姿です。VoxTalk 用のスクリプト・<code>words.json</code>・<code>moods.json</code> はそのまま使え、まったく同じ音になります。</p></details>
 </section>
@@ -915,6 +927,12 @@ python vocana.py studio</pre>
 
 <section id="ja-changelog" data-anchor="changelog">
   <h2><span class="n">16</span>新機能</h2>
+  <h3>1.0.3 — 2026-11-22</h3>
+  <ul>
+    <li><b>VOICEVOX 0.26 対応 (0.26.0〜0.26.3):</b> <code>streaming_talk</code> スタイルを再び認識し、分離されたエンジン (<code>vvpp-engines</code>) を自動検出し、<b>ブイブイ・コバコ</b> (<i>buibui kobako</i>、<i>cobaco</i>) と <b>黒沢冴白</b> (<i>kurosawa kohaku</i>) のローマ字別名を追加しました。</li>
+    <li>辞書にキャラクター名の読み 22 語を追加 (合計 3,269 語: <i>buibui</i>、<i>kobako</i>、<i>kurosawa</i>、<i>kohaku</i>、<i>ryusei</i>、<i>tsurugi</i>、<i>mochikosan</i> など)。</li>
+    <li>行途中の <code>(pause 0.5)</code>、話者名に <code>・</code> を含む行ファイル (<code>01_ブイブイ・コバコ.wav</code> など)、自動保存後にムード編集が消える問題、キャストの <code>intonation</code> 保持、辞書の全件表示とインライン編集、書き出しページ離脱時の音声停止、エンジン再起動時のキャッシュ更新を修正しました。</li>
+  </ul>
   <h3>1.0.2 — 2026-11-04</h3>
   <ul>
     <li>辞書に 1,198 語を追加 (合計 3,247 語)。どれもモデルが読み間違えていた単語です: <i>undo</i> はアンドゥー (ウンドではなく)、<i>redo</i> はリドゥー (レドではなく)、<i>undoing</i>、<i>ctrl</i>、<i>hotkey</i>、<i>paste</i>、<i>retry</i>、<i>github</i>、<i>tokyo</i> (トコーヨーではなく)、<i>sunshine</i>、<i>sacred</i> (サッカーではなく) など。チャットやゲームの言葉 (<i>lol</i>、<i>brb</i>、<i>afk</i>、<i>npc</i>)、キャラクターの声 (<i>oof</i>、<i>psst</i>、<i>meow</i>、<i>zzz</i>)、ローマ字の日本語 (<i>gomen</i>、<i>sumimasen</i>、<i>isekai</i>) も。</li>
@@ -941,7 +959,7 @@ python vocana.py studio</pre>
 </section>
 
 </div>
-<p class="foot">Vocana 1.0.2 · 2026-11-04 · AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
+<p class="foot">Vocana 1.0.3 · 2026-11-22 · AmirCollider · <a href="https://amircollider.com/vocana">amircollider.com/vocana</a></p>
 </main>
 </div>
 <script>

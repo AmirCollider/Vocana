@@ -1,8 +1,20 @@
 # Changelog
 
-## Unreleased
+## 1.0.3 — 2026-11-22
 
-- **VOICEVOX 0.26 has characters again.** It names its talking styles `streaming_talk` where older engines said `talk`, and Vocana kept only `talk` — so every character was dropped and a render stopped at "VOICEVOX has no characters". Both names read text now; singing styles are still left out (`engine.is_talk_style`, tests/test_core.py).
+VOICEVOX 0.26 support (including the separated engine and Buibui Kobako) and studio & script fixes.
+
+- **VOICEVOX 0.26.0–0.26.3 support.** VOICEVOX 0.26 names its talking styles `streaming_talk` where older engines said `talk`, and Vocana kept only `talk` — dropping every character and stopping renders at "VOICEVOX has no characters". `engine.is_talk_style` now accepts `talk`, `streaming_talk`, and any non-singing style while still leaving out singing styles (`sing`, `frame_decode`, `singing_teacher`).
+- **Finds VOICEVOX 0.26's separated engine.** VOICEVOX 0.26 installs its engine outside the editor folder (`%APPDATA%\voicevox\vvpp-engines` on Windows, `~/Library/Application Support/voicevox/vvpp-engines` on macOS, `~/.config/voicevox/vvpp-engines` on Linux). Vocana now reads `engine_manifest.json` there, prefers the official VOICEVOX engine and the newer version when both bundled and separated engines exist, and still honours a custom path in Settings (and `vocana doctor` now checks that custom path too).
+- **New VOICEVOX characters & 22 dictionary words** (3,269 in all): romanised aliases for **ブイブイ・コバコ** (added in VOICEVOX 0.26.2: `buibui kobako`, `vv cobaco`, `cobaco`, `kobako`) and **黒沢冴白** (`kurosawa kohaku`, `kohaku`), plus 22 character-name readings (`buibui`, `kobako`, `cobaco`, `kurosawa`, `kohaku`, `ryusei`, `tsurugi`, `usagi`, `chugoku`, `benizakura`, `mesuo`, `kotaro`, `kotoyomi`, `mochikosan`, `ouka`, `sourin`, `airutan`, `nurserobo`, `yureichan`, `yuka`, `aru`…).
+- **Inline `(pause 0.5)` works again.** `split_line` ran `speakable()` before extracting inline pauses, turning `(pause 0.5)` into `(pause 0 point 5)` and discarding it as a parenthetical note; inline decimal pauses are now kept intact.
+- **Line files with `・` in the speaker name work in Renders.** Rendering with a tag like `ブイブイ・コバコ` produced `01_ブイブイ・コバコ.wav`, which the Renders file filter rejected with 404 and omitted from downloads and zips; `・` and `ー` are now allowed, and line-preview URLs are properly encoded.
+- **Voice cache & engine error fixes.** Empty speaker lists are no longer cached for 5 minutes; restarting, updating, or changing VOICEVOX's URL clears cached voices, icons, and previews on both server and studio; error messages using VOICEVOX 0.26's `{"message": ...}` format are surfaced cleanly; unreadable-text notes no longer produce blank warnings; and the fallback katakana splitter keeps two-character moras (`シャ`, `ティ`) intact.
+- **Studio fixes:**
+  - **Moods:** edits after the first autosave are no longer lost to a stale object reference; `variant` is excluded from the Moods tone picker and has a label in all three languages.
+  - **Cast:** editing cast sliders or switching characters preserves `intonation`, and "Use this cast as default" / preview buttons always read the latest plan.
+  - **Dictionary:** all 3,269+ words are browsable (progressive "Show more" instead of a hard 2,000-word cut-off); inline editing no longer saves on Escape or twice on Enter; search text stays put after edits; pinning a word refreshes the list, test box, and review list immediately; testing katakana no longer sends kana to `e2k`.
+  - **Script, Renders & Settings:** cancelling a Save overwrite dialog stops the render; pause-only scripts are rejected before rendering; empty script delete/rename requests cannot target `render.txt`; leaving Renders cleans up audio handlers and stops line playback; "Check now" reports failures honestly without a fixed delay; `safe_name` handles `CON.txt` and trailing dots; CLI `WARN_TEXT` covers all config warnings.
 
 ## 1.0.2 — 2026-11-04
 

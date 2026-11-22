@@ -15,10 +15,11 @@
     lang: 'en', theme: 'auto', status: null, plan: null, planSeq: 0, voices: null, voiceInfo: {},
     script: { name: '', text: '', saved: '', mtime: 0 }, settings: null, renders: null, words: null, moods: null,
     job: null, lastResult: null, curLine: 0, view: '', lost: false, beatFails: 0, preview: null, editor: null,
-    showKana: true, routeArg: ''
+    showKana: true, routeArg: '', wordQuery: '', runWordTest: null
   };
   var audio = new Audio();
   audio.preload = 'auto';
+  var subAudio = null;
 
   // ==================================================================
   // Small helpers
@@ -389,9 +390,10 @@
     if (spec) {
       var head = spec.speaker + (spec.style ? ' / ' + spec.style : '');
       var opts = [];
-      if (spec.pitch && Math.abs(spec.pitch) > 1e-9) opts.push('pitch ' + (spec.pitch > 0 ? '+' : '') + (+spec.pitch.toFixed(2)));
-      if (spec.speed && Math.abs(spec.speed - 1) > 1e-9) opts.push('speed ' + (+spec.speed.toFixed(2)));
-      if (spec.volume && Math.abs(spec.volume - 1) > 1e-9) opts.push('volume ' + (+spec.volume.toFixed(2)));
+      if (spec.pitch !== undefined && spec.pitch !== null && Math.abs(spec.pitch) > 1e-9) opts.push('pitch ' + (spec.pitch > 0 ? '+' : '') + (+spec.pitch.toFixed(2)));
+      if (spec.speed !== undefined && spec.speed !== null && Math.abs(spec.speed - 1) > 1e-9) opts.push('speed ' + (+spec.speed.toFixed(2)));
+      if (spec.volume !== undefined && spec.volume !== null && Math.abs(spec.volume - 1) > 1e-9) opts.push('volume ' + (+spec.volume.toFixed(2)));
+      if (spec.intonation !== undefined && spec.intonation !== null && Math.abs(spec.intonation - 1) > 1e-9) opts.push('intonation ' + (+spec.intonation.toFixed(2)));
       line = '@cast ' + tag + ' = ' + [head].concat(opts).join(', ');
     }
     var idx = -1, lastCast = -1;
@@ -518,9 +520,14 @@
       renderPill();
       renderBanners();
       var now = st.engine && st.engine.version;
-      if (!was && now) {
+      if ((!was && now) || (was && now && was !== now)) {
         S.voices = null;
-        if (S.view === 'cast' || S.view === 'script') { schedulePlan(true); if (S.view === 'cast') route(); }
+        S.voiceInfo = {};
+        if (S.view === 'script') schedulePlan(true);
+        else if (S.view === 'cast' || S.view === 'moods') route();
+      } else if (was && !now) {
+        S.voices = null;
+        S.voiceInfo = {};
       }
       return st;
     });
@@ -639,6 +646,15 @@
   // ==================================================================
   function go(view) { location.hash = '#' + view; }
   function route() {
+    if (S.editor) {
+      S.script.text = S.editor.get();
+      S.editor = null;
+    }
+    S.runWordTest = null;
+    stopAudio(true);
+    cancelAnimationFrame(player.raf);
+    player.name = null;
+    player.draw = null;
     var hash = decodeURIComponent((location.hash || '').slice(1));
     var view = hash.split(/[/=]/)[0] || 'script';
     var arg = hash.indexOf('/') > 0 ? hash.slice(hash.indexOf('/') + 1) : '';
@@ -663,9 +679,10 @@
   // ==================================================================
   // Script view
   // ==================================================================
+  function scriptText() { return S.editor ? S.editor.get() : S.script.text; }
   var schedulePlan = debounce(function () { runPlan(); }, 420);
   function runPlan(force) {
-    var text = S.editor ? S.editor.get() : S.script.text;
+    var text = scriptText();
     var seq = ++S.planSeq;
     return api('/api/plan', { text: text }).then(function (p) {
       if (seq !== S.planSeq) return;
@@ -674,15 +691,14 @@
       loadAvatars(p);
     }).catch(function (e) { if (!e.network) failToast(e); });
   }
-  function dirty() { return S.editor && S.editor.get() !== S.script.saved; }
+  function dirty() { return scriptText() !== S.script.saved; }
   function updateDirty() {
     var d = $('#dirty');
     if (d) d.classList.toggle('hidden', !dirty());
     document.title = (dirty() ? '• ' : '') + (S.script.name || t('c.untitled')) + ' — Vocana';
   }
   var saveDraft = debounce(function () {
-    if (!S.editor) return;
-    if (dirty()) store('draft', { name: S.script.name, text: S.editor.get(), base: S.script.saved, at: Date.now() });
+    if (dirty()) store('draft', { name: S.script.name, text: scriptText(), base: S.script.saved, at: Date.now() });
     else store('draft', null);
   }, 800);
 
@@ -792,11 +808,11 @@
     if (!p.lines.length) box.appendChild(h('div.empty', {}, h('img', { src: '/brand/vocana-128.png', alt: '' }), h('div', { text: t('script.empty') })));
     p.lines.forEach(function (ln) {
       if (ln.kind === 'pause') {
-        box.appendChild(h('div.linecard.pause', { 'data-n': ln.n, onclick: function () { S.editor.goLine(ln.n); } }, h('div.avatar.sm', {}, '⏸'), h('div.muted.small', { text: t('script.pause', { s: ln.seconds }) })));
+        box.appendChild(h('div.linecard.pause', { 'data-n': ln.n, onclick: function () { if (S.editor) S.editor.goLine(ln.n); } }, h('div.avatar.sm', {}, '⏸'), h('div.muted.small', { text: t('script.pause', { s: ln.seconds }) })));
         return;
       }
       var card = h('div.linecard' + (marks[ln.n] ? '.has-warn' : '') + (ln.n === S.curLine ? '.cur' : ''), { 'data-n': ln.n, tabindex: '0' });
-      card.addEventListener('click', function (e) { if (!e.target.closest('button')) S.editor.goLine(ln.n, false); });
+      card.addEventListener('click', function (e) { if (!e.target.closest('button') && S.editor) S.editor.goLine(ln.n, false); });
       card.addEventListener('keydown', function (e) { if (e.key === 'Enter') previewLine(ln.n); });
       var playB = btn('', 'play', function () { previewLine(ln.n, playB); }, 'icon sm', { title: t('script.preview_line') });
       var meta = h('div.meta');
@@ -846,7 +862,7 @@
     if (ws.length) {
       var list = h('div.warnlist');
       ws.forEach(function (w) {
-        list.appendChild(h('button', { type: 'button', onclick: function () { if (w.n) S.editor.goLine(w.n, true); } },
+        list.appendChild(h('button', { type: 'button', onclick: function () { if (w.n && S.editor) S.editor.goLine(w.n, true); } },
           h('span.n', { text: w.n ? '#' + w.n : '•' }), h('span', { text: warnText(w) })));
       });
       box.appendChild(list);
@@ -871,11 +887,12 @@
     }).then(function (v) {
       if (!v || !v.trim()) return;
       if (!/[\u3041-\u30fa]/.test(v)) { toast(t('words.invalid_kana'), 'bad'); return; }
-      loadWords().then(function () {
+      loadWords().catch(function (e) { failToast(e); return null; }).then(function (loaded) {
+        if (!loaded) return;
         var w = Object.assign({}, S.words.words);
         w[word.toLowerCase()] = v.trim();
-        return api('/api/words', { words: w }).then(function (r) { S.words = r; toast(t('words.saved')); runPlan(); });
-      }).catch(failToast);
+        return saveWords(w).catch(function () {});
+      });
     });
   }
 
@@ -917,13 +934,22 @@
   }
 
   // -- previews -------------------------------------------------------
-  function stopAudio() {
+  function clearAudioHandlers() {
+    audio.onplay = null;
+    audio.onpause = null;
+    audio.onended = null;
+    audio.onseeked = null;
+    audio.onloadedmetadata = null;
+  }
+  function stopAudio(clearHandlers) {
     audio.pause();
+    if (clearHandlers) clearAudioHandlers();
+    if (subAudio) { try { subAudio.pause(); } catch (e) {} subAudio = null; }
     if (S.preview && S.preview.stop) S.preview.stop();
     S.preview = null;
   }
   function playPreview(res, card, b) {
-    stopAudio();
+    stopAudio(true);
     audio.src = res.url;
     var words = [];
     res.sentences.forEach(function (s) { s.words.forEach(function (w) { words.push(w); }); });
@@ -965,7 +991,7 @@
     var card = $('.linecard[data-n="' + n + '"]');
     b = b || (card && $('.btn', card));
     if (b) busyBtn(b, true);
-    api('/api/preview', { text: S.editor.get(), n: n }).then(function (res) {
+    api('/api/preview', { text: scriptText(), n: n }).then(function (res) {
       if (b) busyBtn(b, false);
       playPreview(res, card, b);
       if (S.preview) S.preview.n = n;
@@ -1059,7 +1085,7 @@
       return dialog({ title: t('script.name'), prompt: '', buttons: [{ label: t('c.cancel'), value: null }, { label: t('c.save'), value: true, primary: true }] })
         .then(function (v) { if (v && v.trim()) return saveScript(v.trim()); });
     }
-    var text = S.editor ? S.editor.get() : S.script.text;
+    var text = scriptText();
     var replacing = overwrite || name === S.script.name;
     return api('/api/scripts/save', { name: name, text: text, overwrite: replacing }).then(function (r) {
       S.script.name = r.name;
@@ -1103,7 +1129,7 @@
     });
   }
   function exportFile() {
-    var text = S.editor ? S.editor.get() : S.script.text;
+    var text = scriptText();
     var blob = new Blob([text.replace(/\n/g, '\r\n')], { type: 'text/plain;charset=utf-8' });
     var a = h('a', { href: URL.createObjectURL(blob), download: (S.script.name || 'script') + '.txt' });
     document.body.appendChild(a);
@@ -1122,12 +1148,13 @@
     if (!engineOn()) { toast(t('engine.needed'), 'bad'); return; }
     var nameEl = $('.script-bar .name');
     var name = (nameEl && nameEl.value.trim()) || S.script.name;
-    var pre = Promise.resolve();
-    if (!name) pre = saveScript('').then(function () { name = S.script.name; });
-    else if (dirty() || name !== S.script.name) pre = saveScript(name);
-    pre.then(function () {
-      if (!name) return;
-      return api('/api/render', { text: S.editor.get(), name: name }).then(function (job) {
+    var pre;
+    if (!name) pre = saveScript('').then(function (r) { if (r) name = r.name; return r; });
+    else if (dirty() || name !== S.script.name) pre = saveScript(name).then(function (r) { if (r) name = r.name; return r; });
+    else pre = Promise.resolve({ name: name });
+    pre.then(function (saved) {
+      if (!saved || !name) return;
+      return api('/api/render', { text: scriptText(), name: name }).then(function (job) {
         S.job = job;
         S.lastResult = null;
         paintJob();
@@ -1185,7 +1212,7 @@
       res.credits && res.credits.length ? h('div.credit', { style: { marginTop: '8px' } }, h('code', { text: res.credits.map(function (c) { return c.credit; }).join(', ') }),
         btn('', 'copy', function () { copyText(res.credits.map(function (c) { return c.credit; }).join('\n')); }, 'icon sm ghost', { title: t('c.copy') })) : null,
       res.warnings && res.warnings.length ? h('details', { style: { marginTop: '8px' } }, h('summary', { text: t('render.warnings', { n: res.warnings.length }) }),
-        h('div.warnlist', {}, res.warnings.map(function (w) { return h('button', { type: 'button', onclick: function () { if (w.n) S.editor.goLine(w.n, true); } }, h('span.n', { text: w.n ? '#' + w.n : '•' }), h('span', { text: warnText(w) })); }))) : null,
+        h('div.warnlist', {}, res.warnings.map(function (w) { return h('button', { type: 'button', onclick: function () { if (w.n && S.editor) S.editor.goLine(w.n, true); } }, h('span.n', { text: w.n ? '#' + w.n : '•' }), h('span', { text: warnText(w) })); }))) : null,
       h('div.btn-row', { style: { marginTop: '10px' } },
         btn(t('render.open'), 'renders', function () { go('renders/' + encodeURIComponent(res.name)); }, 'primary sm'),
         btn(t('renders.folder'), 'folder', function () { api('/api/open', { what: 'render', name: res.name }).catch(failToast); }, 'sm'))]);
@@ -1220,10 +1247,18 @@
     add(box, [h('h2', {}, icon('mic'), h('span', { text: t('cast.default_voice') })), h('div.row', {}, sel, h('span.hint.grow', { text: t('cast.default_voice_hint') }))]);
   }
   function specFromCast(c) {
-    return { speaker: c.character, style: c.style || null, pitch: (c.adjust && c.adjust.pitch) || 0, speed: (c.adjust && c.adjust.speed) || 1, volume: (c.adjust && c.adjust.volume) || 1 };
+    var a = c.adjust || {};
+    return {
+      speaker: c.character,
+      style: c.style || null,
+      pitch: a.pitch !== undefined ? a.pitch : 0,
+      speed: a.speed !== undefined ? a.speed : 1,
+      volume: a.volume !== undefined ? a.volume : 1,
+      intonation: a.intonation !== undefined ? a.intonation : 1
+    };
   }
   function applyCast(tag, spec) {
-    var text = setCastLine(S.editor ? S.editor.get() : S.script.text, tag, spec);
+    var text = setCastLine(scriptText(), tag, spec);
     S.script.text = text;
     if (S.editor) S.editor.replaceAll(text);
     else { updateDirty(); }
@@ -1255,7 +1290,11 @@
       }, disabled: !voices }, avatarFor(c.who, c.speaker_uuid, null, 'sm'), h('span', { text: c.character || t('cast.choose') }));
       var origin = h('div.small.muted', { text: t('cast.origin_' + (c.origin || 'default')) });
       if (!c.found && voices) origin = h('div.small', { style: { color: 'var(--bad)' }, text: t('w.cast_unknown_character', { name: c.character, who: c.who }) });
-      var hear = btn('', 'play', function () { var l = (p.lines.filter(function (x) { return x.kind === 'line' && x.who === c.who; })[0]); if (l) previewLine(l.n, hear); }, 'icon sm', { title: t('c.hear') });
+      var hear = btn('', 'play', function () {
+        var curP = S.plan || p;
+        var l = (curP.lines.filter(function (x) { return x.kind === 'line' && x.who === c.who; })[0]);
+        if (l) previewLine(l.n, hear);
+      }, 'icon sm', { title: t('c.hear') });
       table.appendChild(h('tr', {},
         h('td', {}, h('div.tag', { text: c.who, style: { color: tagColor(c.who) } })),
         h('td', {}, pick, origin),
@@ -1269,7 +1308,17 @@
     box.appendChild(h('div.row', { style: { marginTop: '6px' } }, h('span.hint.grow', { text: t('cast.apply_hint') }),
       btn(t('cast.make_default'), 'save', function () {
         var cast = {};
-        p.cast.forEach(function (c) { if (c.found) { var s = specFromCast(c); cast[c.who] = { speaker: s.speaker }; if (s.style) cast[c.who].style = s.style; ['pitch', 'speed', 'volume'].forEach(function (k) { var neutral = k === 'pitch' ? 0 : 1; if (Math.abs(s[k] - neutral) > 1e-9) cast[c.who][k] = s[k]; }); } });
+        ((S.plan || p).cast || []).forEach(function (c) {
+          if (c.found) {
+            var s = specFromCast(c);
+            cast[c.who] = { speaker: s.speaker };
+            if (s.style) cast[c.who].style = s.style;
+            ['pitch', 'speed', 'volume', 'intonation'].forEach(function (k) {
+              var neutral = k === 'pitch' ? 0 : 1;
+              if (Math.abs(s[k] - neutral) > 1e-9) cast[c.who][k] = s[k];
+            });
+          }
+        });
         api('/api/moods', { cast: cast }).then(function (m) { S.moods = m; toast(t('cast.made_default')); }).catch(failToast);
       }, 'sm')));
     loadAvatars(p);
@@ -1343,7 +1392,7 @@
       info.styles.forEach(function (s) {
         var hearEn = btn(t('cast.hear_english'), 'play', function () { hearLine('ME: Hello! This is how I sound in English. Nice to meet you!', c.name + '/' + s.name, hearEn); }, 'sm');
         var samples = (s.samples || []).slice(0, 3).map(function (u, i) {
-          return btn(String(i + 1), 'play', function () { stopAudio(); audio.src = u; audio.play().catch(function () {}); }, 'sm ghost', { title: t('cast.samples') + ' ' + (i + 1) });
+          return btn(String(i + 1), 'play', function () { stopAudio(true); audio.src = u; audio.play().catch(function () {}); }, 'sm ghost', { title: t('cast.samples') + ' ' + (i + 1) });
         });
         styles.appendChild(h('div.style-row', {}, s.icon ? h('img', { src: s.icon, alt: '' }) : h('span.avatar.sm', { text: initials(s.name) }),
           h('div.grow', {}, h('b', { text: s.name }), s.family ? h('span.chip', { text: t('tone.' + s.family), style: { marginInlineStart: '6px' } }) : null),
@@ -1406,7 +1455,7 @@
   }
   function selectRender(name) {
     $$('.ritem').forEach(function (x) { x.classList.toggle('sel', x.dataset.name === name); });
-    stopAudio();
+    stopAudio(true);
     cancelAnimationFrame(player.raf);
     player.name = name;
     var box = clear($('#rdetail'));
@@ -1418,7 +1467,10 @@
       player.timing = tj;
       clear(box);
       var wave = h('div.wave', {}, h('canvas'), h('div.head', { style: { left: '0' } }));
-      var playB = btn('', 'play', function () { if (audio.paused) audio.play(); else audio.pause(); }, 'icon primary', { title: t('player.play') });
+      var playB = btn('', 'play', function () {
+        if (subAudio) { try { subAudio.pause(); } catch (e) {} subAudio = null; }
+        if (audio.paused) audio.play().catch(function () {}); else audio.pause();
+      }, 'icon primary', { title: t('player.play') });
       var time = h('span.time.ltr', { text: '0:00.0' });
       var kara = h('div.karaoke', {}, h('span.muted', { text: '♪' }));
       audio.src = media(base + 'full.wav');
@@ -1441,10 +1493,15 @@
       if (tj) tj.lines.forEach(function (ln, i) {
         lines.appendChild(h('div.rline', { 'data-i': i, onclick: function (e) {
           if (e.target.closest('button')) return;
-          audio.currentTime = ln.start; audio.play();
+          if (subAudio) { try { subAudio.pause(); } catch (err) {} subAudio = null; }
+          audio.currentTime = ln.start; audio.play().catch(function () {});
         } }, h('span.t.ltr', { text: clock(ln.start) }), h('span', { text: ln.who, style: { color: tagColor(ln.who), fontWeight: 700, fontSize: '12px' } }),
           h('span', { text: ln.text, dir: 'auto' }),
-          btn('', 'play', function () { stopAudio(); var a2 = new Audio(media(base + ln.file)); a2.play(); }, 'icon sm ghost', { title: t('files.line') })));
+          btn('', 'play', function () {
+            stopAudio();
+            subAudio = new Audio(media(base + encodeURIComponent(ln.file)));
+            subAudio.play().catch(function () {});
+          }, 'icon sm ghost', { title: t('files.line') })));
       });
       var credits = (tj && tj.credits) || [];
       var filesBox = h('div.files');
@@ -1466,7 +1523,7 @@
             btn(t('c.delete'), 'trash', function () {
               confirmBox(t('renders.delete_confirm', { name: name }), t('c.delete'), true).then(function (ok) {
                 if (!ok) return;
-                stopAudio();
+                stopAudio(true);
                 api(base + 'delete', {}).then(function () { toast(t('renders.deleted')); history.replaceState(null, '', '#renders'); route(); }).catch(failToast);
               });
             }, 'sm danger')))]);
@@ -1563,7 +1620,7 @@
       btn('', 'folder', function () { api('/api/open', { what: 'data' }).catch(failToast); }, 'icon sm ghost', { title: t('settings.open_data') })),
       h('p.lead', { text: t('words.intro') })]);
     var two = h('div.two');
-    var left = h('div.card');
+    var left = h('div.card', { id: 'wlist' });
     var right = h('div', {}, h('div.card', { id: 'wtest' }), h('div.card', { id: 'wreview' }));
     two.appendChild(left);
     two.appendChild(right);
@@ -1575,7 +1632,7 @@
     var words = S.words.words;
     var wc = $('#wcount');
     if (wc) wc.textContent = t('words.count', { n: Object.keys(words).length });
-    var q = h('input', { type: 'search', placeholder: t('words.search'), dir: 'ltr' });
+    var q = h('input', { type: 'search', placeholder: t('words.search'), dir: 'ltr', value: S.wordQuery || '' });
     var nw = h('input', { type: 'text', placeholder: t('words.word'), dir: 'ltr' });
     var nk = h('input', { type: 'text', placeholder: t('words.kana'), dir: 'ltr' });
     var hearNew = btn('', 'play', function () { if (nw.value.trim()) hearText(nw.value.trim(), hearNew); }, 'icon', { title: t('c.hear') });
@@ -1583,35 +1640,44 @@
       var w = nw.value.trim().toLowerCase(), k = nk.value.trim();
       if (!w) { toast(t('words.empty_word'), 'bad'); nw.focus(); return; }
       if (!/[\u3041-\u30fa]/.test(k)) { toast(t('words.invalid_kana'), 'bad'); nk.focus(); return; }
-      var next = Object.assign({}, words);
+      var next = Object.assign({}, S.words.words);
       var existed = next[w] !== undefined;
       next[w] = k;
-      saveWords(next).then(function () { nw.value = ''; nk.value = ''; if (existed) toast(t('words.dup', { word: w })); paintWords(box); });
+      saveWords(next).then(function () { if (existed) toast(t('words.dup', { word: w })); }).catch(function () {});
     }
     nk.addEventListener('keydown', function (e) { if (e.key === 'Enter') addWord(); });
     nw.addEventListener('blur', function () {
       if (nw.value.trim() && !nk.value.trim()) api('/api/words/test', { text: nw.value.trim() }).then(function (r) { if (r.words[0] && !nk.value) nk.placeholder = r.words[0].kana; }).catch(function () {});
     });
     var tbody = h('tbody');
+    var limit = 300;
     function paint() {
       clear(tbody);
       var term = q.value.trim().toLowerCase();
-      Object.keys(words).sort().filter(function (k) { return !term || k.indexOf(term) >= 0 || words[k].indexOf(term) >= 0; }).slice(0, 2000).forEach(function (k) {
+      var matches = Object.keys(words).sort().filter(function (k) { return !term || k.indexOf(term) >= 0 || words[k].indexOf(term) >= 0; });
+      matches.slice(0, limit).forEach(function (k) {
         var hearB = btn('', 'play', function () { hearText(k, hearB); }, 'icon sm ghost', { title: t('c.hear') });
         var kanaCell = h('td.kana', { text: words[k], tabindex: '0', title: t('c.edit') });
         function edit() {
+          if ($('input', kanaCell)) return;
           var inp = h('input', { type: 'text', value: words[k], dir: 'ltr' });
           clear(kanaCell).appendChild(inp);
           inp.focus(); inp.select();
+          var done = false;
           function commit(save) {
+            if (done) return;
+            done = true;
             var val = inp.value.trim();
             if (save && val && val !== words[k]) {
-              if (!/[\u3041-\u30fa]/.test(val)) { toast(t('words.invalid_kana'), 'bad'); return; }
-              var next = Object.assign({}, words); next[k] = val;
-              saveWords(next).then(function () { paintWords(box); });
+              if (!/[\u3041-\u30fa]/.test(val)) { toast(t('words.invalid_kana'), 'bad'); kanaCell.textContent = words[k]; return; }
+              var next = Object.assign({}, S.words.words); next[k] = val;
+              saveWords(next).catch(function () { kanaCell.textContent = words[k]; });
             } else kanaCell.textContent = words[k];
           }
-          inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') commit(true); if (e.key === 'Escape') commit(false); });
+          inp.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); commit(true); }
+            if (e.key === 'Escape') { e.preventDefault(); commit(false); }
+          });
           inp.addEventListener('blur', function () { commit(true); });
         }
         kanaCell.addEventListener('dblclick', edit);
@@ -1621,13 +1687,18 @@
           btn('', 'trash', function () {
             confirmBox(t('words.delete_confirm', { word: k }), t('c.delete'), true).then(function (ok) {
               if (!ok) return;
-              var next = Object.assign({}, words); delete next[k];
-              saveWords(next).then(function () { paintWords(box); });
+              var next = Object.assign({}, S.words.words); delete next[k];
+              saveWords(next).catch(function () {});
             });
           }, 'icon sm ghost danger', { title: t('c.delete') }))));
       });
+      var left = matches.length - limit;
+      if (left > 0) {
+        tbody.appendChild(h('tr', {}, h('td', { colspan: '3', style: { textAlign: 'center', padding: '10px' } },
+          btn(t('words.more', { n: left }), '', function () { limit += 500; paint(); }, 'sm'))));
+      }
     }
-    q.addEventListener('input', debounce(paint, 100));
+    q.addEventListener('input', debounce(function () { S.wordQuery = q.value; limit = 300; paint(); }, 100));
     add(box, [h('h2', {}, icon('plus'), h('span', { text: t('words.add') })),
       h('div.row', {}, h('div.grow', {}, nw), h('div.grow', {}, nk), hearNew, btn(t('c.add'), 'plus', addWord, 'primary')),
       h('p.hint', { text: t('words.kana_help') }),
@@ -1636,7 +1707,18 @@
     paint();
   }
   function saveWords(next) {
-    return api('/api/words', { words: next }).then(function (r) { S.words = r; toast(t('words.saved')); if (S.editor) runPlan(); return r; }).catch(function (e) { failToast(e); throw e; });
+    return api('/api/words', { words: next }).then(function (r) {
+      S.words = r;
+      toast(t('words.saved'));
+      if (S.view === 'words') {
+        var box = $('#wlist');
+        if (box) paintWords(box);
+        if (S.runWordTest) S.runWordTest();
+      }
+      var p = runPlan();
+      if (S.view === 'words') p.then(function () { if (S.view === 'words') paintWordReview(); });
+      return r;
+    }).catch(function (e) { failToast(e); throw e; });
   }
   function paintWordTest() {
     var box = $('#wtest');
@@ -1657,6 +1739,7 @@
         out.appendChild(h('table.table', {}, h('thead', {}, h('tr', {}, h('th', { text: t('words.word') }), h('th', { text: t('words.kana') }), h('th', { text: t('words.source') }), h('th'))), tb));
       }).catch(failToast);
     }
+    S.runWordTest = run;
     inp.addEventListener('input', debounce(run, 300));
     inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') hearB.click(); });
     add(clear(box), [h('h2', {}, icon('mic'), h('span', { text: t('words.test') })), h('div.row', {}, h('div.grow', {}, inp), hearB), out]);
@@ -1685,8 +1768,13 @@
   function loadMoods() { return api('/api/moods').then(function (m) { S.moods = m; return m; }); }
   var saveMoodsSoon = debounce(function () { saveMoodsNow(); }, 500);
   var moodSave = Promise.resolve();
+  var moodSaveSeq = 0;
   function saveMoodsNow() {
-    moodSave = api('/api/moods', { moods: S.moods.moods }).then(function (m) { S.moods = m; toast(t('moods.saved'), null, 1500); }).catch(failToast);
+    var seq = ++moodSaveSeq;
+    moodSave = api('/api/moods', { moods: S.moods.moods }).then(function (m) {
+      if (seq === moodSaveSeq) S.moods = m;
+      toast(t('moods.saved'), null, 1500);
+    }).catch(failToast);
     return moodSave;
   }
   function viewMoods(v, arg) {
@@ -1718,16 +1806,21 @@
       list.appendChild(h('button' + (S.moods.defaults.indexOf(m) < 0 ? '.custom' : ''), { type: 'button', 'aria-pressed': m === sel ? 'true' : 'false', onclick: function () { history.replaceState(null, '', '#moods/' + m); paintMoods(box, m); }, text: m, title: S.moods.defaults.indexOf(m) < 0 ? t('moods.custom') : '' }));
     });
     var mood = moods[sel];
+    function curMood() {
+      return (S.moods && S.moods.moods && S.moods.moods[sel]) || mood;
+    }
     var normal = moods.normal || {};
     var tones = Array.isArray(mood.tone) ? mood.tone : (mood.tone ? [mood.tone] : []);
     var toneSel = h('select', { style: { maxWidth: '260px' } }, h('option', { value: '', text: t('moods.tone_none') }),
       S.moods.families.map(function (f) { return h('option', { value: f, selected: tones[0] === f, text: t('tone.' + f) + ' (' + f + ')' }); }));
     toneSel.addEventListener('change', function () {
-      if (toneSel.value) mood.tone = [toneSel.value].concat(tones.slice(1).filter(function (x) { return x !== toneSel.value; })); else delete mood.tone;
+      var cm = curMood();
+      var curTones = Array.isArray(cm.tone) ? cm.tone : (cm.tone ? [cm.tone] : []);
+      if (toneSel.value) cm.tone = [toneSel.value].concat(curTones.slice(1).filter(function (x) { return x !== toneSel.value; })); else delete cm.tone;
       saveMoodsSoon();
     });
     var styleIn = h('input', { type: 'text', value: mood.style || '', dir: 'auto', placeholder: normal.style || 'ノーマル', style: { maxWidth: '200px' } });
-    styleIn.addEventListener('change', function () { if (styleIn.value.trim()) mood.style = styleIn.value.trim(); else delete mood.style; saveMoodsSoon(); });
+    styleIn.addEventListener('change', function () { var cm = curMood(); if (styleIn.value.trim()) cm.style = styleIn.value.trim(); else delete cm.style; saveMoodsSoon(); });
     var params = h('div');
     PARAMS.forEach(function (p) {
       var key = p[0], set = mood[key] !== undefined;
@@ -1741,7 +1834,7 @@
         v = Math.min(p[2], Math.max(p[1], +v));
         if (!isFinite(v)) return;
         range.value = v; num.value = v;
-        mood[key] = v;
+        curMood()[key] = v;
         row.classList.remove('unset');
         saveMoodsSoon();
       }
@@ -1811,6 +1904,8 @@
       var testB = btn(t('settings.test'), 'refresh', function () {
         busyBtn(testB, true);
         api('/api/engine/url', { url: urlIn.value }).then(function (es) {
+          S.voices = null;
+          S.voiceInfo = {};
           urlIn.value = es.url;
           urlMsg.textContent = es.version ? t('settings.engine_ok', { v: es.version }) : t('settings.engine_fail');
           urlMsg.style.color = es.version ? 'var(--ok)' : 'var(--bad)';
@@ -1839,8 +1934,8 @@
       var upMsg = h('div.hint');
       var upB = btn(t('settings.check_now'), 'refresh', function () {
         busyBtn(upB, true);
-        api('/api/update', {}).then(function () { return new Promise(function (r) { setTimeout(r, 2500); }); }).then(function () { return api('/api/update'); }).then(function (u) {
-          upMsg.textContent = u.available ? t('update.available', { v: u.version }) : (u.version ? t('settings.up_to_date') : '');
+        api('/api/update', {}).then(function (u) {
+          upMsg.textContent = u.ok === false ? t('settings.update_fail') : (u.available ? t('update.available', { v: u.version }) : (u.version ? t('settings.up_to_date') : t('settings.update_fail')));
           return loadStatus();
         }).catch(failToast).then(function () { busyBtn(upB, false); });
       }, 'sm');
@@ -1876,7 +1971,7 @@
         h('div.btn-row', { style: { marginTop: '12px' } }, btn(t('about.quit'), 'power', function () {
           confirmBox(t('about.quit_confirm'), t('about.quit'), true).then(function (ok) {
             if (!ok) return;
-            if (S.editor && dirty()) store('draft', { name: S.script.name, text: S.editor.get(), base: S.script.saved, at: Date.now() });
+            if (dirty()) store('draft', { name: S.script.name, text: scriptText(), base: S.script.saved, at: Date.now() });
             api('/api/quit', {}).then(function () { S.lostToken = true; showLost(); $('#lost h2').textContent = t('about.quit_done'); $('#lost p').textContent = ''; });
           });
         }, 'sm danger'))));
@@ -1935,7 +2030,7 @@
             add(box, [h('div.banner.ok', { style: { marginTop: '14px' } }, icon('check'), h('div.grow', {}, h('b', { text: t('install.done') }), h('div.small', { text: t('install.portable_note') }))),
               res.shortcut_problem ? h('div.banner.warn', {}, icon('warn'), h('div.grow', { text: t('install.shortcut_problem', { p: res.shortcut_problem }) })) : null,
               btn(t('install.open'), 'open', function () {
-                if (S.editor && dirty()) store('draft', { name: S.script.name, text: S.editor.get(), base: S.script.saved, at: Date.now() });
+                if (dirty()) store('draft', { name: S.script.name, text: scriptText(), base: S.script.saved, at: Date.now() });
                 api('/api/install/launch', { job: id }).then(function () { S.lostToken = true; showLost(); $('#lost h2').textContent = t('install.done'); $('#lost p').textContent = t('install.portable_note'); }).catch(failToast);
               }, 'primary big')]);
           }
@@ -1975,7 +2070,7 @@
   });
   window.addEventListener('beforeunload', function (e) {
     if (dirty() && !S.lostToken) {
-      store('draft', { name: S.script.name, text: S.editor.get(), base: S.script.saved, at: Date.now() });
+      store('draft', { name: S.script.name, text: scriptText(), base: S.script.saved, at: Date.now() });
       e.preventDefault();
       e.returnValue = '';
     }

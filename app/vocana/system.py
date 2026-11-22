@@ -12,7 +12,10 @@ Starting VOICEVOX
 """
 
 import glob
+import json
 import os
+import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -24,6 +27,12 @@ MAC = sys.platform == 'darwin'
 CREATE_NO_WINDOW = 0x08000000
 DETACHED_PROCESS = 0x00000008
 CREATE_NEW_PROCESS_GROUP = 0x00000200
+
+# Official VOICEVOX engine UUIDs (product edition and OSS edition).
+DEFAULT_ENGINE_UUIDS = (
+    '074fc39e-678b-4c13-8916-ffca8d505d1d',
+    'c7b58856-bd56-4aa1-afb7-b8415f824b06',
+)
 
 
 # ==================================================================
@@ -48,6 +57,94 @@ def voicevox_candidates():
     return out
 
 
+def vvpp_engine_roots():
+    """Places VOICEVOX 0.26+ installs its separated engine (vvpp-engines)."""
+    out = []
+    if WINDOWS:
+        appdata = os.environ.get('APPDATA')
+        if appdata:
+            out.append(os.path.join(appdata, 'voicevox', 'vvpp-engines'))
+    elif MAC:
+        out.append(os.path.expanduser('~/Library/Application Support/voicevox/vvpp-engines'))
+    else:
+        xdg = os.environ.get('XDG_CONFIG_HOME') or os.path.expanduser('~/.config')
+        out.append(os.path.join(xdg, 'voicevox', 'vvpp-engines'))
+    return out
+
+
+def _ver_key(v):
+    nums = [int(x) for x in re.findall(r'\d+', str(v or ''))[:3]]
+    return tuple(nums) + (0,) * (3 - len(nums))
+
+
+def _engine_in_dir(folder):
+    """(exe_path, uuid, version_tuple) for one engine directory, or None."""
+    if not folder or not os.path.isdir(folder):
+        return None
+    manifest_path = os.path.join(folder, 'engine_manifest.json')
+    uuid, ver, cmd_exe = '', (), None
+    if os.path.isfile(manifest_path):
+        try:
+            with open(manifest_path, encoding='utf-8-sig') as f:
+                m = json.load(f)
+            if isinstance(m, dict):
+                uuid = str(m.get('uuid') or '')
+                ver = _ver_key(m.get('version'))
+                cmd = m.get('command')
+                if isinstance(cmd, str) and cmd.strip():
+                    try:
+                        parts = shlex.split(cmd, posix=not WINDOWS)
+                    except ValueError:
+                        parts = cmd.split()
+                    if parts:
+                        c = os.path.join(folder, parts[0])
+                        if os.path.isfile(c):
+                            cmd_exe = c
+                        elif WINDOWS and not c.lower().endswith('.exe') and os.path.isfile(c + '.exe'):
+                            cmd_exe = c + '.exe'
+        except (OSError, ValueError):
+            pass
+    if cmd_exe:
+        return cmd_exe, uuid, ver
+    for name in ('run.exe', 'run'):
+        c = os.path.join(folder, name)
+        if os.path.isfile(c):
+            return c, uuid, ver
+    return None
+
+
+def find_vvpp_engine(roots=None):
+    """Best VOICEVOX engine installed in vvpp-engines/ (VOICEVOX 0.26+), or None.
+    Prefers official VOICEVOX engines over third-party VVPP engines, and newer
+    versions over older ones."""
+    best = None
+    for root in (vvpp_engine_roots() if roots is None else roots):
+        if not root or not os.path.isdir(root):
+            continue
+        try:
+            entries = sorted(os.listdir(root))
+        except OSError:
+            continue
+        for name in entries:
+            if name.startswith('.'):
+                continue
+            hit = _engine_in_dir(os.path.join(root, name))
+            if not hit:
+                continue
+            exe, uuid, ver = hit
+            # Official default engine gets priority 2, OSS engine 1, other VVPP 0.
+            if uuid == DEFAULT_ENGINE_UUIDS[0] or name.endswith('+' + DEFAULT_ENGINE_UUIDS[0]):
+                rank = 2
+            elif uuid == DEFAULT_ENGINE_UUIDS[1] or name.endswith('+' + DEFAULT_ENGINE_UUIDS[1]):
+                rank = 1
+            else:
+                rank = 0
+            key = (rank, ver)
+            if best is None or key > best[0]:
+                best = (key, exe, ver)
+    return (best[1], best[2]) if best else (None, ())
+
+
 def engine_next_to(app_path):
     """VOICEVOX/vv-engine/run(.exe) beside the app, if it is there."""
     if not app_path:
@@ -56,40 +153,61 @@ def engine_next_to(app_path):
         cand = os.path.join(app_path, 'Contents', 'Resources', 'vv-engine', 'run')
         return cand if os.path.isfile(cand) else None
     folder = os.path.dirname(app_path) if os.path.isfile(app_path) else app_path
-    for name in ('run.exe', 'run'):
-        for sub in ('vv-engine', 'engine', '.'):
-            cand = os.path.join(folder, sub, name)
-            if os.path.isfile(cand):
-                return cand
+    for sub in ('vv-engine', 'engine', '.'):
+        hit = _engine_in_dir(os.path.join(folder, sub))
+        if hit:
+            return hit[0]
     return None
 
 
-def find_voicevox(user_path=''):
+def find_voicevox(user_path='', vvpp_roots=None):
     """{'app': path or None, 'engine': path or None}. A user-given path may
     be the app, the engine's run.exe, or the folder holding either."""
     found = {'app': None, 'engine': None}
+    user_engine = False
     paths = []
     if user_path:
         p = os.path.expandvars(os.path.expanduser(user_path.strip().strip('"')))
-        paths.append(p)
-    paths += voicevox_candidates()
-    for p in paths:
+        paths.append((p, True))
+    paths += [(p, False) for p in voicevox_candidates()]
+    for p, from_user in paths:
         if not p or not os.path.exists(p):
             continue
         base = os.path.basename(p).lower()
         if base in ('run.exe', 'run') and os.path.isfile(p):
-            found['engine'] = found['engine'] or p
+            if not found['engine']:
+                found['engine'] = p
+                user_engine = from_user
             continue
         if os.path.isdir(p) and not p.endswith('.app'):
             for name in ('VOICEVOX.exe', 'voicevox.exe'):
                 if os.path.isfile(os.path.join(p, name)):
                     found['app'] = found['app'] or os.path.join(p, name)
-            found['engine'] = found['engine'] or engine_next_to(p)
+            eng = engine_next_to(p)
+            if eng and not found['engine']:
+                found['engine'] = eng
+                user_engine = from_user
             continue
         found['app'] = found['app'] or p
-        found['engine'] = found['engine'] or engine_next_to(p)
+        eng = engine_next_to(p)
+        if eng and not found['engine']:
+            found['engine'] = eng
+            user_engine = from_user
         if found['app'] and found['engine']:
             break
+    # VOICEVOX 0.26+ separates its engine into userData/vvpp-engines/. Use it
+    # when no bundled vv-engine was found, or when the separated engine is newer
+    # (unless the user explicitly chose an engine path in Settings).
+    if not user_engine:
+        vvpp_exe, vvpp_ver = find_vvpp_engine(vvpp_roots)
+        if vvpp_exe:
+            if not found['engine']:
+                found['engine'] = vvpp_exe
+            else:
+                cur_hit = _engine_in_dir(os.path.dirname(found['engine']))
+                cur_ver = cur_hit[2] if cur_hit else ()
+                if vvpp_ver and (not cur_ver or vvpp_ver >= cur_ver):
+                    found['engine'] = vvpp_exe
     return found
 
 

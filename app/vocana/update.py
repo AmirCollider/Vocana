@@ -74,9 +74,17 @@ class Checker:
             return
         threading.Thread(target=self._run, daemon=True).start()
 
+    def check_now(self):
+        """Run a check synchronously (for the Settings 'Check now' button)
+        and return info() with ok=True/False."""
+        ok = self._run()
+        out = self.info()
+        out['ok'] = ok
+        return out
+
     def _run(self):
         if not self._lock.acquire(False):
-            return
+            return False
         try:
             d = fetch()
             keep = {k: d.get(k) for k in ('version', 'url', 'download', 'notes', 'date')}
@@ -88,6 +96,7 @@ class Checker:
                     keep[k] = None
             keep['checked'] = time.time()
             self.put({'_update': keep})
+            return True
         except Exception:
             c = self.cached()
             c['checked'] = time.time()
@@ -95,5 +104,6 @@ class Checker:
                 self.put({'_update': c})
             except Exception:
                 pass
+            return False
         finally:
             self._lock.release()

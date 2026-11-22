@@ -149,6 +149,50 @@ class Studio(unittest.TestCase):
         self.assertEqual(r.status, 400)
         c.close()
 
+    def test_render_file_with_nakaguro_and_bad_range(self):
+        import io
+        import urllib.parse
+        import zipfile
+        rdir = os.path.join(self.data, 'renders', 'KobakoTest')
+        os.makedirs(rdir, exist_ok=True)
+        fname = '01_ブイブイ・コバコ.wav'
+        with open(os.path.join(rdir, 'full.wav'), 'wb') as f:
+            f.write(b'RIFF0000WAVE')
+        with open(os.path.join(rdir, fname), 'wb') as f:
+            f.write(b'RIFF1111WAVE')
+        s, d, _ = self.req('GET', '/api/renders/KobakoTest')
+        self.assertEqual(s, 200)
+        self.assertIn(fname, d['files'])
+        url = '/api/renders/KobakoTest/' + urllib.parse.quote(fname) + '?t=' + self.st.token
+        s, raw, _ = self.req('GET', url, token=False)
+        self.assertEqual((s, raw), (200, b'RIFF1111WAVE'))
+        s, raw, _ = self.req('GET', url, token=False, headers={'Range': 'bytes=-'})
+        self.assertEqual((s, raw), (200, b'RIFF1111WAVE'))
+        s, zraw, _ = self.req('GET', '/api/renders/KobakoTest/zip?t=' + self.st.token, token=False)
+        self.assertEqual(s, 200)
+        with zipfile.ZipFile(io.BytesIO(zraw)) as zf:
+            self.assertIn('KobakoTest/' + fname, zf.namelist())
+
+    def test_empty_script_delete_and_rename_safety(self):
+        self.req('POST', '/api/scripts/save', {'name': 'render', 'text': 'ME: keep me\n', 'overwrite': True})
+        s, d, _ = self.req('POST', '/api/scripts/delete', {'name': ''})
+        self.assertEqual((s, d['error']), (400, 'bad_name'))
+        self.assertTrue(os.path.isfile(os.path.join(self.data, 'scripts', 'render.txt')))
+        s, d, _ = self.req('POST', '/api/scripts/rename', {'name': '', 'to': 'other'})
+        self.assertEqual((s, d['error']), (400, 'bad_name'))
+        s, d, _ = self.req('POST', '/api/scripts/rename', {'name': 'NoSuchScript', 'to': 'other'})
+        self.assertEqual((s, d['error']), (404, 'no_script'))
+
+    def test_pause_only_render_and_mood_families_and_kana_test(self):
+        s, d, _ = self.req('POST', '/api/render', {'text': '(pause 1.0)\n# comment\n', 'name': 'OnlyPause'})
+        self.assertEqual((s, d['error']), (400, 'empty_script'))
+        s, d, _ = self.req('GET', '/api/moods')
+        self.assertEqual(s, 200)
+        self.assertNotIn('variant', d['families'])
+        s, d, _ = self.req('POST', '/api/words/test', {'text': 'ブイブイ・コバコ hello'})
+        self.assertEqual(s, 200)
+        self.assertTrue(any(w['source'] == 'kana' for w in d['words']))
+
     # -- with VOICEVOX --------------------------------------------------
     @unittest.skipUnless(ENGINE, 'VOICEVOX is not running')
     def test_voices_and_terms(self):

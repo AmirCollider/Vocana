@@ -58,7 +58,7 @@ MIME = {
     '.srt': 'text/plain; charset=utf-8', '.vtt': 'text/vtt; charset=utf-8', '.zip': 'application/zip',
     '.md': 'text/plain; charset=utf-8',
 }
-RENDER_FILE = re.compile(r'^[\w\-. ]+\.(wav|srt|vtt|json|txt)$')
+RENDER_FILE = re.compile(r'^(?!\.)(?!.*\.\.)[\w\-. ・ー]+\.(wav|srt|vtt|json|txt)$')
 HEARTBEAT_TIMEOUT = 180        # seconds without any open studio window before --auto-exit quits
 FIRST_WINDOW_TIMEOUT = 600     # ... or without the first window ever appearing
 
@@ -126,6 +126,7 @@ class Studio:
         self.previews = OrderedDict()
         self.engine_proc = None
         self.engine_starting = None
+        self._last_engine_ver = None
         self.port = None
         self.server = None
         self.page = ''
@@ -146,6 +147,13 @@ class Studio:
     # -- engine -----------------------------------------------------
     def engine_state(self):
         ver = self.vt.engine.alive(timeout=1.5)
+        with self.lock:
+            if ver != self._last_engine_ver:
+                # VOICEVOX went down, came back up, or switched version: drop
+                # cached voices, resource URLs (hashes change on restart) and previews.
+                self._last_engine_ver = ver
+                self.vt.clear_voices_cache()
+                self.previews.clear()
         st = self.settings()
         found = system.find_voicevox(st.get('voicevox_path', ''))
         starting = None
@@ -269,7 +277,7 @@ class Handler(BaseHTTPRequestHandler):
         start, end = 0, size - 1
         status = 200
         m = re.match(r'bytes=(\d*)-(\d*)$', rng or '')
-        if m and size:
+        if m and size and (m.group(1) or m.group(2)):
             if m.group(1):
                 start = int(m.group(1))
                 end = int(m.group(2)) if m.group(2) else size - 1
@@ -312,9 +320,12 @@ class Handler(BaseHTTPRequestHandler):
                 pass
 
     def body(self):
-        n = int(self.headers.get('Content-Length') or 0)
-        if n > 20 * 2**20:
-            raise ApiError(413, 'too_large')
+        try:
+            n = int(self.headers.get('Content-Length') or 0)
+        except ValueError:
+            raise ApiError(400, 'bad_length')
+        if n < 0 or n > 20 * 2**20:
+            raise ApiError(413 if n > 0 else 400, 'too_large' if n > 0 else 'bad_length')
         raw = self.rfile.read(n) if n else b''
         if not raw:
             return {}
@@ -446,7 +457,10 @@ def route(h, method, path, query, data):
                 cfg, _w = cfgmod.load_moods(st.layout.moods)
                 cfg['engine'] = url
                 cfgmod.save_moods(st.layout.moods, cfg)
+                st.previews.clear()
+                st._last_engine_ver = None
             vt.load()
+            vt.clear_voices_cache()
             return st.engine_state()
         return st.engine_state()
 
@@ -545,8 +559,7 @@ def route(h, method, path, query, data):
 
     if head == 'update':
         if method == 'POST':
-            st.updates.maybe_check(force=True)
-            time.sleep(0.1)
+            return st.updates.check_now()
         return st.updates.info()
 
     if head == 'install':
@@ -639,14 +652,14 @@ def start_render(st, data):
     from .render import safe_name
     text = str(data.get('text') or '')
     name = safe_name(data.get('name') or 'Untitled', 'Untitled')
-    if not parse_script(text)['items']:
+    if not any(it['kind'] == 'line' for it in parse_script(text)['items']):
         raise ApiError(400, 'empty_script', 'The script has no lines to say.')
     out = within(st.layout.renders, name)
 
     def run(job):
         def progress(ev):
             job.progress = ev
-        return st.vt.render_script(text, out, progress=progress, cancel=job.cancel, script_name=name)
+        return st.vt.render_script(text, out, progress=progress, cancel=job.cancel, script_name=name, is_path=False)
     job = st.add_job('render', run)
     return job.view()
 
@@ -740,15 +753,21 @@ def scripts(st, method, parts, data):
         st.save_settings({'last_script': name})
         return {'name': name, 'mtime': os.path.getmtime(path)}
     if parts == ['delete'] and method == 'POST':
-        path = within(base, safe_name(data.get('name') or '') + '.txt')
+        old = safe_name(data.get('name') or '', '')
+        if not old:
+            raise ApiError(400, 'bad_name')
+        path = within(base, old + '.txt')
         if os.path.isfile(path):
             os.remove(path)
         return {'ok': True}
     if parts == ['rename'] and method == 'POST':
-        src = within(base, safe_name(data.get('name') or '') + '.txt')
+        old = safe_name(data.get('name') or '', '')
         new = safe_name(data.get('to') or '', '')
-        if not new:
+        if not old or not new:
             raise ApiError(400, 'bad_name')
+        src = within(base, old + '.txt')
+        if not os.path.isfile(src):
+            raise ApiError(404, 'no_script')
         dst = within(base, new + '.txt')
         if os.path.exists(dst):
             raise ApiError(409, 'exists', name=new)
@@ -789,11 +808,12 @@ def words(st, method, parts, data):
     from .kana import Kana, moras_of
     vt = st.vt
     if parts == ['test'] and method == 'POST':
+        vt.reload_if_changed()
         out = []
         for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'’\-]*|[ァ-ヴーぁ-ゖ]+", str(data.get('text') or ''))[:200]:
             k, src = vt.kana.lookup(w)
             out.append({'word': w, 'kana': k, 'moras': moras_of(k), 'source': src,
-                        'model': (Kana.model()(w.lower()) if Kana.model() and w.isalpha() else None)})
+                        'model': (Kana.model()(w.lower()) if Kana.model() and w.isascii() and w.isalpha() else None)})
         return {'words': out}
     if method == 'POST' and not parts:
         entries = data.get('words')
@@ -804,7 +824,7 @@ def words(st, method, parts, data):
             if isinstance(k, str) and isinstance(v, str) and k.strip() and v.strip():
                 if len(k) > 80 or len(v) > 80:
                     continue
-                clean[k.strip().lower()] = v.strip()
+                clean[k.strip().lower().replace('’', "'")] = v.strip()
         with st.lock:
             cfgmod.save_words(st.layout.words, clean)
         vt.load()
@@ -852,8 +872,8 @@ def moods(st, method, parts, data):
         vt.load()
     cfg, warnings = cfgmod.load_moods(st.layout.moods)
     return {'moods': cfg['moods'], 'speaker': cfg['speaker'], 'style': cfg['style'], 'cast': cfg['cast'],
-            'engine': cfg['engine'], 'families': list(FAMILIES), 'defaults': list(default['moods']),
-            'warnings': warnings, 'path': st.layout.moods}
+            'engine': cfg['engine'], 'families': [f for f in FAMILIES if f != 'variant'],
+            'defaults': list(default['moods']), 'warnings': warnings, 'path': st.layout.moods}
 
 
 # ==================================================================
